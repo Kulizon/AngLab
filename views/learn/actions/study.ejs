@@ -1,0 +1,30 @@
+<%- include('../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../../partials/boilerplate-end') %> <%- include('../../partials/header') %>
+
+<main>
+  <h2 class="learning-subject"> <%=languageLevel%> <span>•</span> Study </h2>
+  <div class="lang-choices">
+    <% if (learningSubjects.length > 0) {%> 
+    <% learningSubjects.forEach((subject) => { %>
+    <a href="study/<%=subject.subject%>" class="lang-choice">
+      <div>
+        <h2><%=subject.subject%></h2>
+        <div>
+            <h5>0/0</h5>
+            <h4>0%</h4>
+        </div>
+      </div>
+    </a>
+    <% }) %>
+    <% } else {%>
+      <h2>No Lessons for this Language Level.</h2>
+      <% } %>
+  </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/getSubjectProgress.js"></script>
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../../partials/footer') %>

@@ -1,0 +1,36 @@
+@import 'variables';
+
+h1 {
+  font-size: 2rem;
+  color: $lighter-light-color;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: $lighter-light-color;
+}
+
+h3 {
+    font-size: 1.1rem;
+    color: $lighter-light-color;
+}
+
+h4, h5, h6 {
+  font-size: 1.1rem;
+    color: $darker-light-color;
+}
+
+label {
+    color: $lighter-light-color;
+    font-size: 1.1rem;
+}
+
+input, textarea {
+  font-size: 1rem;
+    color: $lighter-dark-color;
+}
+
+p {
+    font-size: 1.05rem;
+    color: $font-color;
+}

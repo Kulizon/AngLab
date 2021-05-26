@@ -1,0 +1,47 @@
+<%- include('../../partials/boilerplate-start') %> 
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../../partials/boilerplate-end') %> 
+<%- include('../../partials/header') %> 
+
+<main>
+    <h2 class="learning-subject"><%=languageLevel%> <span>•</span> Practice <span>•</span> <%= practiceSubject %> </h2>
+    <% if (practiceQuestions) { %>
+  <div class="questions practice-questions">
+      <% practiceQuestions.forEach((question) => { %>
+        <form action="/learn/<%=question.languageLevel%>/practice/<%=question.subject%>" class="question-form">
+          <h4><%=question.question%></h4>
+          <input type="hidden" value="<%=question._id%>" class="questionID">
+          <div>
+            <input type="radio" name="answer" value="A" />
+            <label for="answer"><%=question.answerA%></label>
+          </div>
+          <div>
+            <input type="radio" name="answer" value="B" />
+            <label for="answer"><%=question.answerB%></label>
+          </div>
+          <div>
+            <input type="radio" name="answer" value="C" />
+            <label for="answer"><%=question.answerC%></label>
+          </div>
+          <div>
+            <input type="radio" name="answer" value="D" />
+            <label for="answer"><%=question.answerD%></label>
+          </div>
+          <p></p>
+          <button type="submit">Check</button>
+        </form>
+        <% }) %>
+        <a href="<%practiceSubject%>">Load More Questions</a>
+    <% } else {%>
+      <h2>No Questions for this Subject.</h2>
+    <% } %>
+  </div>
+</main>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/checkAnswers.js"></script>
+<script src="/javascript/headerMenu.js"></script>
+
+ <%- include('../../partials/footer') %>

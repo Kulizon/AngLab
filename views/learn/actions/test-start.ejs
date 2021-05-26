@@ -1,0 +1,55 @@
+<%- include('../../partials/boilerplate-start') %> 
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../../partials/boilerplate-end') %> <%- include('../../partials/header') %>
+
+<main>
+  <h2 class="learning-subject"><%=languageLevel%> <span>•</span> Test</h2>
+      <% if (testQuestions) { %>
+        <div class="questions">
+        <form action="/learn/<%=languageLevel%>/test/end" class="question-form">
+          <% testQuestions.forEach((question) => { %>
+          <div class="question-group">
+            <h6></h6>
+            <h4><%=question.question%></h4>
+            <input type="hidden" value="<%=question._id%>" class="questionID" />
+            <div>
+              <label for="answer"><%=question.answerA%></label>
+              <input type="radio" name="<%=question._id%>" value="A" />
+            </div>
+            <div>
+              <label for="answer"><%=question.answerB%></label>
+              <input type="radio" name="<%=question._id%>" value="B" />
+            </div>
+            <div>
+              <label for="answer"><%=question.answerC%></label>
+              <input type="radio" name="<%=question._id%>" value="C" />
+            </div>
+            <div>
+              <label for="answer"><%=question.answerD%></label>
+              <input type="radio" name="<%=question._id%>" value="D" />
+            </div>
+          </div>
+          <% }) %>
+          <button type="submit">Finish</button>
+        </form>
+      </div>
+    <form action="/learn/languageLevel%>/test/end" id="summarize-form" method="POST">
+      <input type="hidden" name="correctAnswers" value=""/>
+      <input type="hidden" name="amountOfQuestions" value=""/>
+      <button type="submit" class="invert-colors">Summarize</button>
+    </form>
+    
+
+    <% } else { %>
+      <h2>No Questions for this Language Level.</h2>
+        <a href="/learn"><button class="invert-colors">Main Page</button></a>
+    <% } %>
+    
+    
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/sendTestAnswers.js"></script>
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../../partials/footer') %>

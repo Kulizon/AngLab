@@ -1,0 +1,61 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css">
+<%- include('../partials/boilerplate-end') %>
+
+<main>
+    <%- include('partials/aside') %>
+    <div class="main-content">
+        <form action="/admin/users/search" method="POST" class="search-form">
+            <input type="text" name="searchQuery">
+            <button type="submit">Search</button>
+        </form>
+        <form action="/admin/users/action" method="POST" class="action-form">
+            <select name="action" id="adminSelect" onchange="showMessageInput()">
+                <option value="nothing">Nothing</option>
+                <option value="message">Message</option>
+                <option value="delete">Delete</option>
+                <option value="ban">Ban</option>
+            </select>
+        <button type="submit">Execute</button>
+        <div class="notification-input" >
+            <label for="title">Title</label>
+            <input type="text" name="title">
+        </div>
+        <div class="notification-input" >
+            <label for="content">Content</label>
+            <input type="text" name="content">
+        </div>
+        <div>
+            <div class="user-header">
+                <input type="checkbox" id="allCheckboxesCheckedInput">
+                <h4>Name</h4>
+                <h4>Username</h4>
+                <h4>Actions</h4>
+            </div>
+            <% users.forEach((user) => { %> 
+                <% if (user.role !== "admin") { %>
+                    <div class="user-box">
+                    <input type="checkbox" name="chosenUserID[]" value="<%=user._id%>">
+                    <h3><%=user.name%></h3>
+                    <h3><%=user.username%></h3>
+                        <div class="user-actions">                   
+                            <form action="/admin/users/delete-user/<%=user._id%>" method="post">  
+                                <button type="submit">Delete</button>
+                            </form>
+                            <form action="/admin/users/ban-user/<%=user._id%>" method="post">
+                                <input type="hidden" name="username" value="<%=user.username%>">
+                                <button type="submit">Ban</button>
+                            </form> 
+                        </div>  
+                    </div>
+               <% } %>  
+            <% }) %>
+        </div>
+        </form>  
+    </div> 
+</main>
+
+<script src="/javascript/adminPanelActions.js"></script>
+
+<%- include('../partials/footer') %>
+

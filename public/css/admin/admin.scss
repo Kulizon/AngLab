@@ -1,0 +1,340 @@
+@import '../global/defaults', '../global/variables';
+
+$admin-light-color: #F0F0F1;
+
+
+body {
+    background: $admin-light-color;
+    overflow-x: hidden;
+    padding: 0;
+}
+
+h1, h2, h3{
+    color: $darker-dark-color;
+}
+
+h4, h5 {
+    color: $lighter-dark-color;
+}
+
+main {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 10rem 90%;
+}
+
+div.main-content {
+    padding: $big-padding * 2 $medium-padding;
+
+    select {
+        margin-right: $medium-margin;
+        font-size: 1rem;
+        background: $lighter-light-color;
+        color: $darker-dark-color;
+        border: 3px solid $darker-dark-color;
+        border-radius: 10px;
+        padding: $tiny-padding * 0.5 $small-padding * 0.5;
+        font-weight: bold;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    button {
+        margin: 0;
+        width: 6rem;
+        font-size: 1rem;
+        margin-right: $big-margin;
+        background: $darker-dark-color;
+        border-color: $darker-dark-color;
+    
+        &:hover {
+            background: none;
+            border-color: $darker-dark-color;
+            color: $darker-dark-color;
+        }
+    }
+
+    label {
+        color: $darker-dark-color;
+        font-size: 1.2rem;
+    }
+
+    input[type="text"], textarea {
+        padding: $tiny-padding $small-padding;
+        width: 15rem;
+        font-size: 1rem;
+        border: 3px solid $darker-dark-color;
+        resize: none;
+        font-weight: bold;
+
+        &:focus {
+            box-shadow: $lighter-dark-color 0px 3px 1px;
+        }
+    }
+}
+
+
+aside {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: $darker-dark-color;
+    height: 100vh;
+    padding: $big-padding * 2 $medium-padding;
+
+    a {
+        color: $admin-light-color;
+        font-size: 1.2rem;
+    }
+}
+
+.user-header {
+    display: grid;
+    grid-template-columns: 5% 20% 20% 55%;
+    margin-top: $big-margin * 2;
+}
+
+.user-box {
+    display: grid;
+    grid-template-columns: 5% 20% 20% 55%;
+    align-items: center;
+    margin: $small-margin 0;
+}
+
+.subject-header {
+    display: grid;
+    grid-template-columns: 5% 6% 20% 55%;
+    margin-top: $big-margin * 2;
+}
+
+.subject-box {
+    display: grid;
+    grid-template-columns: 5% 6% 20% 55%;
+    align-items: center;
+    margin: $small-margin 0;
+}
+
+.lesson-header {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;;
+    margin-top: $big-margin * 2;
+}
+
+.lesson-box {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+    align-items: center;
+    margin: $small-margin 0;
+
+    &.fake {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+.question-header {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+    margin-top: $big-margin * 2;
+}
+
+.question-box {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+    align-items: center;
+    margin: $small-margin 0;
+
+    &.fake {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+.user-actions {
+    display: flex;
+    align-items: center;
+
+    button {
+        margin: 0;
+        width: 5rem;
+        font-size: 1rem;
+        margin-right: $big-margin;
+        background: $darker-dark-color;
+        border-color: $darker-dark-color;
+    
+        &:hover {
+            background: none;
+            border-color: $darker-dark-color;
+            color: $darker-dark-color;
+        }
+    }
+}
+
+.action-form {
+    margin: $big-margin 0 0;
+
+    .notification-input {
+        display: none;
+        flex-direction: column;
+        margin: $tiny-margin 0;
+    }
+}
+
+.search-form, .create-form {
+    margin: 0 0 $big-margin;
+
+    &.margin-top {
+        margin: $big-margin 0;
+    }
+}
+
+.create-button {
+    margin-bottom: $big-margin;
+}
+
+.edit-form, .add-form {
+    display: none;
+    grid-template-columns: 1fr 1fr;
+    row-gap: 0.5rem;
+    column-gap: 3rem;
+
+    label[for="question"] { 
+        grid-column: 1/2;
+        grid-row: 1/2;
+    }
+
+    textarea[name="question"] {
+        grid-column: 1/2;
+        grid-row: 2/3;
+        width: 100%;
+        height: 5rem;
+    }
+
+    label[for="subject"] { 
+        grid-column: 2/3;
+        grid-row: 1/2;
+    }
+
+    select[name="subject"] {
+        grid-column: 2/3;
+        grid-row: 2/3;
+        width: 40%;
+        height: 2.5rem;
+    }
+
+    label[for="answerA"] { 
+        grid-column: 1/2;
+        grid-row: 4/5;
+    }
+
+    textarea[name="answerA"] {
+        grid-column: 1/2;
+        grid-row: 5/6;
+        width: 40%;
+        height: 5rem;
+    }
+
+    label[for="answerB"] { 
+        grid-column: 2/3;
+        grid-row: 4/5;
+    }
+
+    textarea[name="answerB"] {
+        grid-column: 2/3;
+        grid-row: 5/6;
+        width: 40%;
+        height: 5rem;
+    }
+
+    label[for="answerC"] { 
+        grid-column: 1/2;
+        grid-row: 7/8;
+    }
+
+    textarea[name="answerC"] {
+        grid-column: 1/2;
+        grid-row: 8/9;
+        width: 40%;
+        height: 5rem;
+    }
+
+    label[for="answerD"] { 
+        grid-column: 2/3;
+        grid-row: 7/8;
+    }
+
+    textarea[name="answerD"] {
+        grid-column: 2/3;
+        grid-row: 8/9;
+        width: 40%;
+        height: 5rem;
+    }
+
+    label[for="correctAnswer"] { 
+        grid-column: 2/3;
+        grid-row: 9/10;
+    }
+
+    select[name="correctAnswer"] {
+        grid-column: 2/3;
+        grid-row: 11/12;
+        width: 40%!important;
+        height: 2.5rem;
+    }
+
+    label[for="hint"] { 
+        grid-column: 1/2;
+        grid-row: 9/10;
+    }
+
+    textarea[name="hint"] {
+        grid-column: 1/2;
+        grid-row: 11/12;
+        width: 40%!important;
+        height: 5rem;
+    }
+
+    button {
+        grid-column: 1/2;
+        grid-row: 13/14;
+    }
+}
+
+.edit-lesson-form, .add-lesson-form {
+    display: none;
+    flex-direction: column;
+
+    label[for="subject"] {
+        margin-top: 2rem;
+    }
+
+    select[name="subject"] {
+        width: 20%;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    input {
+        width: 50%!important;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    textarea {
+        width: 50%!important;
+        height: 5rem;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        align-self: flex-start;
+    }
+}

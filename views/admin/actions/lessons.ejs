@@ -1,0 +1,72 @@
+<%- include('../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css">
+ <%- include('../../partials/boilerplate-end') %>
+
+<main>
+  <%- include('../partials/aside') %>
+  <div class="main-content">
+    <a href="/admin/lessons/add-lesson"><button>Create</button></a>
+    <form action="/admin/lessons/search" method="POST" class="search-form margin-top">
+      <input type="text" name="searchQueryCategory" placeholder="Category..." />
+      <select name="searchQueryLevel">
+        <option>Nothing</option>
+        <option value="A1">A1</option>
+        <option value="A2">A2</option>
+        <option value="B1">B1</option>
+        <option value="B2">B2</option>
+        <option value="C1">C1</option>
+        <option value="C2">C2</option>
+      </select>
+      <button type="submit">Search</button>
+    </form>
+    <form action="/admin/lessons/action" method="POST">
+      <select name="action" id="adminSelect" onchange="showMessageInput()">
+        <option value="nothing">Nothing</option>
+        <option value="delete">Delete</option>
+      </select>
+      <button type="submit">Execute</button>
+      <div>
+        <div class="lesson-header">
+          <input type="checkbox" id="allCheckboxesCheckedInput">
+          <h4>Level</h4>
+          <h4>Subject</h4>
+          <h4>Title</h4>
+      </div>
+      <div class="lesson-box fake">
+        <h3></h3>
+        <h3></h3>
+        <h3></h3>
+        <h3></h3>
+        <form>
+          <button></button>
+        </form>
+        <form >
+          <input/>
+          <button</button>
+        </form>
+      </div>
+        <% lessons.forEach((lesson) => { %>
+          <div class="lesson-box">
+            <input type="checkbox" name="chosenLessonsID[]" value="<%=lesson._id%>" />
+            <h3><%=lesson.languageLevel%></h3>
+            <h3><%=lesson.subject%></h3>
+            <h3><%=lesson.title%></h3>
+            <form action="/admin/lessons/edit-lesson/<%= lesson._id %>" method="GET">
+              <button type="submit">Edit</button>
+            </form>
+            <form action="/admin/lessons/delete-lesson" method="POST">
+              <input type="hidden" value="<%=lesson._id%>" name="lessonID" />
+              <button type="submit">Delete</button>
+            </form>
+          </div>
+          <% }) %>
+          
+        
+      </div>
+    </form>
+  </div>
+</main>
+
+<script src="/javascript/adminPanelActions.js"></script>
+
+<%- include('../../partials/footer') %>

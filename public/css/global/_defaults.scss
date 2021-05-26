@@ -1,0 +1,104 @@
+@import "variables", "fonts";
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: $darker-dark-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 $big-padding;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: $secondary-color;
+
+  &:hover {
+    color: $base-color;
+  }
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+
+  &:focus {
+    outline: none;
+    border: none;
+  }
+}
+
+button {
+  &:focus,
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+input {
+  font-weight: bold;
+}
+
+button:not(.delete, .lesson-button) {
+  align-self: center;
+  margin-top: $big-margin;
+  padding: $tiny-padding;
+  width: 10rem;
+  background-color: $base-color;
+  color: $lighter-light-color;
+  border: 3px solid $base-color;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button:hover:not(.delete, .lesson-button) {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__icon {
+      width: 1.8rem;
+      color: $lighter-light-color;
+
+      &:hover {
+          color: $base-color;
+      }
+  }
+
+  &__brand {
+      color: $lighter-light-color;
+      margin-left: $small-margin;
+      font-size: 1.4rem;
+
+  }
+}
+
+button.invert-colors {
+  background-color: $secondary-color;
+  border-color: $secondary-color;
+
+  &:hover {
+    background-color: $base-color;
+    border-color: $base-color;
+  }
+}

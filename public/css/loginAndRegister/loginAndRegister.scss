@@ -1,0 +1,46 @@
+@import '../global/variables', '../global/defaults';
+
+body {
+    min-height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.errors-list {
+    color: $lighter-light-color;
+    background: #D71C38;
+    padding: $tiny-padding $small-padding;
+    margin-top: $small-margin;
+    border-radius: 10px;
+    font-weight: bold;
+}
+
+h4 {
+    margin-top: $tiny-margin;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+
+    label {
+        margin: $medium-margin 0 $tiny-margin;
+    }
+
+    input {
+        padding: $small-padding;
+        width: 15rem;
+        box-shadow: $lighter-dark-color 0px 5px 3px;
+
+        &:focus {
+            box-shadow: $lighter-dark-color 0px 10px 3px;
+        }
+    }
+}

@@ -1,0 +1,110 @@
+
+<%- include('../../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css">
+<%- include('../../../partials/boilerplate-end') %>
+
+<main>
+  <%- include('../../partials/aside') %>
+    <div class="main-content">
+        <form method="POST" id="levelForm">
+            <select name="level" id="level" onchange = "questionForm.style.display = 'none'" class="create-form">
+              <% if (editedQuestion.languageLevel === 'A1') { %>
+                <option type="submit" value="A1" selected="selected">A1</option>
+            <% } else { %>
+                <option type="submit" value="A1">A1</option>
+            <% } %>
+        
+            <% if (editedQuestion.languageLevel === 'A2') { %>
+                <option type="submit" value="A2" selected="selected">A2</option>
+            <% } else { %>
+                <option type="submit" value="A2">A2</option>
+            <% } %>
+        
+            <% if (editedQuestion.languageLevel === 'B1') { %>
+                <option type="submit" value="B1" selected="selected">B1</option>
+            <% } else { %>
+                <option type="submit" value="B1">B1</option>
+            <% } %>
+                
+            <% if (editedQuestion.languageLevel === 'B2') { %>
+                <option type="submit" value="B2" selected="selected">B2</option>
+            <% } else { %>
+                <option type="submit" value="B2">B2</option>
+            <% } %>
+                
+            <% if (editedQuestion.languageLevel === 'C1') { %>
+                <option type="submit" value="C1" selected="selected">C1</option>
+            <% } else { %>
+                <option type="submit" value="C1">C1</option>
+            <% } %>
+                
+            <% if (editedQuestion.languageLevel === 'C2') { %>
+                <option type="submit" value="C2" selected="selected">C2</option>
+            <% } else { %>
+                <option type="submit" value="C2">C2</option>
+            <% } %>
+            
+            </select>
+            <input type="hidden" id="subjectHiddenInput" value="<%=editedQuestion.subject%>">
+            <button type="submit">Dalej</button>
+          </form>
+        
+          <form action="/admin/questions/edit-question/<%=editedQuestion._id%>" method="POST" id="questionForm" class="edit-form">
+            <input type="hidden" id="levelHiddenInput" name="level" value="">
+        
+            <label for="question">Question</label>
+            <textarea type="text" name="question"><%=editedQuestion.question%></textarea>
+        
+            <label for="subject">Subject</label>
+            <select name="subject" id="subjects">
+                <option value="<%=editedQuestion.subject%>"></option>
+            </select>
+        
+            <label for="answerA">Answer A</label>
+            <textarea type="text" name="answerA"><%=editedQuestion.answerA%></textarea>
+            <label for="answerB">Answer B</label>
+            <textarea type="text" name="answerB" ><%=editedQuestion.answerB%></textarea>
+            <label for="answerC">Answer C</label>
+            <textarea type="text" name="answerC" ><%=editedQuestion.answerC%></textarea>
+            <label for="answerD">Answer D</label>
+            <textarea type="text" name="answerD" ><%=editedQuestion.answerD%></textarea>
+        
+            <label for="hint">Hint</label>
+            <textarea type="text" name="hint"><%=editedQuestion.hint%></textarea>
+
+            <label for="correctAnswer">Correct Answer</label>
+            <select name="correctAnswer">
+                <% if (editedQuestion.correctAnswer === 'A') { %>
+                    <option value="A" selected="selected">Answer A</option>
+                <% } else { %>
+                    <option value="A" >Answer A</option>
+                <% } %>
+
+                <% if (editedQuestion.correctAnswer === 'B') { %>
+                    <option value="B" selected="selected">AnswerB</option>
+                <% } else { %>
+                    <option value="B">Answer B</option>
+                <% } %>
+
+                <% if (editedQuestion.correctAnswer === 'C') { %>
+                    <option value="C" selected="selected">Answer C</option>
+                <% } else { %>
+                    <option value="C" >Answer C</option>
+                <% } %>
+
+                <% if (editedQuestion.correctAnswer === 'D') { %>
+                    <option value="D" selected="selected">Answer D</option>
+                <% } else { %>
+                    <option value="D" >Answer D</option>
+                <% } %>
+            </select>
+        
+            <button type="submit">Submit</button>
+          </form>
+    </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/addQuestion.js"></script>
+
+<%- include('../../../partials/footer') %>

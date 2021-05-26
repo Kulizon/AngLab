@@ -1,0 +1,16 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../partials/boilerplate-end') %> <%- include('../partials/header') %>
+
+<main>
+  <h2 class="learning-subject"> <%=languageLevel%></h2>
+  <div class="lang-choices">
+    <a href="/learn/<%=languageLevel%>/study" class="lang-choice">Study</a>
+    <a href="/learn/<%=languageLevel%>/practice" class="lang-choice">Practice</a>
+    <a href="/learn/<%=languageLevel%>/test" class="lang-choice">Test</a>
+  </div>
+</main>
+
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../partials/footer') %>

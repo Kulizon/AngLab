@@ -1,0 +1,14 @@
+<%- include('../../partials/boilerplate-start') %> 
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../../partials/boilerplate-end') %> <%- include('../../partials/header') %>
+
+<main class="test-end">
+    <h2 class="learning-subject"><%=languageLevel%> <span>•</span> Test</h2>
+    <h3>Your score is: <span><%=percent%>%</span></h2>
+    <h4>Amount of questions: <br> <span><%=amountOfQuestions%></span> <br> <br> Correct answers: <br> <span><%=correctAnswers%></span></h4>
+    <a href="/learn"><button>Finish</button></a>
+</main>
+
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../../partials/footer') %>

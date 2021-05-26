@@ -1,0 +1,215 @@
+h1 {
+  font-size: 2rem;
+  color: #f1f1f1;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #f1f1f1;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+}
+
+h4, h5, h6 {
+  font-size: 1.1rem;
+  color: #c9c1c1;
+}
+
+label {
+  color: #f1f1f1;
+  font-size: 1.1rem;
+}
+
+input, textarea {
+  font-size: 1rem;
+  color: #3b3e42;
+}
+
+p {
+  font-size: 1.05rem;
+  color: #cecece;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #21252C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #36687C;
+}
+
+a:hover {
+  color: #faba17;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+button:focus, button:hover {
+  cursor: pointer;
+}
+
+input {
+  font-weight: bold;
+}
+
+button:not(.delete, .lesson-button) {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  width: 10rem;
+  background-color: #faba17;
+  color: #f1f1f1;
+  border: 3px solid #faba17;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button:hover:not(.delete, .lesson-button) {
+  background-color: #36687C;
+  border-color: #36687C;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo__icon {
+  width: 1.8rem;
+  color: #f1f1f1;
+}
+
+.logo__icon:hover {
+  color: #faba17;
+}
+
+.logo__brand {
+  color: #f1f1f1;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+
+button.invert-colors {
+  background-color: #36687C;
+  border-color: #36687C;
+}
+
+button.invert-colors:hover {
+  background-color: #faba17;
+  border-color: #faba17;
+}
+
+body {
+  min-height: 90vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.auth-page {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.errors-list {
+  color: #f1f1f1;
+  background: #D71C38;
+  padding: 0.5rem 0.8rem;
+  margin-top: 1rem;
+  border-radius: 10px;
+  font-weight: bold;
+}
+
+h4 {
+  margin-top: 0.4rem;
+}
+
+form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+form label {
+  margin: 1.6rem 0 0.4rem;
+}
+
+form input {
+  padding: 0.8rem;
+  width: 15rem;
+  -webkit-box-shadow: #3b3e42 0px 5px 3px;
+          box-shadow: #3b3e42 0px 5px 3px;
+}
+
+form input:focus {
+  -webkit-box-shadow: #3b3e42 0px 10px 3px;
+          box-shadow: #3b3e42 0px 10px 3px;
+}
+/*# sourceMappingURL=loginAndRegister.css.map */

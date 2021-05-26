@@ -1,0 +1,42 @@
+<%- include('../../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css" />
+<%- include('../../../partials/boilerplate-end') %>
+
+<main>
+  <%- include('../../partials/aside') %>
+  <div class="main-content">
+    <form method="POST" id="levelForm">
+      <select name="level" id="level" onchange="lessonForm.style.display = 'none'">
+        <option type="submit" value="A1">A1</option>
+        <option type="submit" value="A2">A2</option>
+        <option type="submit" value="B1">B1</option>
+        <option type="submit" value="B2">B2</option>
+        <option type="submit" value="C1">C1</option>
+        <option type="submit" value="C2">C2</option>
+      </select>
+      <button type="submit">Dalej</button>
+    </form>
+
+    <form action="/admin/lessons/add-lesson" method="POST" id="lessonForm" class="add-lesson-form">
+      <input type="hidden" value="" id="levelHiddenInput" name="level" />
+
+      <label for="subject">Subject</label>
+      <select name="subject" id="subjects"></select>
+
+      <label for="title">Title</label>
+      <textarea name="title"></textarea>
+
+      <label for="content">Content</label>
+      <textarea name="content"></textarea>
+
+      <!-- Downloadable files here maybe -->
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/addLesson.js"></script>
+
+<%- include('../../../partials/footer') %>

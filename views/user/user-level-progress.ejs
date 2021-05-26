@@ -1,0 +1,134 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/user/user.css" />
+<%- include('../partials/boilerplate-end') %> <%- include('../partials/header') %>
+
+<main>
+    <h2 class="learning-subject">User <span>•</span> <%=languageLevel%></h2>
+    <div class="user-scores">
+        <div>
+            <h5>Ilość wykonanych testów: <span><%=testNumber%></span></h5>
+            <h5>Ogólny średni wynik: <span><%=overallLanguageLevelScore%>%</span></h5>
+            <h5>Średni wynik z ostatniego tygodnia: <span><%=lastWeekScore%>%</span></h5>
+        </div>
+        <a href="/user/test-history/<%=loggedUser.username%>/test-records/"><button class="invert-colors">All Test Records</button></a>
+    </div>
+    
+    <% let numberOfTestsDone = 0 %> <% testHistory.forEach((testRecord) => { %> <% if (testRecord.languageLevel === languageLevel) { %> <% numberOfTestsDone++ %> <% } %> <% }) %>
+    
+    <div class="user-badges">         
+            <% if (numberOfTestsDone >= 25) { %>
+            <h5 class="user-badge">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="least-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/25 ukończonych testów.</p>
+            </h5>
+            <% } else { %>
+            <h5 class="user-badge not-acquired">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="least-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/25 ukończonych testów.</p>
+            </h5>
+            <% } %>
+            
+            <% if (numberOfTestsDone >= 100) { %>
+            <h5 class="user-badge">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="more-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/100 ukończonych testów.</p>
+            </h5>
+            <% } else { %>
+            <h5 class="user-badge not-acquired">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="more-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/100 ukończonych testów.</p>
+            </h5>
+            <% } %> 
+
+            <% if (numberOfTestsDone >= 250) { %>
+            <h5 class="user-badge">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="most-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/250 ukończonych testów.</p>
+            </h5>
+            <% } else { %>
+            <h5 class="user-badge not-acquired">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="scroll" class="most-tests-badge svg-inline--fa fa-scroll fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M48 0C21.53 0 0 21.53 0 48v64c0 8.84 7.16 16 16 16h80V48C96 21.53 74.47 0 48 0zm208 412.57V352h288V96c0-52.94-43.06-96-96-96H111.59C121.74 13.41 128 29.92 128 48v368c0 38.87 34.65 69.65 74.75 63.12C234.22 474 256 444.46 256 412.57zM288 384v32c0 52.93-43.06 96-96 96h336c61.86 0 112-50.14 112-112 0-8.84-7.16-16-16-16H288z"></path></svg>
+                <p>Postęp <%=numberOfTestsDone%>/250 ukończonych testów.</p>
+            </h5>
+            <% } %>
+
+            <% if (overallLanguageLevelScore >= 70) { %>
+                <h5 class="user-badge">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="good-attitude-badge svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 70% ogólnego wyniku.</p>
+                </h5>
+            <% } else {%>
+                <h5 class="user-badge not-acquired">
+                    <svg aria-hidden="true" focusable="false" data-prefix="far" data-icon="star" class="good-attitude-badge svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M528.1 171.5L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6zM388.6 312.3l23.7 138.4L288 385.4l-124.3 65.3 23.7-138.4-100.6-98 139-20.2 62.2-126 62.2 126 139 20.2-100.6 98z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 70% ogólnego wyniku.</p>
+                </h5>
+            <% } %>
+             
+            <% if (overallLanguageLevelScore >= 80) { %>
+                <h5 class="user-badge">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star-half-alt" class="better-attitude-badge svg-inline--fa fa-star-half-alt fa-w-17" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 536 512"><path fill="currentColor" d="M508.55 171.51L362.18 150.2 296.77 17.81C290.89 5.98 279.42 0 267.95 0c-11.4 0-22.79 5.9-28.69 17.81l-65.43 132.38-146.38 21.29c-26.25 3.8-36.77 36.09-17.74 54.59l105.89 103-25.06 145.48C86.98 495.33 103.57 512 122.15 512c4.93 0 10-1.17 14.87-3.75l130.95-68.68 130.94 68.7c4.86 2.55 9.92 3.71 14.83 3.71 18.6 0 35.22-16.61 31.66-37.4l-25.03-145.49 105.91-102.98c19.04-18.5 8.52-50.8-17.73-54.6zm-121.74 123.2l-18.12 17.62 4.28 24.88 19.52 113.45-102.13-53.59-22.38-11.74.03-317.19 51.03 103.29 11.18 22.63 25.01 3.64 114.23 16.63-82.65 80.38z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 80% ogólnego wyniku.</p>
+                </h5>
+            <% } else {%>
+                <h5 class="user-badge not-acquired">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star-half-alt" class="better-attitude-badgesvg-inline--fa fa-star-half-alt fa-w-17" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 536 512"><path fill="currentColor" d="M508.55 171.51L362.18 150.2 296.77 17.81C290.89 5.98 279.42 0 267.95 0c-11.4 0-22.79 5.9-28.69 17.81l-65.43 132.38-146.38 21.29c-26.25 3.8-36.77 36.09-17.74 54.59l105.89 103-25.06 145.48C86.98 495.33 103.57 512 122.15 512c4.93 0 10-1.17 14.87-3.75l130.95-68.68 130.94 68.7c4.86 2.55 9.92 3.71 14.83 3.71 18.6 0 35.22-16.61 31.66-37.4l-25.03-145.49 105.91-102.98c19.04-18.5 8.52-50.8-17.73-54.6zm-121.74 123.2l-18.12 17.62 4.28 24.88 19.52 113.45-102.13-53.59-22.38-11.74.03-317.19 51.03 103.29 11.18 22.63 25.01 3.64 114.23 16.63-82.65 80.38z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 80% ogólnego wyniku.</p>
+                </h5>
+            <% } %>
+
+            <% if (overallLanguageLevelScore >= 90) { %>
+                <h5 class="user-badge">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="best-attitude-badge svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 90% ogólnego wyniku.</p>
+                </h5>
+            <% } else {%>
+                <h5 class="user-badge not-acquired">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="star" class="best-attitude-badge svg-inline--fa fa-star fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M259.3 17.8L194 150.2 47.9 171.5c-26.2 3.8-36.7 36.1-17.7 54.6l105.7 103-25 145.5c-4.5 26.3 23.2 46 46.4 33.7L288 439.6l130.7 68.7c23.2 12.2 50.9-7.4 46.4-33.7l-25-145.5 105.7-103c19-18.5 8.5-50.8-17.7-54.6L382 150.2 316.7 17.8c-11.7-23.6-45.6-23.9-57.4 0z"></path></svg>
+                    <p>Postęp <%=overallLanguageLevelScore%>% / 90% ogólnego wyniku.</p>
+                </h5>
+            <% } %>
+            
+            <% if (perfectScoreBadge) { %>
+            <h5 class="user-badge">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trophy" class="best-score-badge svg-inline--fa fa-trophy fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"></path></svg>
+                <p>Odznaka za uzyskanie idealnego wyniku podczas testu.</p>
+            </h5>
+            <% } else { %>
+                <h5 class="user-badge not-acquired">
+                    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="trophy" class="best-score-badge svg-inline--fa fa-trophy fa-w-18" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path fill="currentColor" d="M552 64H448V24c0-13.3-10.7-24-24-24H152c-13.3 0-24 10.7-24 24v40H24C10.7 64 0 74.7 0 88v56c0 35.7 22.5 72.4 61.9 100.7 31.5 22.7 69.8 37.1 110 41.7C203.3 338.5 240 360 240 360v72h-48c-35.3 0-64 20.7-64 56v12c0 6.6 5.4 12 12 12h296c6.6 0 12-5.4 12-12v-12c0-35.3-28.7-56-64-56h-48v-72s36.7-21.5 68.1-73.6c40.3-4.6 78.6-19 110-41.7 39.3-28.3 61.9-65 61.9-100.7V88c0-13.3-10.7-24-24-24zM99.3 192.8C74.9 175.2 64 155.6 64 144v-16h64.2c1 32.6 5.8 61.2 12.8 86.2-15.1-5.2-29.2-12.4-41.7-21.4zM512 144c0 16.1-17.7 36.1-35.3 48.8-12.5 9-26.7 16.2-41.8 21.4 7-25 11.8-53.6 12.8-86.2H512v16z"></path></svg>
+                    <p>Odznaka za uzyskanie idealnego wyniku podczas testu.</p>
+                </h5>
+            <% } %>
+            
+            <% if (worstScoreBadge) { %>
+            <h5 class="user-badge">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="poop" class="worst-score-badge svg-inline--fa fa-poop fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M451.36 369.14C468.66 355.99 480 335.41 480 312c0-39.77-32.24-72-72-72h-14.07c13.42-11.73 22.07-28.78 22.07-48 0-35.35-28.65-64-64-64h-5.88c3.57-10.05 5.88-20.72 5.88-32 0-53.02-42.98-96-96-96-5.17 0-10.15.74-15.11 1.52C250.31 14.64 256 30.62 256 48c0 44.18-35.82 80-80 80h-16c-35.35 0-64 28.65-64 64 0 19.22 8.65 36.27 22.07 48H104c-39.76 0-72 32.23-72 72 0 23.41 11.34 43.99 28.64 57.14C26.31 374.62 0 404.12 0 440c0 39.76 32.24 72 72 72h368c39.76 0 72-32.24 72-72 0-35.88-26.31-65.38-60.64-70.86z"></path></svg>
+                <p>Odznaka za uzyskanie najgorszego wyniku podczas testu.</p>
+            </h5>
+            <% } else { %>
+            <h5 class="user-badge not-acquired">
+                <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="poop" class="worst-score-badge svg-inline--fa fa-poop fa-w-16" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path fill="currentColor" d="M451.36 369.14C468.66 355.99 480 335.41 480 312c0-39.77-32.24-72-72-72h-14.07c13.42-11.73 22.07-28.78 22.07-48 0-35.35-28.65-64-64-64h-5.88c3.57-10.05 5.88-20.72 5.88-32 0-53.02-42.98-96-96-96-5.17 0-10.15.74-15.11 1.52C250.31 14.64 256 30.62 256 48c0 44.18-35.82 80-80 80h-16c-35.35 0-64 28.65-64 64 0 19.22 8.65 36.27 22.07 48H104c-39.76 0-72 32.23-72 72 0 23.41 11.34 43.99 28.64 57.14C26.31 374.62 0 404.12 0 440c0 39.76 32.24 72 72 72h368c39.76 0 72-32.24 72-72 0-35.88-26.31-65.38-60.64-70.86z"></path></svg>
+                <p>Odznaka za uzyskanie najgorszego wyniku podczas testu.</p>
+            </h5>
+            <% } %>
+    </div>
+
+    <h2 class="user-tests-heading">Testy z ostatniego tygodnia:</h2>
+    <div class="user-tests">
+        <% lastWeekTests.forEach((testRecord) => { %> 
+            <div class="user-test">
+                <h3><%=testRecord.languageLevel%> </h3>
+                <h4><%=testRecord.date%> </h4>
+                <% if(testRecord.correctAnswers !== 0) { %>
+                   <% let percent = (parseInt(testRecord.correctAnswers) / parseInt(testRecord.amountOfQuestions) * 100) %>
+                   <h5><%=percent%>%</h5>
+                <% } %>
+                <h6>Wynik: <%=testRecord.correctAnswers%>/<%=testRecord.amountOfQuestions%></h6>
+            </div>  
+        <% }) %>
+    </div>      
+</main>
+
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../partials/footer') %>

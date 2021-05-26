@@ -1,0 +1,52 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/user/user.css" />
+<%- include('../partials/boilerplate-end') %> <%- include('../partials/header') %>
+<main>
+    <h2 class="learning-subject">User <span>•</span> Test History</h2>
+    <form action="search" method="post" class="search-form">
+        <input type="hidden" name="userID" value="<%=loggedUser._id%>">
+        <select name="searchQueryLevel">
+            <option>All</option>
+            <option value="A1">A1</option>
+            <option value="A2">A2</option>
+            <option value="B1">B1</option>
+            <option value="B2">B2</option>
+            <option value="C1">C1</option>
+            <option value="C2">C2</option>
+          </select>
+        <button type="submit">Search</button>
+    </form>
+    <h2 class="current-query">Current Search Query: <span><%=searchQuery%></span></h2>
+    <div class="user-tests">
+        <% if (searchQuery && searchQuery !== 'All') { %>
+            <% testHistory.forEach((testRecord) => { %> 
+                <% if (searchQuery === testRecord.languageLevel) {%>
+                    <div class="user-test">
+                        <h3><%=testRecord.languageLevel%> </h3>
+                        <h4><%=testRecord.date%> </h4>
+                        <% if(testRecord.correctAnswers !== 0) { %>
+                           <% let percent = (parseInt(testRecord.correctAnswers) / parseInt(testRecord.amountOfQuestions) * 100) %>
+                           <h5><%=percent%>%</h5>
+                        <% } %>
+                        <h6>Wynik: <%=testRecord.correctAnswers%>/<%=testRecord.amountOfQuestions%></h6>
+                    </div>  
+                    <% } %>
+            <% }) %>
+        <% } else { %>
+        <% testHistory.forEach((testRecord) => { %> 
+            <div class="user-test">
+                <h3><%=testRecord.languageLevel%> </h3>
+                <h4><%=testRecord.date%> </h4>
+                <% if(testRecord.correctAnswers !== 0) { %>
+                   <% let percent = (parseInt(testRecord.correctAnswers) / parseInt(testRecord.amountOfQuestions) * 100) %>
+                   <h5><%=percent%>%</h5>
+                <% } %>
+                <h6>Wynik: <%=testRecord.correctAnswers%>/<%=testRecord.amountOfQuestions%></h6>
+            </div>  
+        <% })} %>
+    </div>    
+</main>
+
+<script src="/javascript/headerMenu.js"></script>
+
+<%- include('../partials/footer') %>

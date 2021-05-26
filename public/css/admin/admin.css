@@ -1,0 +1,600 @@
+h1 {
+  font-size: 2rem;
+  color: #f1f1f1;
+}
+
+h2 {
+  font-size: 1.4rem;
+  color: #f1f1f1;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+}
+
+h4, h5, h6 {
+  font-size: 1.1rem;
+  color: #c9c1c1;
+}
+
+label {
+  color: #f1f1f1;
+  font-size: 1.1rem;
+}
+
+input, textarea {
+  font-size: 1rem;
+  color: #3b3e42;
+}
+
+p {
+  font-size: 1.05rem;
+  color: #cecece;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+body {
+  font-family: Helvetica, sans-serif;
+  background-color: #21252C;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  padding: 0 2rem;
+}
+
+ul {
+  list-style: none;
+}
+
+a {
+  text-decoration: none;
+  color: #36687C;
+}
+
+a:hover {
+  color: #faba17;
+}
+
+button,
+input,
+textarea {
+  font-family: inherit;
+  border-radius: 10px;
+  border: none;
+  outline: none;
+}
+
+button:focus,
+input:focus,
+textarea:focus {
+  outline: none;
+  border: none;
+}
+
+button:focus, button:hover {
+  cursor: pointer;
+}
+
+input {
+  font-weight: bold;
+}
+
+button:not(.delete, .lesson-button) {
+  -ms-flex-item-align: center;
+      -ms-grid-row-align: center;
+      align-self: center;
+  margin-top: 2rem;
+  padding: 0.5rem;
+  width: 10rem;
+  background-color: #faba17;
+  color: #f1f1f1;
+  border: 3px solid #faba17;
+  font-size: 1rem;
+  font-weight: bold;
+}
+
+button:hover:not(.delete, .lesson-button) {
+  background-color: #36687C;
+  border-color: #36687C;
+}
+
+.logo {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.logo__icon {
+  width: 1.8rem;
+  color: #f1f1f1;
+}
+
+.logo__icon:hover {
+  color: #faba17;
+}
+
+.logo__brand {
+  color: #f1f1f1;
+  margin-left: 1rem;
+  font-size: 1.4rem;
+}
+
+button.invert-colors {
+  background-color: #36687C;
+  border-color: #36687C;
+}
+
+button.invert-colors:hover {
+  background-color: #faba17;
+  border-color: #faba17;
+}
+
+body {
+  background: #F0F0F1;
+  overflow-x: hidden;
+  padding: 0;
+}
+
+h1, h2, h3 {
+  color: #21252C;
+}
+
+h4, h5 {
+  color: #3b3e42;
+}
+
+main {
+  width: 100%;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 10rem 90%;
+      grid-template-columns: 10rem 90%;
+}
+
+div.main-content {
+  padding: 4rem 1.5rem;
+}
+
+div.main-content select {
+  margin-right: 1.6rem;
+  font-size: 1rem;
+  background: #f1f1f1;
+  color: #21252C;
+  border: 3px solid #21252C;
+  border-radius: 10px;
+  padding: 0.25rem 0.4rem;
+  font-weight: bold;
+}
+
+div.main-content select:focus {
+  outline: none;
+}
+
+div.main-content button {
+  margin: 0;
+  width: 6rem;
+  font-size: 1rem;
+  margin-right: 2rem;
+  background: #21252C;
+  border-color: #21252C;
+}
+
+div.main-content button:hover {
+  background: none;
+  border-color: #21252C;
+  color: #21252C;
+}
+
+div.main-content label {
+  color: #21252C;
+  font-size: 1.2rem;
+}
+
+div.main-content input[type="text"], div.main-content textarea {
+  padding: 0.5rem 0.8rem;
+  width: 15rem;
+  font-size: 1rem;
+  border: 3px solid #21252C;
+  resize: none;
+  font-weight: bold;
+}
+
+div.main-content input[type="text"]:focus, div.main-content textarea:focus {
+  -webkit-box-shadow: #3b3e42 0px 3px 1px;
+          box-shadow: #3b3e42 0px 3px 1px;
+}
+
+aside {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  background: #21252C;
+  height: 100vh;
+  padding: 4rem 1.5rem;
+}
+
+aside a {
+  color: #F0F0F1;
+  font-size: 1.2rem;
+}
+
+.user-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 20% 20% 55%;
+      grid-template-columns: 5% 20% 20% 55%;
+  margin-top: 4rem;
+}
+
+.user-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 20% 20% 55%;
+      grid-template-columns: 5% 20% 20% 55%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.subject-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 20% 55%;
+      grid-template-columns: 5% 6% 20% 55%;
+  margin-top: 4rem;
+}
+
+.subject-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 20% 55%;
+      grid-template-columns: 5% 6% 20% 55%;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.lesson-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+      grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+  margin-top: 4rem;
+}
+
+.lesson-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+      grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.lesson-box.fake {
+  display: none;
+}
+
+.lesson-box form {
+  width: 100%;
+}
+
+.question-header {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+      grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+  margin-top: 4rem;
+}
+
+.question-box {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+      grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin: 1rem 0;
+}
+
+.question-box.fake {
+  display: none;
+}
+
+.question-box form {
+  width: 100%;
+}
+
+.user-actions {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.user-actions button {
+  margin: 0;
+  width: 5rem;
+  font-size: 1rem;
+  margin-right: 2rem;
+  background: #21252C;
+  border-color: #21252C;
+}
+
+.user-actions button:hover {
+  background: none;
+  border-color: #21252C;
+  color: #21252C;
+}
+
+.action-form {
+  margin: 2rem 0 0;
+}
+
+.action-form .notification-input {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 0.4rem 0;
+}
+
+.search-form, .create-form {
+  margin: 0 0 2rem;
+}
+
+.search-form.margin-top, .create-form.margin-top {
+  margin: 2rem 0;
+}
+
+.create-button {
+  margin-bottom: 2rem;
+}
+
+.edit-form, .add-form {
+  display: none;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  row-gap: 0.5rem;
+  -webkit-column-gap: 3rem;
+          column-gap: 3rem;
+}
+
+.edit-form label[for="question"], .add-form label[for="question"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+.edit-form textarea[name="question"], .add-form textarea[name="question"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 100%;
+  height: 5rem;
+}
+
+.edit-form label[for="subject"], .add-form label[for="subject"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 1;
+  -ms-grid-row-span: 1;
+  grid-row: 1/2;
+}
+
+.edit-form select[name="subject"], .add-form select[name="subject"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  width: 40%;
+  height: 2.5rem;
+}
+
+.edit-form label[for="answerA"], .add-form label[for="answerA"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+}
+
+.edit-form textarea[name="answerA"], .add-form textarea[name="answerA"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
+  width: 40%;
+  height: 5rem;
+}
+
+.edit-form label[for="answerB"], .add-form label[for="answerB"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 4;
+  -ms-grid-row-span: 1;
+  grid-row: 4/5;
+}
+
+.edit-form textarea[name="answerB"], .add-form textarea[name="answerB"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 5;
+  -ms-grid-row-span: 1;
+  grid-row: 5/6;
+  width: 40%;
+  height: 5rem;
+}
+
+.edit-form label[for="answerC"], .add-form label[for="answerC"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 1;
+  grid-row: 7/8;
+}
+
+.edit-form textarea[name="answerC"], .add-form textarea[name="answerC"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 8;
+  -ms-grid-row-span: 1;
+  grid-row: 8/9;
+  width: 40%;
+  height: 5rem;
+}
+
+.edit-form label[for="answerD"], .add-form label[for="answerD"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 7;
+  -ms-grid-row-span: 1;
+  grid-row: 7/8;
+}
+
+.edit-form textarea[name="answerD"], .add-form textarea[name="answerD"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 8;
+  -ms-grid-row-span: 1;
+  grid-row: 8/9;
+  width: 40%;
+  height: 5rem;
+}
+
+.edit-form label[for="correctAnswer"], .add-form label[for="correctAnswer"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 9;
+  -ms-grid-row-span: 1;
+  grid-row: 9/10;
+}
+
+.edit-form select[name="correctAnswer"], .add-form select[name="correctAnswer"] {
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+  -ms-grid-row: 11;
+  -ms-grid-row-span: 1;
+  grid-row: 11/12;
+  width: 40% !important;
+  height: 2.5rem;
+}
+
+.edit-form label[for="hint"], .add-form label[for="hint"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 9;
+  -ms-grid-row-span: 1;
+  grid-row: 9/10;
+}
+
+.edit-form textarea[name="hint"], .add-form textarea[name="hint"] {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 11;
+  -ms-grid-row-span: 1;
+  grid-row: 11/12;
+  width: 40% !important;
+  height: 5rem;
+}
+
+.edit-form button, .add-form button {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+  -ms-grid-row: 13;
+  -ms-grid-row-span: 1;
+  grid-row: 13/14;
+}
+
+.edit-lesson-form, .add-lesson-form {
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.edit-lesson-form label[for="subject"], .add-lesson-form label[for="subject"] {
+  margin-top: 2rem;
+}
+
+.edit-lesson-form select[name="subject"], .add-lesson-form select[name="subject"] {
+  width: 20%;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.edit-lesson-form input, .add-lesson-form input {
+  width: 50% !important;
+  height: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.edit-lesson-form textarea, .add-lesson-form textarea {
+  width: 50% !important;
+  height: 5rem;
+  margin-bottom: 1rem;
+}
+
+.edit-lesson-form button, .add-lesson-form button {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+/*# sourceMappingURL=admin.css.map */

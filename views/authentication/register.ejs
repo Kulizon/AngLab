@@ -1,0 +1,25 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" type="text/css" href="css/loginAndRegister/loginAndRegister.css" />
+<%- include('../partials/boilerplate-end') %>
+<main class="auth-page">
+  <h1>Rejestracja</h1>
+  <h4>Masz już konto? Zaloguj się <a href="/login">Tutaj</a>!</h4>
+  <% if (message !== null) { %>
+  <ul class="errors-list">
+    <li><%=message%></li>
+  </ul>
+  <% } %>
+  <form action="/register" method="POST" class="account-form">
+    <label for="username">Login</label>
+    <input type="text" name="username" />
+    <label for="name">Nazwa Użytkownika</label>
+    <input type="text" name="name" />
+    <label for="password">Hasło</label>
+    <input type="password" name="password" />
+    <button type="submit">Zarejestruj</button>
+  </form>
+</main>
+
+<script> </script>
+
+<%- include('../partials/footer.ejs') %>

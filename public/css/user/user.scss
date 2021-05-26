@@ -1,0 +1,259 @@
+@import '../global/variables', '../global/defaults', '../partials/header';
+
+a {
+    color: initial;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+
+.lang-choices {
+    display: flex;
+    flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+
+    .lang-choice {  
+        color: $lighter-light-color;
+        background: $lighter-dark-color;
+        width: 100%;
+        margin: $medium-margin 0;
+        padding: $small-padding $medium-padding;
+        border-radius: 10px;
+        font-weight: bold;
+        box-shadow: #505357 0px 3px 1px;
+        font-size: 1.5rem;
+
+        &:hover {
+            box-shadow: #505357 0px 5px 3px;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+        }
+
+        div {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            h4 {
+                font-size: 1.5rem;
+                color: $base-color;
+                margin-left: $small-margin;
+            }
+
+            h5 {
+                font-size: 1.5rem;
+                color: $lighter-light-color;;
+            }
+        }
+    }
+}
+
+.learning-subject {
+    color: $base-color;
+    font-size: 2rem;
+
+    span {
+        color: $secondary-color;
+    }
+}
+
+.notifications {
+    margin-top: $big-margin;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 2rem;
+
+    .notification {
+        margin-bottom: $medium-margin;
+        background: $lighter-dark-color;
+        padding: $tiny-padding $big-padding $tiny-padding $small-padding;
+        border-radius: 10px;
+        box-shadow: #505357 0px 3px 1px;
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin-bottom: 0.2rem;
+        }
+
+        button.delete {
+            margin: 0;
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+            background: none;
+
+            &:hover {
+                transform: rotate(15deg);
+            }
+
+            svg {
+                width: 1.6rem;
+                height: 1.6rem;
+                padding: 0.15rem;
+                background: $lighter-light-color;
+                fill: #D71C38;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+
+.user-scores {
+    margin: $medium-margin 0;
+}
+
+.user-scores {
+    display: flex;
+    flex-direction: column;
+
+    span {
+        color: $base-color;
+    }
+
+    a {
+        align-self: center;
+
+        button {
+            margin-top: $small-margin;
+        }
+    }
+}
+
+.user-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    row-gap: $big-margin;
+    column-gap: $big-margin;
+    align-items: flex-end;
+
+    .user-badge {
+        svg {
+            &:hover {
+            &+ p {
+                opacity: 1;
+                cursor: default;
+            }
+        }
+
+        &+p {
+            opacity: 0;
+            position: absolute;
+            background: $lighter-dark-color;
+            text-align: center;
+            border-radius: 10px;
+            font-size: 1rem;
+            padding: $tiny-padding $small-padding;
+        }
+    }
+    }
+
+    svg {
+        width: 3rem;
+        
+        &.least-tests-badge {
+            color: #C77B30;
+        }
+
+        &.more-tests-badge {
+            color: #BABABA;
+        }
+
+        &.most-tests-badge {
+            color: #F7D000;
+        }
+
+        &.best-attitude-badge, &.better-attitude-badge, &.good-attitude-badge {
+            color: #EDB702;
+        }
+
+        &.best-score-badge {
+            color: #D6AF64;
+        }
+
+        &.worst-score-badge {
+            color: #7e390b;
+        }
+    }
+
+    .user-badge.not-acquired {
+        svg {
+            color: #505357;
+        }
+    }
+}
+
+h2.user-tests-heading {
+    margin-top: $medium-margin;
+}
+
+.search-form {
+    select {
+        margin-right: $medium-margin;
+        width: 5rem;
+        height: 2rem;
+        font-size: 1.2rem;
+        background: $lighter-light-color;
+        color: $darker-dark-color;
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+}
+
+h2.current-query {
+    margin-top: $medium-margin;
+    span {
+        color: $base-color;
+    }
+}
+
+.user-tests {
+    margin-top: $medium-margin;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    column-gap: 3rem;
+    row-gap: 3rem;
+}
+
+.user-test {
+    background: $lighter-dark-color;
+    padding: $tiny-padding $big-padding $tiny-padding $small-padding;
+    border-radius: 10px;
+    box-shadow: #505357 0px 3px 1px;
+    position: relative;
+    color: $lighter-light-color;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+    &:last-of-type {
+        margin-bottom: 0;
+    }
+
+    h3 {
+        font-size: 1.6rem;
+    }
+
+    h4 {
+        font-weight: normal;
+    }
+    
+    h5 {
+        color: $base-color;
+    }
+    
+}
+
