@@ -1,15 +1,16 @@
 const express = require("express");
-const mongoose = require("mongoose")
+const mongoose = require("mongoose");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
 const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 
-mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+// mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+mongoose.connect("mongodb+srv://admin-kacper:" + process.env.DB_PASSWORD + "@cluster0.netpw.mongodb.net/AngLab?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 const User = require("./../models/user");
 const BannedUser = require("./../models/bannedUser");
-
 
 passport.use(
   new LocalStrategy({ usernameField: "username" }, (username, password, done) => {
@@ -92,8 +93,8 @@ router.post("/register", async (req, res) => {
 });
 
 router.get("/log-out", (req, res) => {
-  req.logout()
-  res.redirect("/login")
-})
+  req.logout();
+  res.redirect("/login");
+});
 
-module.exports = router
+module.exports = router;

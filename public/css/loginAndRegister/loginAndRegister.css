@@ -139,13 +139,13 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #36687C !important;
+  border-color: #36687C !important;
 }
 
 button.invert-colors:hover {
-  background-color: #faba17;
-  border-color: #faba17;
+  background-color: #faba17 !important;
+  border-color: #faba17 !important;
 }
 
 body {

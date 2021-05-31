@@ -1,0 +1,31 @@
+<%- include('../../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css" />
+<%- include('../../../partials/boilerplate-end') %>
+
+<main>
+  <%- include('../../partials/aside') %>
+  <div class="main-content">
+    <form action="/admin/flashcards/add-flashcard" method="POST" class="add-flashcard-form">
+      <select name="level" id="level" onchange="lessonForm.style.display = 'none'">
+        <option type="submit" value="A1">A1</option>
+        <option type="submit" value="A2">A2</option>
+        <option type="submit" value="B1">B1</option>
+        <option type="submit" value="B2">B2</option>
+        <option type="submit" value="C1">C1</option>
+        <option type="submit" value="C2">C2</option>
+      </select>
+
+      <label for="word">Word</label>
+      <input type="text" name="word">
+
+      <label for="translation">Translation</label>
+      <input type="text" name="translation"/>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</main>
+
+<script> </script>
+
+<%- include('../../../partials/footer') %>

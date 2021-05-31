@@ -30,7 +30,10 @@ app.use((req, res, next) => {
   return next();
 });
 
-mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+// mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+mongoose.connect("mongodb+srv://admin-kacper:"+process.env.DB_PASSWORD+"@cluster0.netpw.mongodb.net/AngLab?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
 
 const authenticationRouter = require("./routes/authentication")
 app.use(authenticationRouter)

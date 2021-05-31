@@ -139,13 +139,13 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #36687C !important;
+  border-color: #36687C !important;
 }
 
 button.invert-colors:hover {
-  background-color: #faba17;
-  border-color: #faba17;
+  background-color: #faba17 !important;
+  border-color: #faba17 !important;
 }
 
 h1 {
@@ -289,13 +289,13 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #36687C !important;
+  border-color: #36687C !important;
 }
 
 button.invert-colors:hover {
-  background-color: #faba17;
-  border-color: #faba17;
+  background-color: #faba17 !important;
+  border-color: #faba17 !important;
 }
 
 header {
@@ -414,20 +414,24 @@ header ul a {
   margin: 0 1rem;
 }
 
-header ul a:first-of-type svg {
-  margin-bottom: -3px;
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
 header ul a svg {
   width: 1.5rem;
   height: 1.5rem;
   color: #f1f1f1;
 }
 
-header ul a svg:last-of-type {
+header ul a:last-of-type {
   margin-right: 0;
+}
+
+header ul a:last-of-type svg {
+  margin-bottom: -3px;
+}
+
+header ul a:first-of-type svg {
+  margin-bottom: -3px;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 header ul a:hover svg {

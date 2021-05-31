@@ -18,7 +18,7 @@ socket.emit("getSubjectProgress");
 socket.on("subjectProgress", (progress, lessons) => {
   console.log(progress);
   console.log(lessons);
-  for (let i = 0; i < subjectLessons.length; i++) {
+  for (let i = 0; i < subjectLessons.length - 1; i++) {
     let levelLessons = 0;
     let doneLessons = 0;
 

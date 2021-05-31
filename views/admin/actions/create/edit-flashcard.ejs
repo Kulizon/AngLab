@@ -1,0 +1,59 @@
+<%- include('../../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/admin/admin.css" />
+<%- include('../../../partials/boilerplate-end') %>
+
+<main>
+  <%- include('../../partials/aside') %>
+  <div class="main-content">
+    <form action="/admin/flashcards/edit-flashcard/<%=flashcard._id%>" method="POST" class="add-flashcard-form">
+      <select name="level" id="level" onchange="lessonForm.style.display = 'none'">
+        <% if (flashcard.languageLevel === 'A1') { %>
+            <option type="submit" value="A1" selected="selected">A1</option>
+        <% } else { %>
+            <option type="submit" value="A1">A1</option>
+        <% } %>
+    
+        <% if (flashcard.languageLevel === 'A2') { %>
+            <option type="submit" value="A2" selected="selected">A2</option>
+        <% } else { %>
+            <option type="submit" value="A2">A2</option>
+        <% } %>
+    
+        <% if (flashcard.languageLevel === 'B1') { %>
+            <option type="submit" value="B1" selected="selected">B1</option>
+        <% } else { %>
+            <option type="submit" value="B1">B1</option>
+        <% } %>
+            
+        <% if (flashcard.languageLevel === 'B2') { %>
+            <option type="submit" value="B2" selected="selected">B2</option>
+        <% } else { %>
+            <option type="submit" value="B2">B2</option>
+        <% } %>
+            
+        <% if (flashcard.languageLevel === 'C1') { %>
+            <option type="submit" value="C1" selected="selected">C1</option>
+        <% } else { %>
+            <option type="submit" value="C1">C1</option>
+        <% } %>
+        <% if (flashcard.languageLevel === 'C2') { %>
+            <option type="submit" value="C2" selected="selected">C2</option>
+        <% } else { %>
+            <option type="submit" value="C2">C2</option>
+        <% } %>
+      </select>
+
+      <label for="word">Word</label>
+      <input type="text" name="word" value="<%=flashcard.word%>">
+
+      <label for="translation">Translation</label>
+      <input type="text" name="translation" value="<%=flashcard.translation%>"/>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+</main>
+
+<script> </script>
+
+<%- include('../../../partials/footer') %>

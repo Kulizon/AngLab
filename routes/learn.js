@@ -2,12 +2,15 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
-mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+// mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
+
+mongoose.connect("mongodb+srv://admin-kacper:" + process.env.DB_PASSWORD + "@cluster0.netpw.mongodb.net/AngLab?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 const User = require("./../models/user");
 const Question = require("./../models/question");
 const Subject = require("./../models/subject");
 const Lesson = require("./../models/lesson");
+const Flashcard = require("./../models/flashcard");
 
 const { redirectIfNotAuthenticated, getCurrentDate, containsLesson, getCurrentUser } = require("./../utilities/utilities");
 
@@ -17,8 +20,7 @@ router.get("/learn", (req, res) => {
   req.io.on("connection", (socket) => {
     req.io.removeAllListeners();
     socket.on("getProgress", async () => {
-
-      const loggedUser = await getCurrentUser(req)
+      const loggedUser = await getCurrentUser(req);
 
       const lessons = await Lesson.find();
 
@@ -171,7 +173,7 @@ router.get("/learn/:languageLevel/practice/:practiceSubject", async (req, res) =
   if (redirectIfNotAuthenticated(req, res)) return;
 
   // SET LIMIT FOR QUESTIONS
-  await Question.findRandom({ $and: [{ languageLevel: req.params.languageLevel, subject: req.params.practiceSubject }] }, {}, { limit: 10 }, function (e, questions) {
+  await Question.findRandom({ $and: [{ languageLevel: req.params.languageLevel, subject: req.params.practiceSubject }] }, {}, { limit: 10 }, (e, questions) => {
     if (e) console.log(e);
     res.render("learn/subjects/subject-practice", { practiceSubject: req.params.practiceSubject, practiceQuestions: questions, languageLevel: req.params.languageLevel });
   });
@@ -225,7 +227,6 @@ router.get("/learn/:languageLevel/test/start", async (req, res) => {
           if (index === amountOfQuestions - 1) socket.emit("testFeedback", correctAnswers, amountOfQuestions);
         });
       });
-        
     });
   });
 });
@@ -238,6 +239,26 @@ router.post("/learn/:languageLevel/test/end", (req, res) => {
   });
 
   res.render("learn/actions/test-end", { languageLevel: req.params.languageLevel, correctAnswers: req.body.correctAnswers, amountOfQuestions: req.body.amountOfQuestions, percent: (req.body.correctAnswers / req.body.amountOfQuestions) * 100 });
+});
+
+router.get("/learn/:languageLevel/flashcards", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  await Flashcard.findRandom({ languageLevel: req.params.languageLevel }, {}, { limit: 15 }, (e, flashcards) => {
+    if (e) console.log(e);
+    if (flashcards === undefined) flashcards = [];
+    res.render("learn/actions/flashcards", { flashcards, languageLevel: req.params.languageLevel });
+  });
+
+  req.io.on("connection", (socket) => {
+    socket.on("getFlashcards", async () => {
+      req.io.removeAllListeners();
+      await Flashcard.findRandom({ languageLevel: req.params.languageLevel }, {}, { limit: 15 }, (e, flashcards) => {
+        if (e) console.log(e);
+        socket.emit("flashcards", flashcards);
+      });
+    });
+  });
 });
 
 module.exports = router;

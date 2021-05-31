@@ -33,13 +33,11 @@
           <button type="submit">Finish</button>
         </form>
       </div>
-    <form action="/learn/languageLevel%>/test/end" id="summarize-form" method="POST">
+    <form action="/learn/<%=languageLevel%>/test/end" id="summarize-form" method="POST">
       <input type="hidden" name="correctAnswers" value=""/>
       <input type="hidden" name="amountOfQuestions" value=""/>
       <button type="submit" class="invert-colors">Summarize</button>
     </form>
-    
-
     <% } else { %>
       <h2>No Questions for this Language Level.</h2>
         <a href="/learn"><button class="invert-colors">Main Page</button></a>

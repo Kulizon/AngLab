@@ -139,13 +139,13 @@ button:hover:not(.delete):not(.lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #36687C !important;
+  border-color: #36687C !important;
 }
 
 button.invert-colors:hover {
-  background-color: #faba17;
-  border-color: #faba17;
+  background-color: #faba17 !important;
+  border-color: #faba17 !important;
 }
 
 h1 {
@@ -289,13 +289,13 @@ button:hover:not(.delete):not(.lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #36687C !important;
+  border-color: #36687C !important;
 }
 
 button.invert-colors:hover {
-  background-color: #faba17;
-  border-color: #faba17;
+  background-color: #faba17 !important;
+  border-color: #faba17 !important;
 }
 
 header {
@@ -414,20 +414,24 @@ header ul a {
   margin: 0 1rem;
 }
 
-header ul a:first-of-type svg {
-  margin-bottom: -3px;
-  width: 1.7rem;
-  height: 1.7rem;
-}
-
 header ul a svg {
   width: 1.5rem;
   height: 1.5rem;
   color: #f1f1f1;
 }
 
-header ul a svg:last-of-type {
+header ul a:last-of-type {
   margin-right: 0;
+}
+
+header ul a:last-of-type svg {
+  margin-bottom: -3px;
+}
+
+header ul a:first-of-type svg {
+  margin-bottom: -3px;
+  width: 1.6rem;
+  height: 1.6rem;
 }
 
 header ul a:hover svg {
@@ -463,6 +467,9 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   max-width: 700px;
   width: 100%;
 }
@@ -487,6 +494,11 @@ main {
 .lang-choices .lang-choice:hover {
   -webkit-box-shadow: #505357 0px 5px 3px;
           box-shadow: #505357 0px 5px 3px;
+}
+
+.lang-choices .lang-choice.featured {
+  margin-top: 1.6rem;
+  width: 50%;
 }
 
 .lang-choices .lang-choice h2 {
@@ -549,11 +561,11 @@ main {
 }
 
 .progress-form__heading--done {
-  color: #88C03D;
+  color: #88c03d;
 }
 
 .progress-form__heading--not-done {
-  color: #D71C38;
+  color: #d71c38;
 }
 
 .progress-form button {
@@ -571,11 +583,11 @@ main {
 }
 
 .progress-form button svg.done {
-  color: #88C03D;
+  color: #88c03d;
 }
 
 .progress-form button svg.not-done {
-  color: #D71C38;
+  color: #d71c38;
 }
 
 .questions {
@@ -682,6 +694,101 @@ main.test-end h4 span:first-of-type {
 }
 
 main.test-end h4 span:last-of-type {
-  color: #88C03D;
+  color: #88c03d;
+}
+
+.flashcard-sets {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flashcard-button,
+.flashcard-next {
+  display: none;
+  cursor: pointer;
+}
+
+.flashcard-button:first-of-type,
+.flashcard-next:first-of-type {
+  display: block;
+}
+
+.flashcard-correct-translation {
+  font-size: 1.3rem;
+}
+
+.flashcard-correct-translation.correct span {
+  color: #88c03d;
+}
+
+.flashcard-correct-translation.wrong span {
+  color: #d71c38;
+}
+
+.flashcards {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  width: 700px;
+  display: none;
+}
+
+.flashcards:first-of-type {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.flashcards .flashcard {
+  margin: 1.6rem 0;
+  background: #3b3e42;
+  padding: 1.5rem;
+  border-radius: 10px;
+  width: 300px;
+  height: 150px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.flashcards .flashcard h3 {
+  font-size: 1.3rem;
+}
+
+.flashcards .flashcard input {
+  margin-top: 0;
+  padding: 0.5rem 0;
+  width: 13rem;
+  font-size: 1.2rem;
+  border-bottom: 3px solid white;
+  background: none;
+  font-weight: bold;
+  border-radius: 0;
+  color: #f1f1f1;
+}
+
+.flashcards .flashcard input:focus {
+  border-color: #c9c1c1;
 }
 /*# sourceMappingURL=learn.css.map */

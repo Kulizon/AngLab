@@ -94,11 +94,13 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 button.invert-colors {
-  background-color: $secondary-color;
-  border-color: $secondary-color;
+  background-color: $secondary-color!important;
+  border-color: $secondary-color!important;
 
   &:hover {
-    background-color: $base-color;
-    border-color: $base-color;
+    background-color: $base-color!important;
+    border-color: $base-color!important;
   }
 }
+
+

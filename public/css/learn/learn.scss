@@ -1,216 +1,299 @@
-@import '../global/variables', '../global/defaults', '../partials/header';
+@import "../global/variables", "../global/defaults", "../partials/header";
 
 a {
-    color: inital;
+  color: inital;
 }
 
 main {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
 }
 
 .lang-choices {
-    display: flex;
-    flex-direction: column;
-    max-width: 700px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 700px;
+  width: 100%;
+
+  h2 {
+    text-align: center;
+  }
+
+  .lang-choice {
+    color: $lighter-light-color;
+    background: $lighter-dark-color;
     width: 100%;
+    margin: $medium-margin 0;
+    padding: $small-padding $medium-padding;
+    border-radius: 10px;
+    font-weight: bold;
+    box-shadow: #505357 0px 3px 1px;
+    font-size: 1.5rem;
+
+    &:hover {
+      box-shadow: #505357 0px 5px 3px;
+    }
+
+    &.featured {
+      margin-top: $medium-margin;
+      width: 50%;
+    }
 
     h2 {
-        text-align: center;
+      font-size: 1.5rem;
     }
 
-    .lang-choice {  
-        color: $lighter-light-color;
-        background: $lighter-dark-color;
-        width: 100%;
-        margin: $medium-margin 0;
-        padding: $small-padding $medium-padding;
-        border-radius: 10px;
-        font-weight: bold;
-        box-shadow: #505357 0px 3px 1px;
+    div {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+
+      h4 {
         font-size: 1.5rem;
+        color: $base-color;
+        margin-left: $small-margin;
+      }
 
-        &:hover {
-            box-shadow: #505357 0px 5px 3px;
-        }
-
-        h2 {
-            font-size: 1.5rem;
-        }
-
-        div {
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-
-            h4 {
-                font-size: 1.5rem;
-                color: $base-color;
-                margin-left: $small-margin;
-            }
-
-            h5 {
-                font-size: 1.5rem;
-                color: $lighter-light-color;;
-            }
-        }
+      h5 {
+        font-size: 1.5rem;
+        color: $lighter-light-color;
+      }
     }
+  }
 }
 
 .learning-subject {
-    color: $base-color;
-    font-size: 2rem;
-    text-align: center;
+  color: $base-color;
+  font-size: 2rem;
+  text-align: center;
 
-    span {
-        color: $secondary-color;
-    }
+  span {
+    color: $secondary-color;
+  }
 }
 
 .lesson-study {
-    p {
-        margin: $medium-margin 0;
-    }
+  p {
+    margin: $medium-margin 0;
+  }
 }
 
 .progress-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-    &__heading {
-        font-size: 1.4rem;
-        margin-bottom: $tiny-margin;
+  &__heading {
+    font-size: 1.4rem;
+    margin-bottom: $tiny-margin;
 
-        &--done {
-            @extend .progress-form__heading;
-            color: #88C03D;
-        }
-
-        &--not-done {
-            @extend .progress-form__heading;
-            color: #D71C38;
-        }
+    &--done {
+      @extend .progress-form__heading;
+      color: #88c03d;
     }
 
-    button {
+    &--not-done {
+      @extend .progress-form__heading;
+      color: #d71c38;
+    }
+  }
+
+  button {
+    background: none;
+
+    svg {
+      width: 2rem;
+
+      &:hover,
+      &:focus {
+        transform: rotate(15deg);
         background: none;
-
-        svg {
-            width: 2rem;
-
-            &:hover, &:focus {
-                transform: rotate(15deg);
-                background: none;
-            }
-        }
-
-        svg.done {
-            color: #88C03D;
-        }
-
-        svg.not-done {
-            color: #D71C38;
-        }
+      }
     }
+
+    svg.done {
+      color: #88c03d;
+    }
+
+    svg.not-done {
+      color: #d71c38;
+    }
+  }
 }
 
 .questions {
-    margin: $medium-margin 0;
+  margin: $medium-margin 0;
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    color: $lighter-light-color;
+    margin-bottom: $small-margin;
+  }
+
+  h6 {
+    margin-bottom: $tiny-margin;
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+
+  .question-group {
+    margin-bottom: $big-margin;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+  }
+
+  .question-form {
     display: flex;
     flex-direction: column;
+    width: 300px;
 
-    h4 {
-        color: $lighter-light-color;
-        margin-bottom: $small-margin;
+    div {
+      padding-bottom: $tiny-margin;
+
+      &:last-of-type {
+        margin-bottom: 0;
+      }
     }
 
-    h6 {
-        margin-bottom: $tiny-margin;
-        font-weight: bold;
-        font-size: 1.2rem;
+    p {
+      margin-top: $tiny-margin;
+      display: none;
     }
 
-    .question-group {
-        margin-bottom: $big-margin;
-        
-        &:last-of-type {
-            margin-bottom: 0;
-        }
+    button {
+      align-self: center;
     }
-    
-    .question-form  {
-        display: flex;
-        flex-direction: column;
-        width: 300px;
-        
-        div {
-            padding-bottom: $tiny-margin;
 
-            &:last-of-type {
-                margin-bottom: 0;
-            }
-        }
-
-        p {
-            margin-top: $tiny-margin;
-            display: none;
-        }
-
-        button {
-            align-self: center;
-        }
-
-        + a {
-            align-self: center;
-        }
+    + a {
+      align-self: center;
     }
+  }
 }
 
 .practice-questions {
-    .question-form {
-        margin-bottom: $medium-margin;
-    }
+  .question-form {
+    margin-bottom: $medium-margin;
+  }
 }
 
 .test-info {
-    margin-top: $tiny-margin;
+  margin-top: $tiny-margin;
 }
 
 #summarize-form {
-    display: none;
+  display: none;
 }
 
 #summarize-form button {
-    margin-top: 0;
+  margin-top: 0;
 }
 
 main.test-end {
-    h3 {
-        font-size: 2rem;
-        margin: $medium-margin 0;
+  h3 {
+    font-size: 2rem;
+    margin: $medium-margin 0;
 
-        span {
-            color: $base-color;
-        }
+    span {
+      color: $base-color;
+    }
+  }
+
+  h4 {
+    text-align: center;
+
+    span {
+      font-size: 4rem;
+
+      &:first-of-type {
+        color: $secondary-color;
+      }
+
+      &:last-of-type {
+        color: #88c03d;
+      }
+    }
+  }
+}
+
+.flashcard-sets {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.flashcard-button,
+.flashcard-next {
+  display: none;
+  cursor: pointer;
+
+  &:first-of-type {
+    display: block;
+  }
+}
+
+.flashcard-correct-translation {
+    font-size: 1.3rem;
+
+  &.correct {
+    span {
+      color: #88c03d;
+    }
+  }
+
+  &.wrong {
+    span {
+      color: #d71c38;
+    }
+  }
+}
+
+.flashcards {
+  display: flex;
+  justify-content: space-between;
+  width: 700px;
+  display: none;
+
+  &:first-of-type {
+    display: flex;
+  }
+
+  .flashcard {
+    margin: $medium-margin 0;
+    background: $lighter-dark-color;
+    padding: $medium-padding;
+    border-radius: 10px;
+    width: 300px;
+    height: 150px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    h3 {
+      font-size: 1.3rem;
     }
 
-    h4 {
-        text-align: center;
+    input {
+      margin-top: 0;
+      padding: $tiny-padding 0;
+      width: 13rem;
+      font-size: 1.2rem;
+      border-bottom: 3px solid white;
+      background: none;
+      font-weight: bold;
+      border-radius: 0;
+      color: $lighter-light-color;
 
-        span {
-            font-size: 4rem;
-    
-            &:first-of-type {
-                color: $secondary-color;
-            }
-    
-            &:last-of-type {
-                color: #88C03D;
-            }
-        }
-    }  
+      &:focus {
+        border-color: $darker-light-color;
+      }
+    }
+  }
 }

@@ -1,0 +1,34 @@
+<%- include('../../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/learn/learn.css" />
+<%- include('../../partials/boilerplate-end') %> <%- include('../../partials/header') %>
+
+<main>
+  <h2 class="learning-subject"> <%=languageLevel%> <span>•</span> Study <span>•</span> Flashcards </h2>
+  <% if (flashcards.length !== 0 ) { %>
+  <div class="flashcard-sets">
+  <% flashcards.forEach((flashcard) => { %>
+      <div class="flashcards">
+        <div class="flashcard">
+          <h3><%=flashcard.word%></h3>
+        </div>
+        <div class="flashcard">
+          <input type="text" class="flashcard-translation">
+        </div>
+      </div>
+      <h4 class="flashcard-correct-translation"></h4>
+      <input type="hidden" class="flashcard-correct-translation-input" value="<%=flashcard.translation%>">
+      <button class="flashcard-button">Check</button>
+      <button class="flashcard-next invert-colors">Next</button>
+  <% }) %>
+</div>
+  <% } %>
+  <% if (flashcards.length === 0) { %>
+    <h2>No flashcards for this Language Level</h2>
+  <% } %>
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/javascript/headerMenu.js"></script>
+<script src="/javascript/checkFlashcard.js"></script>
+
+<%- include('../../partials/footer') %>

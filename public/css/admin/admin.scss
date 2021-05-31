@@ -116,6 +116,28 @@ aside {
     margin: $small-margin 0;
 }
 
+.flashcard-header {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;;
+    margin-top: $big-margin * 2;
+}
+
+.flashcard-box {
+    display: grid;
+    grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;
+    align-items: center;
+    margin: $small-margin 0;
+
+    &.fake {
+        display: none;
+    }
+
+    form {
+        width: 100%;
+    }
+}
+
+
 .lesson-header {
     display: grid;
     grid-template-columns: 5% 6% 10% minmax(6rem, 70%) 9rem 9rem;;
@@ -338,3 +360,25 @@ aside {
         align-self: flex-start;
     }
 }
+
+.add-flashcard-form {
+    display: flex;
+    flex-direction: column;
+
+    select{
+        align-self: flex-start;
+        margin-bottom: 1rem;
+    }
+
+    input {
+        width: 50%!important;
+        height: 2.5rem;
+        margin-bottom: 1rem;
+    }
+
+    button {
+        margin-top: 1rem;
+        align-self: flex-start;
+    }
+}
+
