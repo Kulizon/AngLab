@@ -89,16 +89,6 @@ router.post("/admin/users/delete-user/:userID", async (req, res) => {
   res.redirect("/admin/users/");
 });
 
-// router.post("/admin/users/message-user/:userID", async (req, res) => {
-//   if (await redirectIfNotAdmin(req, res)) return
-
-//   User.updateOne({ _id: req.params.userID }, { $push: { notifications: { title: req.body.notificationTitle, content: req.body.notificationContent } } }, (e) => {
-//     if (e) console.log(e);
-//   });
-
-//   res.redirect("/admin/users");
-// });
-
 router.get("/admin/questions", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
@@ -170,7 +160,7 @@ router.get("/admin/questions/add-question", async (req, res) => {
 router.post("/admin/questions/add-question", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  const newQuestion = new Question({ languageLevel: req.body.level, question: req.body.question, subject: req.body.subject, answerA: req.body.answerA, answerB: req.body.answerB, answerC: req.body.answerC, answerD: req.body.answerD, correctAnswer: req.body.correctAnswer, hint: req.body.hint });
+  const newQuestion = new Question({ languageLevel: req.body.level, question: req.body.question, subject: req.body.subject.trim(), answerA: req.body.answerA, answerB: req.body.answerB, answerC: req.body.answerC, answerD: req.body.answerD, correctAnswer: req.body.correctAnswer, hint: req.body.hint });
   newQuestion.save();
 
   res.redirect("/admin/questions");
@@ -301,7 +291,7 @@ router.post("/admin/lessons/delete-lesson", async (req, res) => {
 router.post("/admin/lessons/add-lesson", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  const newLesson = new Lesson({ languageLevel: req.body.level, subject: req.body.subject, title: req.body.title, content: req.body.content });
+  const newLesson = new Lesson({ languageLevel: req.body.level, subject: req.body.subject.trim(), title: req.body.title.trim(), content: req.body.content });
   newLesson.save();
 
   res.redirect("/admin/lessons");
@@ -390,7 +380,7 @@ router.post("/admin/subjects/action", async (req, res) => {
 router.post("/admin/subjects/add-subject", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  const newSubject = new Subject({ languageLevel: req.body.level, subject: req.body.subject });
+  const newSubject = new Subject({ languageLevel: req.body.level, subject: req.body.subject.trim() });
   newSubject.save();
 
   res.redirect("/admin/subjects");
@@ -424,7 +414,7 @@ router.get("/admin/flashcards/add-flashcard", async (req, res) => {
 router.post("/admin/flashcards/add-flashcard", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  await new Flashcard({ languageLevel: req.body.level, word: req.body.word, translation: req.body.translation }).save();
+  await new Flashcard({ languageLevel: req.body.level, word: req.body.word.trim(), translation: req.body.translation.trim() }).save();
 
   res.redirect("/admin/flashcards/add-flashcard");
 });
