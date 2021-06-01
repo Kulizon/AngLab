@@ -1,0 +1,197 @@
+@import "variables";
+
+$darker-light-color: #d4d4d4;
+
+.lightmode {
+  .lang-choices {
+    .lang-choice {
+      color: $darker-dark-color;
+      background: $darker-light-color;
+      box-shadow: #505357 0px 3px 1px;
+
+      &:hover {
+        box-shadow: #505357 0px 5px 3px;
+      }
+
+      div {
+        h5 {
+          color: $darker-dark-color;
+        }
+      }
+    }
+  }
+
+  .questions {
+    h4 {
+      color: $darker-dark-color;
+    }
+  }
+
+  .flashcards {
+    .flashcard {
+      background: $darker-light-color;
+
+      input {
+        color: $darker-dark-color;
+
+        &:focus {
+          border-color: $lighter-dark-color;
+        }
+      }
+    }
+  }
+
+  background-color: $lighter-light-color;
+
+  button:not(.delete, .lesson-button) {
+    color: $darker-light-color;
+  }
+
+  .logo {
+    &__icon {
+      color: $darker-dark-color;
+    }
+
+    &__brand {
+      color: $darker-dark-color;
+    }
+  }
+
+  h1 {
+    color: $darker-dark-color;
+  }
+
+  h2 {
+    color: $darker-dark-color;
+  }
+
+  h3 {
+    color: $darker-dark-color;
+  }
+
+  h4,
+  h5,
+  h6 {
+    color: $lighter-dark-color;
+  }
+
+  label {
+    color: $darker-dark-color;
+  }
+
+  input,
+  textarea {
+    color: $darker-light-color;
+  }
+
+  p {
+    color: rgb(53, 53, 53);
+  }
+
+  header {
+    .lang-menu {
+      background: #e0e0e0;
+
+      &__option {
+        h6 {
+          color: $darker-dark-color;
+
+          &:hover {
+            color: $lighter-dark-color;
+          }
+        }
+
+        &__dropdown-icon {
+          color: $darker-dark-color;
+
+          &:hover {
+            color: $lighter-dark-color;
+          }
+        }
+      }
+    }
+
+    ul {
+      a {
+        svg {
+          color: $darker-dark-color;
+        }
+        &:hover {
+          svg {
+            color: $secondary-color;
+          }
+        }
+      }
+    }
+  }
+
+  .lang-choices {
+    .lang-choice {
+      color: $darker-dark-color;
+      background: $darker-light-color;
+      box-shadow: #505357 0px 3px 1px;
+
+      &:hover {
+        box-shadow: #505357 0px 5px 3px;
+      }
+
+      div {
+        h5 {
+          color: $darker-dark-color;
+        }
+      }
+    }
+  }
+
+  .notifications {
+    .notification {
+      background: $darker-light-color;
+      box-shadow: #505357 0px 3px 1px;
+
+      button.delete {
+        svg {
+          background: $darker-dark-color;
+        }
+      }
+    }
+  }
+
+  .user-badges {
+    .user-badge {
+      svg {
+        & + p {
+          background: $darker-light-color;
+        }
+      }
+    }
+
+    .user-badge.not-acquired {
+      svg {
+        color: #505357;
+      }
+    }
+
+    .search-form {
+      select {
+        background: $darker-dark-color;
+        color: $lighter-light-color;
+      }
+    }
+  }
+  .user-darker-dark-color {
+    background: $darker-light-color;
+    box-shadow: #505357 0px 3px 1px;
+    color: $darker-dark-color;
+  }
+
+  .user-test {
+    background: $darker-light-color;
+    box-shadow: #505357 0px 3px 1px;
+    color: $darker-dark-color;
+
+    h5 {
+        color: $base-color;
+    }
+    
+}
+}

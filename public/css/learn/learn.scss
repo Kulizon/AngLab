@@ -1,4 +1,4 @@
-@import "../global/variables", "../global/defaults", "../partials/header";
+@import "../global/variables", "../global/defaults", "../partials/header", "../global/lightmode";
 
 a {
   color: inital;
@@ -77,6 +77,7 @@ main {
 }
 
 .lesson-study {
+  max-width: 1600px;
   p {
     margin: $medium-margin 0;
   }
@@ -297,3 +298,4 @@ main.test-end {
     }
   }
 }
+

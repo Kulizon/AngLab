@@ -1,4 +1,4 @@
-@import '../global/variables', '../global/defaults', '../partials/header';
+@import '../global/variables', '../global/defaults', '../partials/header', "../global/lightmode";
 
 a {
     color: initial;
@@ -101,7 +101,7 @@ main {
             svg {
                 width: 1.6rem;
                 height: 1.6rem;
-                padding: 0.15rem;
+                padding: 0.25rem;
                 background: $lighter-light-color;
                 fill: #D71C38;
                 border-radius: 10px;

@@ -1,4 +1,4 @@
-@import '../global/defaults', '../global/variables';
+@import "../global/defaults", "../global/variables";
 
 header {
   max-width: 1600px;
@@ -23,7 +23,7 @@ header {
     background: #353638;
     padding: $small-padding;
     border-radius: 10px;
-    width: 150px; 
+    width: 150px;
     display: none;
     opacity: 0;
 
@@ -31,7 +31,7 @@ header {
       display: grid;
       grid-template-columns: 1fr 1fr;
       margin-bottom: $small-margin;
-      
+
       &:last-of-type {
         margin-bottom: 0;
       }
@@ -43,7 +43,7 @@ header {
           color: $darker-light-color;
         }
       }
-      
+
       &__dropdown {
         display: flex;
         flex-direction: column;
@@ -99,8 +99,14 @@ header {
       &:last-of-type {
         margin-right: 0;
 
-        svg {
-          margin-bottom: -3px;
+        svg.fa-sun  {
+          width: 1.53rem;
+          height: 1.53rem;
+        }
+
+        svg.fa-moon  {
+          width: 1.47rem;
+          height: 1.47rem;
         }
       }
 

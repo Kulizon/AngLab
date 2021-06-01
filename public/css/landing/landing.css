@@ -68,7 +68,7 @@ a {
 }
 
 a:hover {
-  color: #faba17;
+  color: #dfab00;
 }
 
 button,
@@ -102,9 +102,9 @@ button:not(.delete, .lesson-button) {
   margin-top: 2rem;
   padding: 0.5rem;
   width: 10rem;
-  background-color: #faba17;
+  background-color: #dfab00;
   color: #f1f1f1;
-  border: 3px solid #faba17;
+  border: 3px solid #dfab00;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -129,7 +129,7 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 .logo__icon:hover {
-  color: #faba17;
+  color: #dfab00;
 }
 
 .logo__brand {
@@ -144,8 +144,8 @@ button.invert-colors {
 }
 
 button.invert-colors:hover {
-  background-color: #faba17 !important;
-  border-color: #faba17 !important;
+  background-color: #dfab00 !important;
+  border-color: #dfab00 !important;
 }
 
 body {
@@ -210,7 +210,7 @@ header ul a.featured {
 }
 
 header ul a.featured:hover {
-  border: solid 3px #faba17;
+  border: solid 3px #dfab00;
 }
 
 .cta {
@@ -283,7 +283,7 @@ header ul a.featured:hover {
 
 .features .feature__icon {
   width: 2.5rem;
-  color: #faba17;
+  color: #dfab00;
 }
 
 .opinions {
@@ -326,7 +326,7 @@ header ul a.featured:hover {
   width: 1rem;
   height: 1rem;
   margin: 0 1rem;
-  background-color: #faba17;
+  background-color: #dfab00;
   border: none;
   opacity: 1;
   -webkit-transition: 0.2s;

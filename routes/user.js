@@ -130,4 +130,22 @@ router.post("/user/test-history/:loggedUserUsername/test-records/search", (req, 
   res.redirect("/user/test-history/req.params.loggedUserUsername/test-records/");
 });
 
+router.get("/darkmode", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  if (req.user.options.darkmode) {
+    await User.updateOne({ _id: req.user._id }, { options: { darkmode: false } }, (e) => {
+      if (e) console.log(e);
+    });
+  }
+
+  if (!req.user.options.darkmode) {
+    await User.updateOne({ _id: req.user._id }, { options: { darkmode: true } }, (e) => {
+      if (e) console.log(e);
+    });
+  }
+
+  res.redirect("back");
+});
+
 module.exports = router;
