@@ -1,0 +1,62 @@
+<%- include('../partials/boilerplate-start') %>
+<link rel="stylesheet" href="/css/user/user.css" />
+<%- include('../partials/boilerplate-end', {loggedUser}) %> <%- include('../partials/header') %>
+<main class="user-settings">
+    <h2 class="learning-subject">User <span>•</span> Settings</h2>
+    <form action="/user/change-email" method="POST">
+        <h3>Change Your Email</h3>
+        <input type="text" name="newEmail" id="new-email-input" placeholder="New Email..." required>
+        <input type="text" name="newEmail" id="new-email-confirmation-input" placeholder="Confirm New Email..." required>
+        <input type="hidden" name="userID" value="<%=loggedUser._id%>">
+        <h5></h5>
+        <button type="button">Change</button>
+        <div class="confirmation">
+            <h3>You are going to change Your current email: <b><%=loggedUser.username%></b></h3>
+            <button type="submit">Confirm</button>
+        </div>
+    </form>
+
+    <form action="/user/change-password" method="POST">
+        <h3>Change Your Password</h3>
+        <input type="text" name="oldPassword" id="old-password-input" placeholder="Old Password..." required>
+        <input type="text" name="newPassword" id="new-password-input" placeholder="New Password..." required>
+        <input type="text" name="newPasswordConfirmation" id="new-password-confirmation-input" placeholder="Confrim New Password..." required>
+        <input type="hidden" name="userID" value="<%=loggedUser._id%>">
+        <% if (errorMessage) { %>
+            <h6 class="wrong-password-error"><%=errorMessage[0]%></h6>
+        <% } else {%>
+            <h5></h5>
+        <% } %>
+        
+        <button type="button">Change</button>
+        <div class="confirmation">
+            <h3>You are going to change Your current password.</h3>
+            <button type="submit">Confirm</button>
+        </div>
+    </form>
+
+    <form action="/user/reset-progress" method="POST">
+        <h3>Reset Your Learning Progress</h3>
+        <input type="hidden" name="userID" value="<%=loggedUser._id%>">
+        <button type="button">Reset</button>
+        <div class="confirmation">
+            <h3>You are going to reset all Your progress.</h3>
+            <button type="submit">Confirm</button>
+        </div>
+    </form>
+
+    <form action="/user/delete-account" method="POST">
+        <h3>Delete this Account</h3>
+        <input type="hidden" name="userID" value="<%=loggedUser._id%>">
+        <button type="button">Delete</button>
+        <div class="confirmation">
+            <h3>You are going to permanently delete Your account.</h3>
+            <button type="submit">Confirm</button>
+        </div>
+    </form>
+</main>
+
+<script src="/javascript/headerMenu.js"></script>
+<script src="/javascript/userSettings.js"></script>
+
+<%- include('../partials/footer') %>

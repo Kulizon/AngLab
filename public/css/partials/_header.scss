@@ -1,5 +1,17 @@
 @import "../global/defaults", "../global/variables";
 
+.backdrop {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  display: none;
+  opacity: 0;
+}
+
 header {
   max-width: 1600px;
   width: 100%;
@@ -83,8 +95,9 @@ header {
     }
   }
 
-  ul {
+  nav > {
     display: flex;
+    flex-direction: row;
     align-items: center;
 
     a {
@@ -96,20 +109,6 @@ header {
         color: $lighter-light-color;
       }
 
-      &:last-of-type {
-        margin-right: 0;
-
-        svg.fa-sun  {
-          width: 1.53rem;
-          height: 1.53rem;
-        }
-
-        svg.fa-moon  {
-          width: 1.47rem;
-          height: 1.47rem;
-        }
-      }
-
       &:first-of-type {
         svg {
           margin-bottom: -3px;
@@ -119,10 +118,121 @@ header {
       }
 
       &:hover {
+        cursor: pointer;
         svg {
           color: $secondary-color;
         }
       }
     }
   }
+
+  .notifications {
+    margin-top: $big-margin;
+    position: fixed;
+    display: none;
+    opacity: 0;
+    flex-direction: column;
+    width: 400px;
+    padding: $small-padding;
+    background: #353638;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 10px;
+    z-index: 1000;
+
+    h6 {
+      text-align: center;
+    }
+
+    h2 {
+      text-align: center;
+      margin-bottom: $small-margin;
+    }
+
+    .notification {
+        margin-bottom: $medium-margin;
+        background: $lighter-dark-color;
+        padding: $tiny-padding $big-padding $tiny-padding $small-padding;
+        border-radius: 10px;
+        box-shadow: #505357 0px 3px 1px;
+        position: relative;
+
+        &:last-of-type {
+            margin-bottom: 0;
+        }
+
+        h3 {
+            margin-bottom: 0.2rem;
+        }
+
+        button.delete {
+            margin: 0;
+            position: absolute;
+            top: 0rem;
+            right: 0rem;
+            background: none;
+
+            &:hover {
+                transform: rotate(15deg);
+            }
+
+            svg {
+                width: 1.6rem;
+                height: 1.6rem;
+                padding: 0.25rem;
+                background: $lighter-light-color;
+                fill: #D71C38;
+                border-radius: 10px;
+            }
+        }
+    }
+}
+  
+  .user-menu {
+    position: absolute;
+    transform: translate(-110px, 10px);
+    background: #353638;
+    padding: $small-padding;
+    border-radius: 10px;
+    width: 180px;
+    opacity: 0;
+    display: none;
+    flex-direction: column;
+
+    a {
+      font-size: 1.05rem;
+      color: $lighter-light-color;
+      margin-top: $small-margin;
+      display: flex;
+      align-items: flex-start;
+      font-weight: bold;
+
+      &:hover {
+        cursor: pointer;
+
+        svg {
+          color: $secondary-color;
+        }
+      }
+
+      &:first-of-type {
+        margin-top: 0;
+      }  
+    }
+
+    svg {
+      width: 1.2rem;
+      height: 1.2rem;
+      color: $base-color;
+      margin-right: $tiny-margin * 2;
+      transition: 0.1s;
+
+      &:hover {
+        color: $darker-light-color;
+        cursor: pointer;
+      }
+    }
+  }
+
 }

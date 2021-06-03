@@ -111,15 +111,30 @@ $darker-light-color: #d4d4d4;
       }
     }
 
-    ul {
+    nav > {
       a {
         svg {
           color: $darker-dark-color;
         }
+
         &:hover {
           svg {
             color: $secondary-color;
           }
+        }
+      }
+    }
+
+    .user-menu {
+      background: #e0e0e0;
+
+      a {
+        color: $darker-dark-color;
+      }
+
+      svg {
+        &:hover {
+          color: $lighter-dark-color;
         }
       }
     }
@@ -144,17 +159,20 @@ $darker-light-color: #d4d4d4;
   }
 
   .notifications {
-    .notification {
-      background: $darker-light-color;
-      box-shadow: #505357 0px 3px 1px;
+    background: #e0e0e0;
 
-      button.delete {
-        svg {
-          background: $darker-dark-color;
+    .notification {
+        background: $darker-light-color;
+        box-shadow: #505357 0px 3px 1px;
+
+        button.delete {
+            svg {
+                background: $darker-dark-color;
+                fill: #D71C38;
+            }
         }
-      }
     }
-  }
+}
 
   .user-badges {
     .user-badge {
@@ -190,8 +208,7 @@ $darker-light-color: #d4d4d4;
     color: $darker-dark-color;
 
     h5 {
-        color: $base-color;
+      color: $base-color;
     }
-    
-}
+  }
 }

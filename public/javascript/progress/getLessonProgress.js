@@ -21,11 +21,13 @@ socket.on("lessonProgress", (progress, lessons) => {
     for (let n = 0; n < progress.length; n++) {
       if (lessons[i].title === progress[n].title && lessons[i].languageLevel === progress[n].languageLevel && lessons[i].subject === progress[n].languageLevelSubject) {
         progressDisplay[i].innerText = "Done";
+        progressDisplay[i].classList.add("finished")
         ifContinue = true;
       }
     }
     if (ifContinue) continue;
 
     progressDisplay[i].innerText = "Not Done";
+    progressDisplay[i].classList.add("not-finished")
   }
 });

@@ -5,10 +5,60 @@
 <main>
   <h2 class="learning-subject"> <%=languageLevel%></h2>
   <div class="lang-choices">
-    <a href="/learn/<%=languageLevel%>/study" class="lang-choice">Study</a>
-    <a href="/learn/<%=languageLevel%>/practice" class="lang-choice">Practice</a>
-    <a href="/learn/<%=languageLevel%>/test" class="lang-choice">Test</a>
+    <a href="/learn/<%=languageLevel%>/study">
+      <div class="lang-choice learn-choice">
+      <h2>Study</h2>
+    </div>
+  </a>
+
+    <a href="/learn/<%=languageLevel%>/practice">
+      <div class="lang-choice learn-choice">
+      <h2>Practice</h2>
+    </div>
+  </a>
+
+    <a href="/learn/<%=languageLevel%>/test">
+    <div class="lang-choice learn-choice">
+        <h2>Test</h2>
+    </div>
+    </a>
+
   </div>
+</main>
+
+<h2 class="section-heading">Latest Activity</h2>
+<% if (latestActivity.length > 0 ) { %>
+<div class="latest-activity">
+    <% latestActivity.reverse().forEach((entry) => { %>
+      <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.title%>">
+      <div class="latest-activity-record">
+        <h2><%=entry.languageLevel%></h2>
+        <h5><%=entry.languageLevelSubject%></h5>
+        <h4><%=entry.title%></h4>
+      </div>
+    </a>
+    <% }) %>
+</div>
+<% } else { %>
+  <h4>No recent activities. Start learning Now!</h4>
+<% } %>
+
+<h2 class="section-heading">Recomendations</h2>
+<% if (recommendations.length > 0 ) { %>
+<div class="recommendations">
+  <% recommendations.forEach((entry) => { %>
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
+      <div class="recommendation">
+        <h2><%=entry.languageLevel%></h2>
+        <h5><%=entry.subject%></h5>
+        <h4><%=entry.title%></h4>
+      </div>
+    </a>
+    <% }) %>
+</div>
+<% } else { %>
+  <h4>Oops! Something went wrong.</h4>
+<% } %>
 </main>
 
 <script src="/javascript/headerMenu.js"></script>

@@ -298,6 +298,18 @@ button.invert-colors:hover {
   border-color: #dfab00 !important;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  display: none;
+  opacity: 0;
+}
+
 header {
   max-width: 1600px;
   width: 100%;
@@ -401,47 +413,165 @@ header .lang-menu__option__dropdown-icon:hover {
   cursor: pointer;
 }
 
-header ul {
+header nav > {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-header ul a {
+header nav > a {
   margin: 0 1rem;
 }
 
-header ul a svg {
+header nav > a svg {
   width: 1.5rem;
   height: 1.5rem;
   color: #f1f1f1;
 }
 
-header ul a:last-of-type {
-  margin-right: 0;
-}
-
-header ul a:last-of-type svg.fa-sun {
-  width: 1.53rem;
-  height: 1.53rem;
-}
-
-header ul a:last-of-type svg.fa-moon {
-  width: 1.47rem;
-  height: 1.47rem;
-}
-
-header ul a:first-of-type svg {
+header nav > a:first-of-type svg {
   margin-bottom: -3px;
   width: 1.6rem;
   height: 1.6rem;
 }
 
-header ul a:hover svg {
+header nav > a:hover {
+  cursor: pointer;
+}
+
+header nav > a:hover svg {
   color: #36687C;
+}
+
+header .notifications {
+  margin-top: 2rem;
+  position: fixed;
+  display: none;
+  opacity: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  padding: 0.8rem;
+  background: #353638;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+header .notifications h6 {
+  text-align: center;
+}
+
+header .notifications h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header .notifications .notification {
+  margin-bottom: 1.6rem;
+  background: #3b3e42;
+  padding: 0.5rem 2rem 0.5rem 0.8rem;
+  border-radius: 10px;
+  -webkit-box-shadow: #505357 0px 3px 1px;
+          box-shadow: #505357 0px 3px 1px;
+  position: relative;
+}
+
+header .notifications .notification:last-of-type {
+  margin-bottom: 0;
+}
+
+header .notifications .notification h3 {
+  margin-bottom: 0.2rem;
+}
+
+header .notifications .notification button.delete {
+  margin: 0;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  background: none;
+}
+
+header .notifications .notification button.delete:hover {
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+header .notifications .notification button.delete svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.25rem;
+  background: #f1f1f1;
+  fill: #D71C38;
+  border-radius: 10px;
+}
+
+header .user-menu {
+  position: absolute;
+  -webkit-transform: translate(-110px, 10px);
+          transform: translate(-110px, 10px);
+  background: #353638;
+  padding: 0.8rem;
+  border-radius: 10px;
+  width: 180px;
+  opacity: 0;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header .user-menu a {
+  font-size: 1.05rem;
+  color: #f1f1f1;
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-weight: bold;
+}
+
+header .user-menu a:hover {
+  cursor: pointer;
+}
+
+header .user-menu a:hover svg {
+  color: #36687C;
+}
+
+header .user-menu a:first-of-type {
+  margin-top: 0;
+}
+
+header .user-menu svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #dfab00;
+  margin-right: 0.8rem;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+header .user-menu svg:hover {
+  color: #c9c1c1;
+  cursor: pointer;
 }
 
 .lightmode {
@@ -543,12 +673,24 @@ header ul a:hover svg {
   color: #3b3e42;
 }
 
-.lightmode header ul a svg {
+.lightmode header nav > a svg {
   color: #21252C;
 }
 
-.lightmode header ul a:hover svg {
+.lightmode header nav > a:hover svg {
   color: #36687C;
+}
+
+.lightmode header .user-menu {
+  background: #e0e0e0;
+}
+
+.lightmode header .user-menu a {
+  color: #21252C;
+}
+
+.lightmode header .user-menu svg:hover {
+  color: #3b3e42;
 }
 
 .lightmode .lang-choices .lang-choice {
@@ -567,6 +709,10 @@ header ul a:hover svg {
   color: #21252C;
 }
 
+.lightmode .notifications {
+  background: #e0e0e0;
+}
+
 .lightmode .notifications .notification {
   background: #d4d4d4;
   -webkit-box-shadow: #505357 0px 3px 1px;
@@ -575,6 +721,7 @@ header ul a:hover svg {
 
 .lightmode .notifications .notification button.delete svg {
   background: #21252C;
+  fill: #D71C38;
 }
 
 .lightmode .user-badges .user-badge svg + p {
@@ -630,22 +777,45 @@ main {
 }
 
 .lang-choices {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  max-width: 700px;
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+  max-width: 1000px;
   width: 100%;
 }
 
 .lang-choices h2 {
   text-align: center;
+}
+
+.lang-choices a[href="/learn/A2"] {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 1;
+  grid-column: 1/2;
+}
+
+.lang-choices a[href="/learn/B2"] {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.lang-choices a[href="/learn/C2"] {
+  -ms-grid-row: 2;
+  -ms-grid-row-span: 1;
+  grid-row: 2/3;
+  -ms-grid-column: 3;
+  -ms-grid-column-span: 1;
+  grid-column: 3/4;
 }
 
 .lang-choices .lang-choice {
@@ -656,9 +826,10 @@ main {
   padding: 0.8rem 1.5rem;
   border-radius: 10px;
   font-weight: bold;
+  font-size: 1.5rem;
+  min-height: 120px;
   -webkit-box-shadow: #505357 0px 3px 1px;
           box-shadow: #505357 0px 3px 1px;
-  font-size: 1.5rem;
 }
 
 .lang-choices .lang-choice:hover {
@@ -666,22 +837,84 @@ main {
           box-shadow: #505357 0px 5px 3px;
 }
 
+.lang-choices .lang-choice.learn-choice {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.lang-choices .lang-choice.learn-choice div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
 .lang-choices .lang-choice.featured {
   margin-top: 1.6rem;
-  width: 50%;
+  -ms-grid-column: 2;
+  -ms-grid-column-span: 1;
+  grid-column: 2/3;
+}
+
+.lang-choices .lang-choice.lesson-choice div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.lang-choices .lang-choice.lesson-choice div h5.not-finished {
+  color: #d71c38;
+}
+
+.lang-choices .lang-choice.lesson-choice div h5.finished {
+  color: #88c03d;
 }
 
 .lang-choices .lang-choice h2 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
 }
 
 .lang-choices .lang-choice div {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  height: 100%;
+}
+
+.lang-choices .lang-choice div div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
@@ -696,6 +929,68 @@ main {
 .lang-choices .lang-choice div h5 {
   font-size: 1.5rem;
   color: #f1f1f1;
+}
+
+.section-heading {
+  margin-top: 4rem;
+  font-size: 1.6rem;
+}
+
+.section-heading + h4 {
+  margin-top: 1rem;
+}
+
+.latest-activity, .recommendations {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+  -webkit-column-gap: 50px;
+          column-gap: 50px;
+  max-width: 800px;
+  width: 100%;
+  height: 100%;
+}
+
+.latest-activity .latest-activity-record, .latest-activity .recommendation, .recommendations .latest-activity-record, .recommendations .recommendation {
+  min-height: 120px;
+  border-radius: 10px;
+  background: #3b3e42;
+  margin: 1.6rem 0;
+  padding: 0.8rem 1.5rem;
+  border-radius: 10px;
+  font-weight: bold;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-shadow: #505357 0px 3px 1px;
+          box-shadow: #505357 0px 3px 1px;
+  height: 50%;
+}
+
+.latest-activity .latest-activity-record:hover, .latest-activity .recommendation:hover, .recommendations .latest-activity-record:hover, .recommendations .recommendation:hover {
+  -webkit-box-shadow: #505357 0px 5px 3px;
+          box-shadow: #505357 0px 5px 3px;
+}
+
+.latest-activity .latest-activity-record h2, .latest-activity .recommendation h2, .recommendations .latest-activity-record h2, .recommendations .recommendation h2 {
+  font-size: 1.8rem;
+}
+
+.latest-activity .latest-activity-record h4, .latest-activity .recommendation h4, .recommendations .latest-activity-record h4, .recommendations .recommendation h4 {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: end;
+      -ms-flex-align: end;
+          align-items: flex-end;
+  color: #dfab00;
+  font-size: 1.2rem;
 }
 
 .learning-subject {

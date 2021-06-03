@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
+const bcrypt = require("bcryptjs");
 
 // mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
@@ -55,16 +56,6 @@ router.get("/user", async (req, res) => {
   res.render("user/user", { loggedUser: loggedUser, overallUserScore: overallUserScore, numberOfTests: numberOfTests, notifications: loggedUser.notifications });
 });
 
-router.post("/user/delete-notification/:notificationTitle", (req, res) => {
-  if (redirectIfNotAuthenticated(req, res)) return;
-
-  User.updateMany({}, { $pull: { notifications: { title: req.params.notificationTitle, content: req.body.notificationContent } } }, (e) => {
-    if (e) console.log(e);
-  });
-
-  res.redirect("/user");
-});
-
 router.get("/user/test-history/:languageLevel", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
@@ -113,8 +104,6 @@ router.get("/user/test-history/:languageLevel", async (req, res) => {
 router.get("/user/test-history/:loggedUserUsername/test-records/", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
-  if (req.session.searchQuery === undefined) req.session.searchQuery = "All";
-
   const loggedUser = await getCurrentUser(req);
 
   if (loggedUser.role === "admin") {
@@ -122,12 +111,15 @@ router.get("/user/test-history/:loggedUserUsername/test-records/", async (req, r
     return;
   }
 
-  res.render("user/user-test-history", { loggedUser: loggedUser, searchQuery: req.session.searchQuery, testHistory: loggedUser.testHistory.reverse(), languageLevel: req.params.languageLevel });
+  res.render("user/user-test-history", { loggedUser: loggedUser, searchQuery: "All", testHistory: loggedUser.testHistory.reverse(), languageLevel: req.params.languageLevel });
 });
 
-router.post("/user/test-history/:loggedUserUsername/test-records/search", (req, res) => {
-  req.session.searchQuery = req.body.searchQueryLevel;
-  res.redirect("/user/test-history/req.params.loggedUserUsername/test-records/");
+router.post("/user/test-history/:loggedUserUsername/test-records/search", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+  
+  const loggedUser = await getCurrentUser(req);
+  res.render("user/user-test-history", { loggedUser: loggedUser, searchQuery: req.body.searchQueryLevel, testHistory: loggedUser.testHistory.reverse(), languageLevel: req.params.languageLevel });
+
 });
 
 router.get("/darkmode", async (req, res) => {
@@ -144,6 +136,89 @@ router.get("/darkmode", async (req, res) => {
       if (e) console.log(e);
     });
   }
+
+  res.redirect("back");
+});
+
+router.get("/user/settings", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+  const loggedUser = await getCurrentUser(req);
+
+  if (loggedUser.role === "admin") {
+    res.redirect("/admin");
+    return;
+  }
+
+  let flashMessage = req.flash("oldPasswordError");
+  if (flashMessage.length == 0) flashMessage = null;
+
+  console.log(flashMessage);
+
+  res.render("user/user-settings", { loggedUser, errorMessage: flashMessage });
+});
+
+router.post("/user/change-email", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  await User.updateOne({ _id: req.user._id }, { username: req.body.newEmail }, (e) => {
+    if (e) console.log(e);
+  });
+
+  res.redirect("back");
+});
+
+router.post("/user/change-password", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  const hashedNewPassword = await bcrypt.hash(req.body.newPassword, 10);
+
+  await bcrypt.compare(req.body.oldPassword, req.user.password, async (e, isMatch) => {
+    if (e) console.log(e);
+
+    if (!isMatch) {
+      req.flash("oldPasswordError", "There was a problem with your old password.")
+      res.redirect("back");
+      return
+    }
+
+    await User.updateOne({ _id: req.user._id }, { password: hashedNewPassword }, (e) => {
+      if (e) console.log(e);
+    });
+  
+    req.logout();
+  
+    res.redirect("/login")
+  });
+});
+
+router.post("/user/reset-progress", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  await User.updateOne({_id: req.user._id}, {languageLevelProgress: []}, (e) => {
+    if (e) console.log(e);
+  })
+
+  res.redirect("back")
+})
+
+router.post("/user/delete-account", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  await User.deleteOne({_id: req.user._id}, (e) => {
+    if (e) console.log(e);
+  })
+
+  res.redirect("/login")
+})
+
+router.post("/user/delete-notification/:notificationTitle", async (req, res) => {
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  await User.updateOne({ _id: req.user._id }, { $pull: { notifications: { title: req.params.notificationTitle, content: req.body.notificationContent } } }, (e) => {
+    if (e) console.log(e);
+  });
+
+  req.logout();
 
   res.redirect("back");
 });

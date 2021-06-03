@@ -247,12 +247,24 @@ button.invert-colors:hover {
   color: #3b3e42;
 }
 
-.lightmode header ul a svg {
+.lightmode header nav > a svg {
   color: #21252C;
 }
 
-.lightmode header ul a:hover svg {
+.lightmode header nav > a:hover svg {
   color: #36687C;
+}
+
+.lightmode header .user-menu {
+  background: #e0e0e0;
+}
+
+.lightmode header .user-menu a {
+  color: #21252C;
+}
+
+.lightmode header .user-menu svg:hover {
+  color: #3b3e42;
 }
 
 .lightmode .lang-choices .lang-choice {
@@ -271,6 +283,10 @@ button.invert-colors:hover {
   color: #21252C;
 }
 
+.lightmode .notifications {
+  background: #e0e0e0;
+}
+
 .lightmode .notifications .notification {
   background: #d4d4d4;
   -webkit-box-shadow: #505357 0px 3px 1px;
@@ -279,6 +295,7 @@ button.invert-colors:hover {
 
 .lightmode .notifications .notification button.delete svg {
   background: #21252C;
+  fill: #D71C38;
 }
 
 .lightmode .user-badges .user-badge svg + p {

@@ -298,6 +298,18 @@ button.invert-colors:hover {
   border-color: #dfab00 !important;
 }
 
+.backdrop {
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  height: 100vh;
+  width: 100vw;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 500;
+  display: none;
+  opacity: 0;
+}
+
 header {
   max-width: 1600px;
   width: 100%;
@@ -401,47 +413,165 @@ header .lang-menu__option__dropdown-icon:hover {
   cursor: pointer;
 }
 
-header ul {
+header nav > {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
 }
 
-header ul a {
+header nav > a {
   margin: 0 1rem;
 }
 
-header ul a svg {
+header nav > a svg {
   width: 1.5rem;
   height: 1.5rem;
   color: #f1f1f1;
 }
 
-header ul a:last-of-type {
-  margin-right: 0;
-}
-
-header ul a:last-of-type svg.fa-sun {
-  width: 1.53rem;
-  height: 1.53rem;
-}
-
-header ul a:last-of-type svg.fa-moon {
-  width: 1.47rem;
-  height: 1.47rem;
-}
-
-header ul a:first-of-type svg {
+header nav > a:first-of-type svg {
   margin-bottom: -3px;
   width: 1.6rem;
   height: 1.6rem;
 }
 
-header ul a:hover svg {
+header nav > a:hover {
+  cursor: pointer;
+}
+
+header nav > a:hover svg {
   color: #36687C;
+}
+
+header .notifications {
+  margin-top: 2rem;
+  position: fixed;
+  display: none;
+  opacity: 0;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  width: 400px;
+  padding: 0.8rem;
+  background: #353638;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  border-radius: 10px;
+  z-index: 1000;
+}
+
+header .notifications h6 {
+  text-align: center;
+}
+
+header .notifications h2 {
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+header .notifications .notification {
+  margin-bottom: 1.6rem;
+  background: #3b3e42;
+  padding: 0.5rem 2rem 0.5rem 0.8rem;
+  border-radius: 10px;
+  -webkit-box-shadow: #505357 0px 3px 1px;
+          box-shadow: #505357 0px 3px 1px;
+  position: relative;
+}
+
+header .notifications .notification:last-of-type {
+  margin-bottom: 0;
+}
+
+header .notifications .notification h3 {
+  margin-bottom: 0.2rem;
+}
+
+header .notifications .notification button.delete {
+  margin: 0;
+  position: absolute;
+  top: 0rem;
+  right: 0rem;
+  background: none;
+}
+
+header .notifications .notification button.delete:hover {
+  -webkit-transform: rotate(15deg);
+          transform: rotate(15deg);
+}
+
+header .notifications .notification button.delete svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  padding: 0.25rem;
+  background: #f1f1f1;
+  fill: #D71C38;
+  border-radius: 10px;
+}
+
+header .user-menu {
+  position: absolute;
+  -webkit-transform: translate(-110px, 10px);
+          transform: translate(-110px, 10px);
+  background: #353638;
+  padding: 0.8rem;
+  border-radius: 10px;
+  width: 180px;
+  opacity: 0;
+  display: none;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+header .user-menu a {
+  font-size: 1.05rem;
+  color: #f1f1f1;
+  margin-top: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  font-weight: bold;
+}
+
+header .user-menu a:hover {
+  cursor: pointer;
+}
+
+header .user-menu a:hover svg {
+  color: #36687C;
+}
+
+header .user-menu a:first-of-type {
+  margin-top: 0;
+}
+
+header .user-menu svg {
+  width: 1.2rem;
+  height: 1.2rem;
+  color: #dfab00;
+  margin-right: 0.8rem;
+  -webkit-transition: 0.1s;
+  transition: 0.1s;
+}
+
+header .user-menu svg:hover {
+  color: #c9c1c1;
+  cursor: pointer;
 }
 
 .lightmode {
@@ -543,12 +673,24 @@ header ul a:hover svg {
   color: #3b3e42;
 }
 
-.lightmode header ul a svg {
+.lightmode header nav > a svg {
   color: #21252C;
 }
 
-.lightmode header ul a:hover svg {
+.lightmode header nav > a:hover svg {
   color: #36687C;
+}
+
+.lightmode header .user-menu {
+  background: #e0e0e0;
+}
+
+.lightmode header .user-menu a {
+  color: #21252C;
+}
+
+.lightmode header .user-menu svg:hover {
+  color: #3b3e42;
 }
 
 .lightmode .lang-choices .lang-choice {
@@ -567,6 +709,10 @@ header ul a:hover svg {
   color: #21252C;
 }
 
+.lightmode .notifications {
+  background: #e0e0e0;
+}
+
 .lightmode .notifications .notification {
   background: #d4d4d4;
   -webkit-box-shadow: #505357 0px 3px 1px;
@@ -575,6 +721,7 @@ header ul a:hover svg {
 
 .lightmode .notifications .notification button.delete svg {
   background: #21252C;
+  fill: #D71C38;
 }
 
 .lightmode .user-badges .user-badge svg + p {
@@ -693,56 +840,6 @@ main {
 
 .learning-subject span {
   color: #36687C;
-}
-
-.notifications {
-  margin-top: 2rem;
-  display: -ms-grid;
-  display: grid;
-  -ms-grid-columns: 1fr 1fr;
-      grid-template-columns: 1fr 1fr;
-  -webkit-column-gap: 2rem;
-          column-gap: 2rem;
-}
-
-.notifications .notification {
-  margin-bottom: 1.6rem;
-  background: #3b3e42;
-  padding: 0.5rem 2rem 0.5rem 0.8rem;
-  border-radius: 10px;
-  -webkit-box-shadow: #505357 0px 3px 1px;
-          box-shadow: #505357 0px 3px 1px;
-  position: relative;
-}
-
-.notifications .notification:last-of-type {
-  margin-bottom: 0;
-}
-
-.notifications .notification h3 {
-  margin-bottom: 0.2rem;
-}
-
-.notifications .notification button.delete {
-  margin: 0;
-  position: absolute;
-  top: 0rem;
-  right: 0rem;
-  background: none;
-}
-
-.notifications .notification button.delete:hover {
-  -webkit-transform: rotate(15deg);
-          transform: rotate(15deg);
-}
-
-.notifications .notification button.delete svg {
-  width: 1.6rem;
-  height: 1.6rem;
-  padding: 0.25rem;
-  background: #f1f1f1;
-  fill: #D71C38;
-  border-radius: 10px;
 }
 
 .user-scores {
@@ -898,5 +995,87 @@ h2.current-query span {
 
 .user-test h5 {
   color: #dfab00;
+}
+
+main.user-settings {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr;
+  max-width: 700px;
+  -webkit-column-gap: 2rem;
+          column-gap: 2rem;
+}
+
+main.user-settings h2 {
+  -ms-grid-column: 1;
+  -ms-grid-column-span: 2;
+  grid-column: 1/3;
+  text-align: center;
+}
+
+main.user-settings form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background: #3b3e42;
+  border-radius: 10px;
+  padding: 1.5rem;
+  margin: 1.6rem 0;
+}
+
+main.user-settings form:nth-of-type(1) {
+  -ms-flex-item-align: start;
+      align-self: flex-start;
+}
+
+main.user-settings form input {
+  margin: 1rem 0;
+  padding: 0.8rem;
+  width: 15rem;
+  -webkit-box-shadow: #3b3e42 0px 5px 3px;
+          box-shadow: #3b3e42 0px 5px 3px;
+}
+
+main.user-settings form input:focus {
+  -webkit-box-shadow: #3b3e42 0px 10px 3px;
+          box-shadow: #3b3e42 0px 10px 3px;
+}
+
+main.user-settings form .confirmation {
+  display: none;
+  position: fixed;
+  border-radius: 10px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  background: #3b3e42;
+  padding: 1.5rem;
+  text-align: center;
+  z-index: 1000;
+  opacity: 0;
+}
+
+main.user-settings form .confirmation h3 {
+  color: #f1f1f1;
+}
+
+main.user-settings form h5 {
+  display: none;
+  color: #D71C38;
+  text-align: center;
+  padding: 0 0.8rem;
+}
+
+main.user-settings form h5.wrong-password-error {
+  display: inline;
 }
 /*# sourceMappingURL=user.css.map */

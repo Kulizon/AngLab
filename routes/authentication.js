@@ -86,7 +86,7 @@ router.post("/register", async (req, res) => {
     return;
   }
 
-  const newUser = new User({ username: req.body.username, password: hashedPassword, role: "user", name: req.body.name, options: {darkmode: true}, languageLevelProgress: [], testHistory: [], notifications: [{ title: "Witaj w AngLab...", content: "Poznawaj, ucz się, trenuj i poprawiaj swoje wyniki!" }] });
+  const newUser = new User({ username: req.body.username, password: hashedPassword, role: "user", name: req.body.name, options: {darkmode: true}, latestActivity: [], languageLevelProgress: [], testHistory: [], notifications: [{ title: "Witaj w AngLab...", content: "Poznawaj, ucz się, trenuj i poprawiaj swoje wyniki!" }] });
   newUser.save();
 
   res.redirect("/login");

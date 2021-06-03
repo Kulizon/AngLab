@@ -13,7 +13,7 @@ app.use(express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true, limit: "10mb" }));
 express.urlencoded({ extended: true });
 app.set("view engine", "ejs");
-app.use(session({ secret: "process.env.SECRET", resave: true, saveUninitialized: true, searchQuery: 'All' }));
+app.use(session({ secret: "process.env.SECRET", resave: true, saveUninitialized: true}));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
@@ -34,7 +34,6 @@ app.use((req, res, next) => {
 
 mongoose.connect("mongodb+srv://admin-kacper:"+process.env.DB_PASSWORD+"@cluster0.netpw.mongodb.net/AngLab?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
-
 const authenticationRouter = require("./routes/authentication")
 app.use(authenticationRouter)
 
@@ -49,5 +48,6 @@ app.use(userRouter);
 
 const adminRouter = require("./routes/admin")
 app.use(adminRouter);
+
 
 

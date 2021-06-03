@@ -13,14 +13,29 @@ main {
 }
 
 .lang-choices {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  max-width: 700px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 50px;
+  max-width: 1000px;
   width: 100%;
 
   h2 {
     text-align: center;
+  }
+
+  a[href="/learn/A2"] {
+    grid-row: 2/3;
+    grid-column: 1/2;
+  }
+
+  a[href="/learn/B2"] {
+    grid-row: 2/3;
+    grid-column: 2/3;
+  }
+
+  a[href="/learn/C2"] {
+    grid-row: 2/3;
+    grid-column: 3/4;
   }
 
   .lang-choice {
@@ -31,26 +46,62 @@ main {
     padding: $small-padding $medium-padding;
     border-radius: 10px;
     font-weight: bold;
-    box-shadow: #505357 0px 3px 1px;
     font-size: 1.5rem;
+    min-height: 120px;
+    box-shadow: #505357 0px 3px 1px;
 
     &:hover {
       box-shadow: #505357 0px 5px 3px;
     }
 
+    &.learn-choice {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      div {
+        display: flex;
+      justify-content: center;
+      align-items: center;
+      }
+    }
+
     &.featured {
       margin-top: $medium-margin;
-      width: 50%;
+      grid-column: 2/3;
+    }
+
+    &.lesson-choice {
+      div {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+
+        h5.not-finished {
+          color: #d71c38;
+        }
+
+        h5.finished {
+          color: #88c03d
+        }
+      }
     }
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 1.8rem;
     }
 
     div {
       display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
+      flex-direction: column;
+      align-items: flex-start;
+      height: 100%;
+
+      div {
+        display: flex;
+        flex-direction: row;
+        align-items: flex-end;
+      }
 
       h4 {
         font-size: 1.5rem;
@@ -65,6 +116,56 @@ main {
     }
   }
 }
+
+.section-heading {
+  margin-top: $big-margin * 2;
+  font-size: 1.6rem;
+  
+  & + h4 {
+    margin-top: $small-margin;
+  }
+}
+
+.latest-activity, .recommendations {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  column-gap: 50px;
+  max-width: 800px;
+  width: 100%;
+  height: 100%;
+
+  .latest-activity-record, .recommendation {
+    min-height: 120px;
+    border-radius: 10px;
+    background: $lighter-dark-color;
+    margin: $medium-margin 0;
+    padding: $small-padding $medium-padding;
+    border-radius: 10px;
+    font-weight: bold;
+    display: flex;
+    flex-direction: column;
+    box-shadow: #505357 0px 3px 1px;
+    height: 50%;
+    
+    &:hover {
+      box-shadow: #505357 0px 5px 3px;
+    }
+    
+
+    h2 {
+      font-size: 1.8rem;
+    }
+
+    h4 {
+      height: 100%;
+      display: flex;
+      align-items: flex-end;
+      color: $base-color;
+      font-size: 1.2rem;
+    }
+  }
+}
+
 
 .learning-subject {
   color: $base-color;

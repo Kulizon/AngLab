@@ -33,10 +33,21 @@
         </div>
       </div>
     </a>
-
+    
     <a href="/learn/B2" class="lang-choice">
       <div>
         <h2>B2</h2>
+        <div>
+          <h5>0/0</h5>
+          <h4>0%</h4>
+        </div>
+      </div>
+    </a>
+
+
+    <a href="/learn/C2" class="lang-choice">
+      <div>
+        <h2>C2</h2>
         <div>
           <h5>0/0</h5>
           <h4>0%</h4>
@@ -53,21 +64,40 @@
         </div>
       </div>
     </a>
+  </div>
 
-    <a href="/learn/C2" class="lang-choice">
-      <div>
-        <h2>C2</h2>
-        <div>
-          <h5>0/0</h5>
-          <h4>0%</h4>
+  <h2 class="section-heading">Latest Activity</h2>
+  <% if (loggedUser.languageLevelProgress.length > 0 ) { %>
+  <div class="latest-activity">
+      <% loggedUser.languageLevelProgress.reverse().slice(0, 5).forEach((entry) => { %>
+        <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.title%>">
+        <div class="latest-activity-record">
+          <h2><%=entry.languageLevel%></h2>
+          <h5><%=entry.languageLevelSubject%></h5>
+          <h4><%=entry.title%></h4>
         </div>
+        </a>
+      <% }) %>
+  </div>
+  <% } else { %>
+      <h4>No recent activities. Start learning Now!</h4>
+    <% } %>
+  <h2 class="section-heading">Recomendations</h2>
+  <div class="recommendations">
+    <% recommendations.forEach((entry) => { %>
+      <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
+      <div class="recommendation">
+        <h2><%=entry.languageLevel%></h2>
+        <h5><%=entry.subject%></h5>
+        <h4><%=entry.title%></h4>
       </div>
     </a>
+      <% }) %>
   </div>
 </main>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/javascript/getProgress.js"></script>
+<script src="/javascript/progress/getProgress.js"></script>
 <script src="/javascript/headerMenu.js"></script>
 
 <%- include('../partials/footer') %>

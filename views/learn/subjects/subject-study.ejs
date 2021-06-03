@@ -10,7 +10,7 @@
     <div class="lang-choices">
       <% if (subjectLessons.length > 0) { %>
         <% subjectLessons.forEach((lesson) => { %>
-            <a href="/learn/<%=lesson.languageLevel%>/study/<%=lesson.subject%>/<%=lesson.title%>" class="lang-choice">
+            <a href="/learn/<%=lesson.languageLevel%>/study/<%=lesson.subject%>/<%=lesson.title%>" class="lang-choice lesson-choice">
                 <div>
                   <h2><%= lesson.title %> </h2>
                   <h5>...</h5>
@@ -24,7 +24,7 @@
 </main>
 
 <script src="/socket.io/socket.io.js"></script>
-<script src="/javascript/getLessonProgress.js"></script>
+<script src="/javascript/progress/getLessonProgress.js"></script>
 <script src="/javascript/headerMenu.js"></script>
 
 <%- include('../../partials/footer') %>
