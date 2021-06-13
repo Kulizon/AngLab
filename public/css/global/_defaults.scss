@@ -7,6 +7,24 @@
   transition: 0.2s;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: $darker-dark-color;
+}
+
+::-webkit-scrollbar-thumb {
+  background: $lighter-dark-color;
+  border-radius: $default-border-radius;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #363d53;
+  transition: 0.2s;
+}
 
 body {
   font-family: Helvetica, sans-serif;
@@ -34,7 +52,7 @@ button,
 input,
 textarea {
   font-family: inherit;
-  border-radius: 10px;
+  border-radius: $default-border-radius;
   border: none;
   outline: none;
 
@@ -61,7 +79,7 @@ button:not(.delete, .lesson-button) {
   padding: $tiny-padding;
   width: 10rem;
   background-color: $base-color;
-  color: $lighter-light-color;
+  color: $lighter-dark-color;
   border: 3px solid $base-color;
   font-size: 1rem;
   font-weight: bold;
@@ -103,4 +121,83 @@ button.invert-colors {
   }
 }
 
+.contact-icon {
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  background: $lighter-dark-color;
+  color: $secondary-color;
+  border-radius: 360px;
+  padding: 10px;
+
+  &:hover {
+    background: #363d53;
+    cursor: pointer;
+  }
+}
+
+.contact-info {
+  position: fixed;
+  right: 9rem;
+  bottom: 2.5rem;
+  background: $lighter-dark-color;
+  border-radius: $default-border-radius;
+  padding: $medium-padding;
+  width: 0rem;
+  height: 0rem;
+  overflow: hidden;
+  display: none;
+  transition: 0.15s;
+
+  h5 {
+    font-size: 1rem;
+    color: $base-color;
+    min-width: 14rem;
+  }
+
+  h6 {
+    font-size: 1.1rem;
+    color: $lighter-light-color;
+    margin-bottom: $small-margin * 1.2;
+    text-align: center;
+    min-width: 14rem;
+
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    a {
+      color: $base-color;
+    }
+  }
+}
+
+.donate {
+  align-items: center;
+
+  h1 {
+    color: $base-color;
+    font-size: 1.8rem;
+  }
+
+  h3 {
+    margin: $tiny-margin 0 $medium-margin;
+    font-size: 1.1rem;
+  }
+
+  h4 {
+    color: $secondary-color;
+    font-size: 1.3rem;
+
+    span {
+      color: $base-color;
+    }
+  }
+
+  a {
+    margin-top: $small-margin;
+  }
+}
 

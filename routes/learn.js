@@ -206,7 +206,7 @@ router.get("/learn/:languageLevel/practice/:practiceSubject", async (req, res) =
         if (e) console.log(e);
 
         if (answer.chosenAnswer === question.correctAnswer) {
-          socket.emit("answerCorrect", { feedback: "Good", iteration: answer.iteration });
+          socket.emit("answerCorrect", { feedback: "Correct!", iteration: answer.iteration });
           return;
         }
 

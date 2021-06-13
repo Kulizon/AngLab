@@ -152,8 +152,6 @@ router.get("/user/settings", async (req, res) => {
   let flashMessage = req.flash("oldPasswordError");
   if (flashMessage.length == 0) flashMessage = null;
 
-  console.log(flashMessage);
-
   res.render("user/user-settings", { loggedUser, errorMessage: flashMessage });
 });
 

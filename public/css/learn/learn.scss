@@ -4,23 +4,30 @@ a {
   color: inital;
 }
 
+body {
+  display: flex;
+  flex-direction: column;
+}
+
 main {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
   width: 100%;
+  max-width: 1200px;
 }
 
 .lang-choices {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 50px;
-  max-width: 1000px;
+  column-gap: 30px;
   width: 100%;
+  margin: 0 0 $big-margin * 2;
 
   h2 {
-    text-align: center;
+    margin-top: $tiny-margin;
+    grid-column: 1/4;
   }
 
   a[href="/learn/A2"] {
@@ -42,16 +49,15 @@ main {
     color: $lighter-light-color;
     background: $lighter-dark-color;
     width: 100%;
-    margin: $medium-margin 0;
+    margin: $small-margin 0;
     padding: $small-padding $medium-padding;
-    border-radius: 10px;
+    border-radius: $default-border-radius;
     font-weight: bold;
     font-size: 1.5rem;
     min-height: 120px;
-    box-shadow: #505357 0px 3px 1px;
 
     &:hover {
-      box-shadow: #505357 0px 5px 3px;
+      box-shadow: $secondary-color 0px 5px 0px;
     }
 
     &.learn-choice {
@@ -61,14 +67,14 @@ main {
 
       div {
         display: flex;
-      justify-content: center;
-      align-items: center;
+        justify-content: center;
+        align-items: center;
       }
     }
 
     &.featured {
       margin-top: $medium-margin;
-      grid-column: 2/3;
+      grid-column: 1/2;
     }
 
     &.lesson-choice {
@@ -82,13 +88,13 @@ main {
         }
 
         h5.finished {
-          color: #88c03d
+          color: #88c03d;
         }
       }
     }
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     div {
@@ -104,13 +110,13 @@ main {
       }
 
       h4 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: $base-color;
         margin-left: $small-margin;
       }
 
       h5 {
-        font-size: 1.5rem;
+        font-size: 1.3rem;
         color: $lighter-light-color;
       }
     }
@@ -118,42 +124,44 @@ main {
 }
 
 .section-heading {
-  margin-top: $big-margin * 2;
-  font-size: 1.6rem;
-  
+  font-size: 1.5rem;
+
   & + h4 {
     margin-top: $small-margin;
   }
 }
 
-.latest-activity, .recommendations {
+.latest-activity,
+.recommendations {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  column-gap: 50px;
-  max-width: 800px;
+  column-gap: 30px;
   width: 100%;
   height: 100%;
+  margin: 0 0 $big-margin * 2;
 
-  .latest-activity-record, .recommendation {
+  h4 {
+    margin-top: $tiny-margin;
+  }
+
+  .latest-activity-record,
+  .recommendation {
     min-height: 120px;
-    border-radius: 10px;
+    border-radius: $default-border-radius;
     background: $lighter-dark-color;
-    margin: $medium-margin 0;
+    margin: $small-margin 0;
     padding: $small-padding $medium-padding;
-    border-radius: 10px;
     font-weight: bold;
     display: flex;
     flex-direction: column;
-    box-shadow: #505357 0px 3px 1px;
     height: 50%;
-    
+
     &:hover {
-      box-shadow: #505357 0px 5px 3px;
+      box-shadow: $secondary-color 0px 5px 0px;
     }
-    
 
     h2 {
-      font-size: 1.8rem;
+      font-size: 1.6rem;
     }
 
     h4 {
@@ -161,16 +169,14 @@ main {
       display: flex;
       align-items: flex-end;
       color: $base-color;
-      font-size: 1.2rem;
+      font-size: 1.3rem;
     }
   }
 }
 
-
 .learning-subject {
   color: $base-color;
-  font-size: 2rem;
-  text-align: center;
+  font-size: 1.5rem;
 
   span {
     color: $secondary-color;
@@ -231,16 +237,22 @@ main {
   margin: $medium-margin 0;
   display: flex;
   flex-direction: column;
+  align-self: center;
 
   h4 {
     color: $lighter-light-color;
     margin-bottom: $small-margin;
+    font-size: 1.2rem;
+  }
+
+  label {
+    font-size: 1.1rem;
   }
 
   h6 {
     margin-bottom: $tiny-margin;
     font-weight: bold;
-    font-size: 1.2rem;
+    font-size: 1rem;
   }
 
   .question-group {
@@ -291,13 +303,21 @@ main {
 
 #summarize-form {
   display: none;
+  align-self: center;
 }
 
 #summarize-form button {
   margin-top: 0;
+  align-self: center;
 }
 
 main.test-end {
+  align-items: center;
+
+  h2 {
+    align-self: flex-start;
+  }
+
   h3 {
     font-size: 2rem;
     margin: $medium-margin 0;
@@ -314,7 +334,7 @@ main.test-end {
       font-size: 4rem;
 
       &:first-of-type {
-        color: $secondary-color;
+        color: $lighter-light-color;
       }
 
       &:last-of-type {
@@ -328,6 +348,7 @@ main.test-end {
   display: flex;
   flex-direction: column;
   align-items: center;
+  align-self: center;
 }
 
 .flashcard-button,
@@ -341,7 +362,7 @@ main.test-end {
 }
 
 .flashcard-correct-translation {
-    font-size: 1.3rem;
+  font-size: 1.3rem;
 
   &.correct {
     span {
@@ -399,4 +420,3 @@ main.test-end {
     }
   }
 }
-

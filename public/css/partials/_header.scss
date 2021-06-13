@@ -95,10 +95,26 @@ header {
     }
   }
 
-  nav > {
+  nav {
     display: flex;
     flex-direction: row;
     align-items: center;
+
+    a[href="/donate"] {
+      padding: $tiny-padding * 0.7 $small-margin;
+      background-color: $base-color;
+      color: $lighter-dark-color;
+      border: 3px solid $base-color;
+      font-size: 0.9rem;
+      font-weight: bold;
+      text-align: center;
+      border-radius: $default-border-radius;
+
+      &:hover {
+        background: $secondary-color;
+        border-color: $secondary-color;
+      }
+    }
 
     a {
       margin: 0 $small-margin;
@@ -107,14 +123,6 @@ header {
         width: 1.5rem;
         height: 1.5rem;
         color: $lighter-light-color;
-      }
-
-      &:first-of-type {
-        svg {
-          margin-bottom: -3px;
-          width: 1.6rem;
-          height: 1.6rem;
-        }
       }
 
       &:hover {
@@ -134,12 +142,12 @@ header {
     flex-direction: column;
     width: 400px;
     padding: $small-padding;
-    background: #353638;
+    background: $lighter-dark-color;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
-    border-radius: 10px;
     z-index: 1000;
+    border-radius: $default-border-radius;
 
     h6 {
       text-align: center;
@@ -151,54 +159,55 @@ header {
     }
 
     .notification {
-        margin-bottom: $medium-margin;
-        background: $lighter-dark-color;
-        padding: $tiny-padding $big-padding $tiny-padding $small-padding;
-        border-radius: 10px;
-        box-shadow: #505357 0px 3px 1px;
-        position: relative;
+      margin-bottom: $medium-margin;
+      background: $lighter-dark-color;
+      padding: $tiny-padding $big-padding $tiny-padding $small-padding;
+      border-radius: $default-border-radius;
+      position: relative;
 
-        &:last-of-type {
-            margin-bottom: 0;
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+
+      h3 {
+        margin-bottom: 0.2rem;
+      }
+
+      button.delete {
+        margin: 0;
+        position: absolute;
+        top: 0rem;
+        right: 0rem;
+        background: none;
+
+        &:hover {
+          transform: rotate(15deg);
         }
 
-        h3 {
-            margin-bottom: 0.2rem;
+        svg {
+          width: 1.6rem;
+          height: 1.6rem;
+          padding: 0.25rem;
+          background: $lighter-light-color;
+          fill: $lighter-dark-color;
+          border-radius: 10px;
         }
-
-        button.delete {
-            margin: 0;
-            position: absolute;
-            top: 0rem;
-            right: 0rem;
-            background: none;
-
-            &:hover {
-                transform: rotate(15deg);
-            }
-
-            svg {
-                width: 1.6rem;
-                height: 1.6rem;
-                padding: 0.25rem;
-                background: $lighter-light-color;
-                fill: #D71C38;
-                border-radius: 10px;
-            }
-        }
+      }
     }
-}
-  
+  }
+
   .user-menu {
     position: absolute;
-    transform: translate(-110px, 10px);
-    background: #353638;
+    transform: translate(100px, 110px);
+    background: #13141B;
     padding: $small-padding;
     border-radius: 10px;
     width: 180px;
     opacity: 0;
     display: none;
     flex-direction: column;
+    border: 2px solid #1a1d28;
+    box-shadow: 0 5px 15px 0 rgba(147, 155, 180, 0.08);
 
     a {
       font-size: 1.05rem;
@@ -218,7 +227,7 @@ header {
 
       &:first-of-type {
         margin-top: 0;
-      }  
+      }
     }
 
     svg {
@@ -234,5 +243,4 @@ header {
       }
     }
   }
-
 }

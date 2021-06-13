@@ -6,6 +6,7 @@ const session = require("express-session");
 const flash = require("connect-flash");
 const dotenv = require("dotenv").config();
 const passport = require("passport");
+const favicon = require('serve-favicon');
 
 const app = express();
 
@@ -17,6 +18,7 @@ app.use(session({ secret: "process.env.SECRET", resave: true, saveUninitialized:
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
+app.use(favicon(__dirname + '/public/images/favicon.ico'));
 
 const PORT = process.env.PORT || 3000;
 
@@ -48,6 +50,14 @@ app.use(userRouter);
 
 const adminRouter = require("./routes/admin")
 app.use(adminRouter);
+
+app.get("/donate", (req, res) => {
+  const {redirectIfNotAuthenticated} = require("./utilities/utilities");
+  
+  if (redirectIfNotAuthenticated(req, res)) return;
+
+  res.render("donate", {loggedUser: req.user})
+})
 
 
 

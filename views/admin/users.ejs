@@ -43,6 +43,7 @@
                                 <button type="submit">Delete</button>
                             </form>
                             <form action="/admin/users/ban-user/<%=user._id%>" method="post">
+                                <input type="hidden" name="username" value="<%=user._id%>">
                                 <input type="hidden" name="username" value="<%=user.username%>">
                                 <button type="submit">Ban</button>
                             </form> 

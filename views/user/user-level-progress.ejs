@@ -2,15 +2,15 @@
 <link rel="stylesheet" href="/css/user/user.css" />
 <%- include('../partials/boilerplate-end', {loggedUser}) %> <%- include('../partials/header') %>
 
-<main>
+<main class="user">
     <h2 class="learning-subject">User <span>•</span> <%=languageLevel%></h2>
     <div class="user-scores">
         <div>
-            <h5>Ilość wykonanych testów: <span><%=testNumber%></span></h5>
-            <h5>Ogólny średni wynik: <span><%=overallLanguageLevelScore%>%</span></h5>
-            <h5>Średni wynik z ostatniego tygodnia: <span><%=lastWeekScore%>%</span></h5>
+            <h5>Ilość wykonanych testów <%=languageLevel%>: <span><%=testNumber%></span></h5>
+            <h5>Ogólny średni wynik testów <%=languageLevel%>: <span><%=overallLanguageLevelScore%>%</span></h5>
+            <h5>Średni wynik testów <%=languageLevel%> z ostatniego tygodnia: <span><%=lastWeekScore%>%</span></h5>
         </div>
-        <a href="/user/test-history/<%=loggedUser.username%>/test-records/"><button class="invert-colors">All Test Records</button></a>
+        <a href="/user/test-history/<%=loggedUser.username%>/test-records/"><button class="invert-colors">Test Records</button></a>
     </div>
     
     <% let numberOfTestsDone = 0 %> <% testHistory.forEach((testRecord) => { %> <% if (testRecord.languageLevel === languageLevel) { %> <% numberOfTestsDone++ %> <% } %> <% }) %>
@@ -113,8 +113,10 @@
             <% } %>
     </div>
 
-    <h2 class="user-tests-heading">Testy z ostatniego tygodnia:</h2>
-    <div class="user-tests">
+    <h2 class="user-tests-heading">Testy <%=languageLevel%> z ostatniego tygodnia:</h2>
+    
+    <% if (lastWeekTests.length > 0) { %> 
+        <div class="user-tests">
         <% lastWeekTests.forEach((testRecord) => { %> 
             <div class="user-test">
                 <h3><%=testRecord.languageLevel%> </h3>
@@ -126,8 +128,13 @@
                 <h6>Wynik: <%=testRecord.correctAnswers%>/<%=testRecord.amountOfQuestions%></h6>
             </div>  
         <% }) %>
-    </div>      
+    </div>  
+    <% } else {%> 
+        <h4>No test records found.</h4>
+    <% } %>
 </main>
+
+<%- include('../partials/contact-info') %>
 
 <script src="/javascript/headerMenu.js"></script>
 

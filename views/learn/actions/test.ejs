@@ -14,19 +14,19 @@
             <input type="hidden" value="<%=question._id%>" class="questionID" />
             <div>
               <label for="answer"><%=question.answerA%></label>
-              <input type="radio" name="<%=question._id%>" value="A" />
+              <input type="radio" name="<%=question._id%>" value="A" required />
             </div>
             <div>
               <label for="answer"><%=question.answerB%></label>
-              <input type="radio" name="<%=question._id%>" value="B" />
+              <input type="radio" name="<%=question._id%>" value="B" required />
             </div>
             <div>
               <label for="answer"><%=question.answerC%></label>
-              <input type="radio" name="<%=question._id%>" value="C" />
+              <input type="radio" name="<%=question._id%>" value="C" required />
             </div>
             <div>
               <label for="answer"><%=question.answerD%></label>
-              <input type="radio" name="<%=question._id%>" value="D" />
+              <input type="radio" name="<%=question._id%>" value="D" required />
             </div>
           </div>
           <% }) %>
@@ -42,9 +42,8 @@
       <h2>No Questions for this Language Level.</h2>
         <a href="/learn"><button class="invert-colors">Main Page</button></a>
     <% } %>
-    
-    
 </main>
+
 
 <script src="/socket.io/socket.io.js"></script>
 <script src="/javascript/answers/sendTestAnswers.js"></script>

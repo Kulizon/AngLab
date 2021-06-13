@@ -74,7 +74,7 @@ router.post("/admin/users/ban-user/:userID", async (req, res) => {
 
   const bannedUser = new BannedUser({ username: req.body.username });
   bannedUser.save();
-  User.deleteOne({ _id: req.params.userID }, (e) => {
+  User.deleteOne({ _id: req.body.userID }, (e) => {
     if (e) console.log(e);
   });
   res.redirect("/admin/users/");
@@ -83,7 +83,7 @@ router.post("/admin/users/ban-user/:userID", async (req, res) => {
 router.post("/admin/users/delete-user/:userID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  User.deleteOne({ _id: req.params.userID }, (e) => {
+  User.deleteOne({ _id: req.body.userID }, (e) => {
     if (e) console.log(e);
   });
   res.redirect("/admin/users/");
@@ -194,7 +194,7 @@ router.get("/admin/questions/edit-question/:questionID", async (req, res) => {
 router.post("/admin/questions/edit-question/:questionID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  await Question.updateOne({ _id: req.params.questionID }, { languageLevel: req.body.level, question: req.body.question, subject: req.body.subject, answerA: req.body.answerA, answerB: req.body.answerB, answerC: req.body.answerC, answerD: req.body.answerD, correctAnswer: req.body.correctAnswer, hint: req.body.hint }, (e) => {
+  await Question.updateOne({ _id: req.body.questionID }, { languageLevel: req.body.level, question: req.body.question, subject: req.body.subject, answerA: req.body.answerA, answerB: req.body.answerB, answerC: req.body.answerC, answerD: req.body.answerD, correctAnswer: req.body.correctAnswer, hint: req.body.hint }, (e) => {
     if (e) console.log(e);
   });
 
@@ -204,7 +204,7 @@ router.post("/admin/questions/edit-question/:questionID", async (req, res) => {
 router.post("/admin/questions/delete-question/:questionID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  await Question.deleteOne({ _id: req.params.questionID }, (e) => {
+  await Question.deleteOne({ _id: req.body.questionID }, (e) => {
     if (e) console.log(e);
   });
 
@@ -324,9 +324,10 @@ router.get("/admin/lessons/edit-lesson/:lessonID", async (req, res) => {
 router.post("/admin/lessons/edit-lesson/:lessonID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  Lesson.updateOne({ _id: req.params.lessonID }, { languageLevel: req.body.level, subject: req.body.subject, title: req.body.title, content: req.body.content }, (e) => {
+  Lesson.updateOne({ _id: req.bpdy.lessonID }, { languageLevel: req.body.level, subject: req.body.subject, title: req.body.title, content: req.body.content }, (e) => {
     if (e) console.log(e);
   });
+
   res.redirect("/admin/lessons");
 });
 
@@ -422,7 +423,7 @@ router.post("/admin/flashcards/add-flashcard", async (req, res) => {
 router.post("/admin/flashcards/delete-flashcard/:flashcardID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  await Flashcard.deleteOne({ _id: req.params.flashcardID }, (e) => {
+  await Flashcard.deleteOne({ _id: req.body.flashcardID }, (e) => {
     if (e) console.log(e);
   });
 
@@ -443,7 +444,7 @@ router.get("/admin/flashcards/edit-flashcard/:flashcardID", async (req, res) => 
 router.post("/admin/flashcards/edit-flashcard/:flashcardID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  await Flashcard.updateOne({ _id: req.params.flashcardID }, { languageLevel: req.body.level, word: req.body.word, translation: req.body.translation }, (e) => {
+  await Flashcard.updateOne({ _id: req.body.flashcardID }, { languageLevel: req.body.level, word: req.body.word, translation: req.body.translation }, (e) => {
     if (e) console.log(e);
   });
 

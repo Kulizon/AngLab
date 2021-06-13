@@ -15,7 +15,7 @@ h3 {
 
 h4, h5, h6 {
   font-size: 1.1rem;
-  color: #c9c1c1;
+  color: #d6d2d2;
 }
 
 label {
@@ -25,7 +25,7 @@ label {
 
 input, textarea {
   font-size: 1rem;
-  color: #3b3e42;
+  color: #282E3E;
 }
 
 p {
@@ -42,9 +42,30 @@ p {
   transition: 0.2s;
 }
 
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #13141B;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #282E3E;
+  border-radius: 4px;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #363d53;
+  -webkit-transition: 0.2s;
+  transition: 0.2s;
+}
+
 body {
   font-family: Helvetica, sans-serif;
-  background-color: #21252C;
+  background-color: #13141B;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -64,18 +85,18 @@ ul {
 
 a {
   text-decoration: none;
-  color: #36687C;
+  color: #3ccfcf;
 }
 
 a:hover {
-  color: #dfab00;
+  color: #ffdc62;
 }
 
 button,
 input,
 textarea {
   font-family: inherit;
-  border-radius: 10px;
+  border-radius: 4px;
   border: none;
   outline: none;
 }
@@ -102,16 +123,16 @@ button:not(.delete, .lesson-button) {
   margin-top: 2rem;
   padding: 0.5rem;
   width: 10rem;
-  background-color: #dfab00;
-  color: #f1f1f1;
-  border: 3px solid #dfab00;
+  background-color: #ffdc62;
+  color: #282E3E;
+  border: 3px solid #ffdc62;
   font-size: 1rem;
   font-weight: bold;
 }
 
 button:hover:not(.delete, .lesson-button) {
-  background-color: #36687C;
-  border-color: #36687C;
+  background-color: #3ccfcf;
+  border-color: #3ccfcf;
 }
 
 .logo {
@@ -129,7 +150,7 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 .logo__icon:hover {
-  color: #dfab00;
+  color: #ffdc62;
 }
 
 .logo__brand {
@@ -139,13 +160,96 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 button.invert-colors {
-  background-color: #36687C !important;
-  border-color: #36687C !important;
+  background-color: #3ccfcf !important;
+  border-color: #3ccfcf !important;
 }
 
 button.invert-colors:hover {
-  background-color: #dfab00 !important;
-  border-color: #dfab00 !important;
+  background-color: #ffdc62 !important;
+  border-color: #ffdc62 !important;
+}
+
+.contact-icon {
+  position: fixed;
+  width: 3rem;
+  height: 3rem;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  background: #282E3E;
+  color: #3ccfcf;
+  border-radius: 360px;
+  padding: 10px;
+}
+
+.contact-icon:hover {
+  background: #363d53;
+  cursor: pointer;
+}
+
+.contact-info {
+  position: fixed;
+  right: 9rem;
+  bottom: 2.5rem;
+  background: #282E3E;
+  border-radius: 4px;
+  padding: 1.5rem;
+  width: 0rem;
+  height: 0rem;
+  overflow: hidden;
+  display: none;
+  -webkit-transition: 0.15s;
+  transition: 0.15s;
+}
+
+.contact-info h5 {
+  font-size: 1rem;
+  color: #ffdc62;
+  min-width: 14rem;
+}
+
+.contact-info h6 {
+  font-size: 1.1rem;
+  color: #f1f1f1;
+  margin-bottom: 1.2rem;
+  text-align: center;
+  min-width: 14rem;
+}
+
+.contact-info h6:last-of-type {
+  margin-bottom: 0;
+}
+
+.contact-info h6 a {
+  color: #ffdc62;
+}
+
+.donate {
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.donate h1 {
+  color: #ffdc62;
+  font-size: 1.8rem;
+}
+
+.donate h3 {
+  margin: 0.4rem 0 1.6rem;
+  font-size: 1.1rem;
+}
+
+.donate h4 {
+  color: #3ccfcf;
+  font-size: 1.3rem;
+}
+
+.donate h4 span {
+  color: #ffdc62;
+}
+
+.donate a {
+  margin-top: 1rem;
 }
 
 body {
@@ -205,12 +309,12 @@ header ul a.featured {
   color: #f1f1f1;
   border-radius: 10px;
   padding: 0.5rem 0.8rem;
-  border: solid 3px #36687C;
+  border: solid 3px #3ccfcf;
   margin-right: 0;
 }
 
 header ul a.featured:hover {
-  border: solid 3px #dfab00;
+  border: solid 3px #ffdc62;
 }
 
 .cta {
@@ -283,7 +387,7 @@ header ul a.featured:hover {
 
 .features .feature__icon {
   width: 2.5rem;
-  color: #dfab00;
+  color: #ffdc62;
 }
 
 .opinions {
@@ -326,7 +430,7 @@ header ul a.featured:hover {
   width: 1rem;
   height: 1rem;
   margin: 0 1rem;
-  background-color: #dfab00;
+  background-color: #ffdc62;
   border: none;
   opacity: 1;
   -webkit-transition: 0.2s;
@@ -334,7 +438,7 @@ header ul a.featured:hover {
 }
 
 .opinions .splide__pagination__page:hover {
-  background-color: #36687C;
+  background-color: #3ccfcf;
 }
 
 .opinions .opinion {
@@ -373,14 +477,14 @@ header ul a.featured:hover {
 
 .contact input, .contact textarea {
   padding: 0.8rem;
-  -webkit-box-shadow: #3b3e42 0px 5px 3px;
-          box-shadow: #3b3e42 0px 5px 3px;
+  -webkit-box-shadow: #282E3E 0px 5px 3px;
+          box-shadow: #282E3E 0px 5px 3px;
   font-weight: bold;
 }
 
 .contact input:focus, .contact textarea:focus {
-  -webkit-box-shadow: #3b3e42 0px 10px 3px;
-          box-shadow: #3b3e42 0px 10px 3px;
+  -webkit-box-shadow: #282E3E 0px 10px 3px;
+          box-shadow: #282E3E 0px 10px 3px;
 }
 
 .contact .contact-form {

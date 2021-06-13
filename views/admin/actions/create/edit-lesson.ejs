@@ -62,6 +62,8 @@
             <textarea name="content"><%=editedLesson.content%></textarea>
         
             <!-- Downloadable files here maybe -->
+
+            <input type="hidden" value="<%=lesson._id%>" name="lessonID" />
         
             <button type="submit">Submit</button>
           </form>
