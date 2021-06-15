@@ -10,7 +10,7 @@
     <div class="lang-choices">
       <% if (subjectLessons.length > 0) { %>
         <% subjectLessons.forEach((lesson) => { %>
-            <a href="/learn/<%=lesson.languageLevel%>/study/<%=lesson.subject%>/<%=lesson.title%>" class="lang-choice lesson-choice">
+            <a href="/learn/<%=lesson.languageLevel%>/study/<%=lesson.subject%>/<%=lesson._id%>" class="lang-choice lesson-choice">
                 <div>
                   <h2><%= lesson.title %> </h2>
                   <h5>...</h5>

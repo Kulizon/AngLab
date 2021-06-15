@@ -89,7 +89,7 @@ a {
 }
 
 a:hover {
-  color: #ffdc62;
+  color: #ffdb5b;
 }
 
 button,
@@ -112,6 +112,10 @@ button:focus, button:hover {
   cursor: pointer;
 }
 
+footer {
+  margin-top: 2rem;
+}
+
 input {
   font-weight: bold;
 }
@@ -123,9 +127,9 @@ button:not(.delete, .lesson-button) {
   margin-top: 2rem;
   padding: 0.5rem;
   width: 10rem;
-  background-color: #ffdc62;
+  background-color: #ffdb5b;
   color: #282E3E;
-  border: 3px solid #ffdc62;
+  border: 3px solid #ffdb5b;
   font-size: 1rem;
   font-weight: bold;
 }
@@ -150,7 +154,7 @@ button:hover:not(.delete, .lesson-button) {
 }
 
 .logo__icon:hover {
-  color: #ffdc62;
+  color: #ffdb5b;
 }
 
 .logo__brand {
@@ -165,8 +169,8 @@ button.invert-colors {
 }
 
 button.invert-colors:hover {
-  background-color: #ffdc62 !important;
-  border-color: #ffdc62 !important;
+  background-color: #ffdb5b !important;
+  border-color: #ffdb5b !important;
 }
 
 .contact-icon {
@@ -175,14 +179,18 @@ button.invert-colors:hover {
   height: 3rem;
   right: 2.5rem;
   bottom: 2.5rem;
-  background: #282E3E;
+  background: #1a1d28;
   color: #3ccfcf;
   border-radius: 360px;
-  padding: 10px;
+  padding: 8px;
+  border: 2px solid rgba(18, 20, 27, 0.6);
+  -webkit-box-shadow: 0 2px 15px 0 rgba(147, 155, 180, 0.08);
+          box-shadow: 0 2px 15px 0 rgba(147, 155, 180, 0.08);
+  z-index: 1000;
 }
 
 .contact-icon:hover {
-  background: #363d53;
+  background: #212335;
   cursor: pointer;
 }
 
@@ -190,7 +198,6 @@ button.invert-colors:hover {
   position: fixed;
   right: 9rem;
   bottom: 2.5rem;
-  background: #282E3E;
   border-radius: 4px;
   padding: 1.5rem;
   width: 0rem;
@@ -199,11 +206,17 @@ button.invert-colors:hover {
   display: none;
   -webkit-transition: 0.15s;
   transition: 0.15s;
+  opacity: 0;
+  background: #1a1d28;
+  border: 2px solid rgba(18, 20, 27, 0.6);
+  -webkit-box-shadow: 0 5px 15px 0 rgba(147, 155, 180, 0.08);
+          box-shadow: 0 5px 15px 0 rgba(147, 155, 180, 0.08);
+  z-index: 100;
 }
 
 .contact-info h5 {
   font-size: 1rem;
-  color: #ffdc62;
+  color: #ffdb5b;
   min-width: 14rem;
 }
 
@@ -220,49 +233,23 @@ button.invert-colors:hover {
 }
 
 .contact-info h6 a {
-  color: #ffdc62;
-}
-
-.donate {
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-}
-
-.donate h1 {
-  color: #ffdc62;
-  font-size: 1.8rem;
-}
-
-.donate h3 {
-  margin: 0.4rem 0 1.6rem;
-  font-size: 1.1rem;
-}
-
-.donate h4 {
-  color: #3ccfcf;
-  font-size: 1.3rem;
-}
-
-.donate h4 span {
-  color: #ffdc62;
-}
-
-.donate a {
-  margin-top: 1rem;
+  color: #ffdb5b;
 }
 
 body {
-  background: #F0F0F1;
+  background: #f0f0f1;
   overflow-x: hidden;
   padding: 0;
 }
 
-h1, h2, h3 {
+h1,
+h2,
+h3 {
   color: #13141B;
 }
 
-h4, h5 {
+h4,
+h5 {
   color: #282E3E;
 }
 
@@ -300,6 +287,7 @@ div.main-content button {
   margin-right: 2rem;
   background: #13141B;
   border-color: #13141B;
+  color: #f1f1f1;
 }
 
 div.main-content button:hover {
@@ -313,7 +301,8 @@ div.main-content label {
   font-size: 1.2rem;
 }
 
-div.main-content input[type="text"], div.main-content textarea {
+div.main-content input[type="text"],
+div.main-content textarea {
   padding: 0.5rem 0.8rem;
   width: 15rem;
   font-size: 1rem;
@@ -322,7 +311,8 @@ div.main-content input[type="text"], div.main-content textarea {
   font-weight: bold;
 }
 
-div.main-content input[type="text"]:focus, div.main-content textarea:focus {
+div.main-content input[type="text"]:focus,
+div.main-content textarea:focus {
   -webkit-box-shadow: #282E3E 0px 3px 1px;
           box-shadow: #282E3E 0px 3px 1px;
 }
@@ -344,7 +334,7 @@ aside {
 }
 
 aside a {
-  color: #F0F0F1;
+  color: #f0f0f1;
   font-size: 1.2rem;
 }
 
@@ -504,11 +494,13 @@ aside a {
   margin: 0.4rem 0;
 }
 
-.search-form, .create-form {
+.search-form,
+.create-form {
   margin: 0 0 2rem;
 }
 
-.search-form.margin-top, .create-form.margin-top {
+.search-form.margin-top,
+.create-form.margin-top {
   margin: 2rem 0;
 }
 
@@ -516,7 +508,8 @@ aside a {
   margin-bottom: 2rem;
 }
 
-.edit-form, .add-form {
+.edit-form,
+.add-form {
   display: none;
   -ms-grid-columns: 1fr 1fr;
       grid-template-columns: 1fr 1fr;
@@ -525,7 +518,8 @@ aside a {
           column-gap: 3rem;
 }
 
-.edit-form label[for="question"], .add-form label[for="question"] {
+.edit-form label[for="question"],
+.add-form label[for="question"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -534,7 +528,8 @@ aside a {
   grid-row: 1/2;
 }
 
-.edit-form textarea[name="question"], .add-form textarea[name="question"] {
+.edit-form textarea[name="question"],
+.add-form textarea[name="question"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -545,7 +540,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form label[for="subject"], .add-form label[for="subject"] {
+.edit-form label[for="subject"],
+.add-form label[for="subject"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -554,7 +550,8 @@ aside a {
   grid-row: 1/2;
 }
 
-.edit-form select[name="subject"], .add-form select[name="subject"] {
+.edit-form select[name="subject"],
+.add-form select[name="subject"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -565,7 +562,8 @@ aside a {
   height: 2.5rem;
 }
 
-.edit-form label[for="answerA"], .add-form label[for="answerA"] {
+.edit-form label[for="answerA"],
+.add-form label[for="answerA"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -574,7 +572,8 @@ aside a {
   grid-row: 4/5;
 }
 
-.edit-form textarea[name="answerA"], .add-form textarea[name="answerA"] {
+.edit-form textarea[name="answerA"],
+.add-form textarea[name="answerA"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -585,7 +584,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form label[for="answerB"], .add-form label[for="answerB"] {
+.edit-form label[for="answerB"],
+.add-form label[for="answerB"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -594,7 +594,8 @@ aside a {
   grid-row: 4/5;
 }
 
-.edit-form textarea[name="answerB"], .add-form textarea[name="answerB"] {
+.edit-form textarea[name="answerB"],
+.add-form textarea[name="answerB"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -605,7 +606,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form label[for="answerC"], .add-form label[for="answerC"] {
+.edit-form label[for="answerC"],
+.add-form label[for="answerC"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -614,7 +616,8 @@ aside a {
   grid-row: 7/8;
 }
 
-.edit-form textarea[name="answerC"], .add-form textarea[name="answerC"] {
+.edit-form textarea[name="answerC"],
+.add-form textarea[name="answerC"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -625,7 +628,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form label[for="answerD"], .add-form label[for="answerD"] {
+.edit-form label[for="answerD"],
+.add-form label[for="answerD"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -634,7 +638,8 @@ aside a {
   grid-row: 7/8;
 }
 
-.edit-form textarea[name="answerD"], .add-form textarea[name="answerD"] {
+.edit-form textarea[name="answerD"],
+.add-form textarea[name="answerD"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -645,7 +650,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form label[for="correctAnswer"], .add-form label[for="correctAnswer"] {
+.edit-form label[for="correctAnswer"],
+.add-form label[for="correctAnswer"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -654,7 +660,8 @@ aside a {
   grid-row: 9/10;
 }
 
-.edit-form select[name="correctAnswer"], .add-form select[name="correctAnswer"] {
+.edit-form select[name="correctAnswer"],
+.add-form select[name="correctAnswer"] {
   -ms-grid-column: 2;
   -ms-grid-column-span: 1;
   grid-column: 2/3;
@@ -665,7 +672,8 @@ aside a {
   height: 2.5rem;
 }
 
-.edit-form label[for="hint"], .add-form label[for="hint"] {
+.edit-form label[for="hint"],
+.add-form label[for="hint"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -674,7 +682,8 @@ aside a {
   grid-row: 9/10;
 }
 
-.edit-form textarea[name="hint"], .add-form textarea[name="hint"] {
+.edit-form textarea[name="hint"],
+.add-form textarea[name="hint"] {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -685,7 +694,8 @@ aside a {
   height: 5rem;
 }
 
-.edit-form button, .add-form button {
+.edit-form button,
+.add-form button {
   -ms-grid-column: 1;
   -ms-grid-column-span: 1;
   grid-column: 1/2;
@@ -694,7 +704,8 @@ aside a {
   grid-row: 13/14;
 }
 
-.edit-lesson-form, .add-lesson-form {
+.edit-lesson-form,
+.add-lesson-form {
   display: none;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
@@ -702,29 +713,37 @@ aside a {
           flex-direction: column;
 }
 
-.edit-lesson-form label[for="subject"], .add-lesson-form label[for="subject"] {
+.edit-lesson-form label[for="subject"],
+.add-lesson-form label[for="subject"] {
   margin-top: 2rem;
 }
 
-.edit-lesson-form select[name="subject"], .add-lesson-form select[name="subject"] {
+.edit-lesson-form select[name="subject"],
+.add-lesson-form select[name="subject"] {
   width: 20%;
   height: 2.5rem;
   margin-bottom: 1rem;
 }
 
-.edit-lesson-form input, .add-lesson-form input {
-  width: 50% !important;
+.edit-lesson-form input,
+.add-lesson-form input {
+  width: 100% !important;
   height: 2.5rem;
   margin-bottom: 1rem;
+  max-width: 1226px;
 }
 
-.edit-lesson-form textarea, .add-lesson-form textarea {
-  width: 50% !important;
-  height: 5rem;
+.edit-lesson-form textarea[name="content"],
+.add-lesson-form textarea[name="content"] {
+  width: 100% !important;
+  max-width: 1226px;
+  font-size: 1.05rem;
+  height: 25rem;
   margin-bottom: 1rem;
 }
 
-.edit-lesson-form button, .add-lesson-form button {
+.edit-lesson-form button,
+.add-lesson-form button {
   -ms-flex-item-align: start;
       align-self: flex-start;
 }

@@ -14,7 +14,7 @@
         <option type="submit" value="C1">C1</option>
         <option type="submit" value="C2">C2</option>
       </select>
-      <input type="text" name="subject" placeholder="Category..." />
+      <input type="text" name="subject" placeholder="Subject..." />
       <button type="submit">Create</button>
     </form>
 
@@ -28,7 +28,7 @@
         <option value="C1">C1</option>
         <option value="C2">C2</option>
       </select>
-      <input type="text" name="searchQueryCategory" placeholder="Category..." />
+      <input type="text" name="searchQueryCategory" placeholder="Subject..." />
       <button type="submit">Search</button>
     </form>
 
@@ -49,6 +49,7 @@
           <input type="checkbox" name="chosenSubjectsID[]" value="<%=subject._id%>" />
           <h3><%= subject.languageLevel %></h3>
           <h3><%= subject.subject %></h3>
+          <form action=" "> </form>
           <form action="/admin/subjects/delete-subject/<%=subject._id%>" method="POST">
             <input type="hidden" value="<%=subject._id%>" name="subjectID" />
             <button type="submit">Delete</button>

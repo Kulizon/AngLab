@@ -51,24 +51,21 @@ const contactInfo = document.querySelector(".contact-info")
 contactIcon.addEventListener("click", () => {
     if (contactInfo.style.display === "block") {
         contactInfo.style.width = '0';
-
-        setTimeout(() => {
-            contactInfo.style.height = '0'
-        }, 160);
+        contactInfo.style.height = '0'
+        contactInfo.style.opacity = '0'
         
         setTimeout(() => {
             contactInfo.style.display = "none"
-        }, 310);
+        }, 140);
+
     } else {
         contactInfo.style.display = "block"
 
         setTimeout(() => {
             contactInfo.style.width = '17rem';
-        }, 15);
-
-        setTimeout(() => {
             contactInfo.style.height = '11.5rem'; 
-        }, 200);
+            contactInfo.style.opacity = '1'
+        }, 15);
     }
 
     

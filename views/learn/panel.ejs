@@ -8,7 +8,7 @@
       <div>
         <h2>A1</h2>
         <div>
-          <h5> 0/0</h5>
+          <h5>0/0</h5>
           <h4>0%</h4>
         </div>
       </div>
@@ -33,7 +33,7 @@
         </div>
       </div>
     </a>
-    
+
     <a href="/learn/B2" class="lang-choice">
       <div>
         <h2>B2</h2>
@@ -43,7 +43,6 @@
         </div>
       </div>
     </a>
-
 
     <a href="/learn/C2" class="lang-choice">
       <div>
@@ -66,38 +65,47 @@
     </a>
   </div>
 
+  <div class="example-flashcards">
+    <h2>Polish your English with these cool <span><%=randomLangLevel%></span> flashcards!</h2>
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="school" class="svg-inline--fa fa-school fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M0 224v272c0 8.84 7.16 16 16 16h80V192H32c-17.67 0-32 14.33-32 32zm360-48h-24v-40c0-4.42-3.58-8-8-8h-16c-4.42 0-8 3.58-8 8v64c0 4.42 3.58 8 8 8h48c4.42 0 8-3.58 8-8v-16c0-4.42-3.58-8-8-8zm137.75-63.96l-160-106.67a32.02 32.02 0 0 0-35.5 0l-160 106.67A32.002 32.002 0 0 0 128 138.66V512h128V368c0-8.84 7.16-16 16-16h96c8.84 0 16 7.16 16 16v144h128V138.67c0-10.7-5.35-20.7-14.25-26.63zM320 256c-44.18 0-80-35.82-80-80s35.82-80 80-80 80 35.82 80 80-35.82 80-80 80zm288-64h-64v320h80c8.84 0 16-7.16 16-16V224c0-17.67-14.33-32-32-32z"></path></svg>
+    <a href="/learn/<%=randomLangLevel%>/flashcards"><button class="invert-colors">Study</button></a>
+  </div>
+
   <h2 class="section-heading">Latest Activity</h2>
   <div class="latest-activity">
-  <% if (loggedUser.languageLevelProgress.length > 0 ) { %>
-      <% loggedUser.languageLevelProgress.reverse().slice(0, 5).forEach((entry) => { %>
-        <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.title%>">
-        <div class="latest-activity-record">
-          <h2><%=entry.languageLevel%></h2>
-          <h5><%=entry.languageLevelSubject%></h5>
-          <h4><%=entry.title%></h4>
-        </div>
-        </a>
-      <% }) %>
-  <% } else { %>
-      <h4>No recent activities. Start learning Now!</h4>
+    <% if (loggedUser.languageLevelProgress.length > 0 ) { %> <% loggedUser.languageLevelProgress.reverse().slice(0, 5).forEach((entry) => { %>
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.lessonID%>">
+      <div class="latest-activity-record">
+        <h2><%=entry.languageLevel%></h2>
+        <h5><%=entry.languageLevelSubject%></h5>
+        <h4><%=entry.title%></h4>
+      </div>
+    </a>
+    <% }) %> <% } else { %>
+    <h4>No recent activities. Start learning Now!</h4>
     <% } %>
   </div>
+
+  <div class="example-test">
+    <h2>Are you ready to test yourself in <span><%=randomTest%></span> level? Just do it!</h2>
+    <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="graduation-cap" class="svg-inline--fa fa-graduation-cap fa-w-20" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 512"><path fill="currentColor" d="M622.34 153.2L343.4 67.5c-15.2-4.67-31.6-4.67-46.79 0L17.66 153.2c-23.54 7.23-23.54 38.36 0 45.59l48.63 14.94c-10.67 13.19-17.23 29.28-17.88 46.9C38.78 266.15 32 276.11 32 288c0 10.78 5.68 19.85 13.86 25.65L20.33 428.53C18.11 438.52 25.71 448 35.94 448h56.11c10.24 0 17.84-9.48 15.62-19.47L82.14 313.65C90.32 307.85 96 298.78 96 288c0-11.57-6.47-21.25-15.66-26.87.76-15.02 8.44-28.3 20.69-36.72L296.6 284.5c9.06 2.78 26.44 6.25 46.79 0l278.95-85.7c23.55-7.24 23.55-38.36 0-45.6zM352.79 315.09c-28.53 8.76-52.84 3.92-65.59 0l-145.02-44.55L128 384c0 35.35 85.96 64 192 64s192-28.65 192-64l-14.18-113.47-145.03 44.56z"></path></svg>
+    <a href="/learn/<%=randomTest%>/test"><button class="invert-colors">Start Test</button></a>
+  </div>
+
   <h2 class="section-heading">Recomendations</h2>
   <div class="recommendations">
-    <% if (recommendations.length > 0 ) { %>
-      <% recommendations.forEach((entry) => { %>
-        <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
-          <div class="recommendation">
-            <h2><%=entry.languageLevel%></h2>
-            <h5><%=entry.subject%></h5>
-            <h4><%=entry.title%></h4>
-          </div>
-        </a>
-        <% }) %>
-    <% } else { %>
-      <h4>Oops! Something went wrong.</h4>
+    <% if (recommendations.length > 0 ) { %> <% recommendations.forEach((entry) => { %>
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
+      <div class="recommendation">
+        <h2><%=entry.languageLevel%></h2>
+        <h5><%=entry.subject%></h5>
+        <h4><%=entry.title%></h4>
+      </div>
+    </a>
+    <% }) %> <% } else { %>
+    <h4>Oops! Something went wrong.</h4>
     <% } %>
-    </div>
+  </div>
 </main>
 
 <%- include('../partials/contact-info') %>

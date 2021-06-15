@@ -17,7 +17,7 @@ main.user {
   width: 100%;
   max-width: 1200px;
   display: grid;
-  grid-template-columns: 1fr 1fr; 
+  grid-template-columns: 1fr 1fr;
   row-gap: $medium-margin * 2;
 
   .learning-subject {
@@ -26,7 +26,7 @@ main.user {
 
   .user-scores {
     grid-column: 1/2;
-    grid-row: 2/3
+    grid-row: 2/3;
   }
 
   .user-tests-heading {
@@ -95,22 +95,6 @@ main.user {
       grid-column: 1/2;
     }
 
-    &.lesson-choice {
-      div {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-
-        h5.not-finished {
-          color: #d71c38;
-        }
-
-        h5.finished {
-          color: #88c03d;
-        }
-      }
-    }
-
     h2 {
       font-size: 1.6rem;
     }
@@ -150,7 +134,6 @@ main.user {
   }
 }
 
-
 .user-scores {
   display: flex;
   flex-direction: column;
@@ -160,8 +143,7 @@ main.user {
   }
 
   h5 {
-    font-size: 1.2rem;
-    line-height: 1.5;
+    margin-bottom: $small-margin;
   }
 
   a {
@@ -266,7 +248,7 @@ h2.user-tests-heading {
 }
 
 h2.current-query {
-  margin-top: $medium-margin;
+  margin: $medium-margin 0 $small-margin;
 
   span {
     color: $base-color;
@@ -278,6 +260,7 @@ h2.current-query {
   grid-template-columns: 1fr 1fr 1fr 1fr;
   column-gap: 30px;
   row-gap: 30px;
+  width: 100%;
 }
 
 .user-test {
@@ -306,7 +289,8 @@ h2.current-query {
     color: $base-color;
   }
 
-  h4, h6 {
+  h4,
+  h6 {
     text-align: right;
   }
 }
@@ -336,7 +320,8 @@ main.user-settings {
       align-self: flex-start;
     }
 
-    &:nth-of-type(2), &:nth-of-type(4) {
+    &:nth-of-type(2),
+    &:nth-of-type(4) {
       width: 100%;
       justify-self: flex-end;
     }
@@ -381,4 +366,137 @@ main.user-settings {
       }
     }
   }
+}
+
+.donating-box {
+  background: $semi-dark-color;
+  border-radius: $default-border-radius;
+  width: 100%;
+  min-height: 12rem;
+  margin-top: $big-margin * 2;
+  padding: $big-padding 20rem $big-padding $medium-padding;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  position: relative;
+
+  span {
+    color: $base-color;
+  }
+
+  a {
+    button {
+      margin-top: $medium-margin !important;
+      color: $lighter-dark-color;
+    }
+  }
+
+  h2,
+  button {
+    z-index: 2;
+  }
+
+  svg {
+    position: absolute;
+    width: 13rem;
+    top: 10px;
+    right: 20px;
+    justify-self: flex-end;
+    color: $lighter-dark-color;
+    transform: rotate(10deg);
+    z-index: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .lang-choices {
+    grid-template-columns: 1fr 1fr;
+
+    a[href="/learn/A2"] {
+      grid-row: 1/2;
+      grid-column: 2/3;
+    }
+
+    a[href="/learn/B2"] {
+      grid-row: 2/3;
+      grid-column: 2/3;
+    }
+
+    a[href="/learn/C2"] {
+      grid-row: 3/4;
+      grid-column: 2/3;
+    }
+  }
+
+  .recommendations,
+  .latest-activity {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .flashcards {
+    flex-direction: column;
+
+    .flashcard {
+      align-self: center;
+    }
+  }
+}
+
+@media (max-width: 900px) {
+  .user-tests {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .lang-choices {
+    grid-template-columns: 1fr 1fr;
+
+    .lang-choice {
+      div {
+        div {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          justify-content: flex-end;
+
+          h4,
+          h5 {
+            font-size: 1.3rem;
+          }
+
+          h4 {
+            margin-left: 0;
+          }
+        }
+      }
+    }
+  }
+
+  .donating-box {
+    padding: $big-padding $medium-padding;
+  }
+
+  main.user {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .user-scores {
+    text-align: center;
+
+    h5 {
+      max-width: 350px;
+    }
+
+    a {
+      align-self: center;
+    }
+  }
+
+  .user-tests {
+    grid-template-columns: 1fr 1fr;
+  }
+
 }

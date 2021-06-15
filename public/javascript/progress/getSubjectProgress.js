@@ -16,13 +16,9 @@ window.addEventListener( "pageshow", ( event ) => {
 socket.emit("getSubjectProgress");
 
 socket.on("subjectProgress", (progress, lessons) => {
-  console.log(progress);
-  console.log(lessons);
-  for (let i = 0; i < subjectLessons.length - 1; i++) {
+  for (let i = 0; i < subjectLessons.length; i++) {
     let levelLessons = 0;
     let doneLessons = 0;
-
-    console.log(subjectLessons[i]);
 
     lessons.forEach((lesson) => {
       if (lesson.subject === subjectLessons[i].innerText) {

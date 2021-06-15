@@ -4,8 +4,9 @@
 
 <main>
   <h2 class="learning-subject"> <%=languageLevel%> <span>•</span> Study <span>•</span> Flashcards </h2>
+  
   <% if (flashcards.length !== 0 ) { %>
-  <div class="flashcard-sets">
+    <div class="flashcard-sets">
   <% flashcards.forEach((flashcard) => { %>
       <div class="flashcards">
         <div class="flashcard">
@@ -23,8 +24,9 @@
 </div>
   <% } %>
   <% if (flashcards.length === 0) { %>
-    <h2>No flashcards for this Language Level</h2>
+    <h2 class="no-flashcards-warning">No flashcards for this Language Level</h2>
   <% } %>
+
 </main>
 
 <%- include('../../partials/contact-info') %>

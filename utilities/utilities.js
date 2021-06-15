@@ -1,6 +1,6 @@
 const containsLesson = (obj, list) => {
     for (let i = 0; i < list.length; i++) {
-      if ((list[i].languageLevel === obj.languageLevel && list[i].languageLevelSubject === obj.languageLevelSubject && list[i].title === obj.title) || (list[i].languageLevel === obj.languageLevel && list[i].subject === obj.languageLevelSubject && list[i].title === obj.title)) {
+      if (list[i].lessonID === obj.lessonID || list[i]._id === obj.lessonID ) {
         return true;
       }
     }

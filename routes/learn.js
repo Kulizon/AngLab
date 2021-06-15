@@ -14,6 +14,8 @@ const Flashcard = require("./../models/flashcard");
 
 const { redirectIfNotAuthenticated, getCurrentDate, containsLesson, getCurrentUser } = require("./../utilities/utilities");
 
+const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
 router.get("/learn", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
@@ -26,7 +28,7 @@ router.get("/learn", async (req, res) => {
 
       await loggedUser.languageLevelProgress.forEach((record) => {
         if (!containsLesson(record, lessons)) {
-          User.updateOne({ _id: loggedUser._id }, { $pull: { languageLevelProgress: { languageLevel: record.languageLevel, languageLevelSubject: record.languageLevelSubject, title: record.title } } }, (e) => {
+          User.updateOne({ _id: loggedUser._id }, { $pull: { languageLevelProgress: {lessonID: record.lessonID}  } }, (e) => {
             if (e) console.log(e);
           });
         }
@@ -35,6 +37,11 @@ router.get("/learn", async (req, res) => {
       socket.emit("progress", loggedUser.languageLevelProgress, lessons);
     });
   });
+
+
+  const randomLangLevel = languageLevels[Math.floor(Math.random() * 6)]
+
+  const randomTest = languageLevels[Math.floor(Math.random() * 6)]
 
   const loggedUser = req.user
 
@@ -51,11 +58,16 @@ router.get("/learn", async (req, res) => {
     }
   });
 
-  res.render("learn/panel", { loggedUser, recommendations });
+  res.render("learn/panel", { loggedUser, recommendations, randomLangLevel, randomTest });
 });
 
 router.get("/learn/:languageLevel", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
+
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
 
   const loggedUser = req.user
 
@@ -84,6 +96,11 @@ router.get("/learn/:languageLevel", async (req, res) => {
 router.get("/learn/:languageLevel/study", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
+
   const subjects = await Subject.find({ languageLevel: req.params.languageLevel }, (e, subjects) => {
     if (e) console.log(e);
     return subjects;
@@ -109,6 +126,11 @@ router.get("/learn/:languageLevel/study", async (req, res) => {
 router.get("/learn/:languageLevel/study/:learningSubject", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
+
   const lessons = await Lesson.find({ $and: [{ languageLevel: req.params.languageLevel, subject: req.params.learningSubject }] }, (e, lessons) => {
     if (e) console.log(e);
     return lessons;
@@ -126,52 +148,53 @@ router.get("/learn/:languageLevel/study/:learningSubject", async (req, res) => {
   res.render("learn/subjects/subject-study", { learningSubject: req.params.learningSubject, subjectLessons: lessons, languageLevel: req.params.languageLevel, loggedUser: req.user });
 });
 
-router.get("/learn/:languageLevel/study/:learningSubject/:lessonTitle", async (req, res) => {
+router.get("/learn/:languageLevel/study/:learningSubject/:lessonID", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
-  const lesson = await Lesson.findOne({ $and: [{ languageLevel: req.params.languageLevel, subject: req.params.learningSubject, title: req.params.lessonTitle }] }, (e, lesson) => {
+  const lesson = await Lesson.findOne({ _id: req.params.lessonID }, (e, lesson) => {
     if (e) console.log(e);
     return lesson;
   });
+
+  if (!languageLevels.includes(req.params.languageLevel) || !lesson) {
+    res.redirect("/learn")
+    return
+  }
 
   const loggedUser = await getCurrentUser(req);
 
   let isDone = false;
 
-  if (containsLesson({ languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle }, loggedUser.languageLevelProgress)) {
+  if (containsLesson({lesson}, loggedUser.languageLevelProgress)) {
     isDone = true;
   }
 
   res.render("learn/lessons/lesson", { lesson, isDone, languageLevel: req.params.languageLevel, loggedUser: req.user });
 });
 
-router.post("/learn/:languageLevel/study/:learningSubject/:lessonTitle/done", async (req, res) => {
+router.post("/learn/:languageLevel/study/:learningSubject/:lessonID/done", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
   const loggedUser = await getCurrentUser(req);
 
-  if (containsLesson({ languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle }, loggedUser.languageLevelProgress)) {
+  if (containsLesson({ lessonID: req.body.lessonID}, loggedUser.languageLevelProgress)) {
     res.redirect("back");
     return;
   }
 
-  User.updateOne({ _id: loggedUser._id }, { $push: { languageLevelProgress: { languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle } } }, (e) => {
+  User.updateOne({ _id: loggedUser._id }, { $push: { languageLevelProgress: { languageLevel: req.params.languageLevel, languageLevelSubject: req.body.subject, title: req.body.title, lessonID: req.body.lessonID } } }, (e) => {
     if (e) console.log(e);
     res.redirect("back");
   });
 });
 
-router.post("/learn/:languageLevel/study/:learningSubject/:lessonTitle/undone", async (req, res) => {
+router.post("/learn/:languageLevel/study/:learningSubject/:lessonID/undone", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
   const loggedUser = await getCurrentUser(req);
 
-  if (containsLesson({ languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle }, loggedUser.languageLevelProgress)) {
-    User.findOne({ languageLevelProgress: { languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle } }, (e, user) => {
-      if (e) console.log(e);
-    });
-
-    User.updateOne({ _id: loggedUser._id }, { $pull: { languageLevelProgress: { languageLevel: req.params.languageLevel, languageLevelSubject: req.params.learningSubject, title: req.params.lessonTitle } } }, (e) => {
+  if (containsLesson({ lessonID: req.body.lessonID}, loggedUser.languageLevelProgress)) {
+    User.updateOne({ _id: loggedUser._id }, { $pull: { languageLevelProgress: { lessonID: req.body.lessonID} } }, (e) => {
       if (e) console.log(e);
     });
   }
@@ -181,6 +204,11 @@ router.post("/learn/:languageLevel/study/:learningSubject/:lessonTitle/undone", 
 
 router.get("/learn/:languageLevel/practice", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
+
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
 
   const subjects = await Subject.find({ languageLevel: req.params.languageLevel }, (e, subjects) => {
     if (e) console.log(e);
@@ -193,7 +221,11 @@ router.get("/learn/:languageLevel/practice", async (req, res) => {
 router.get("/learn/:languageLevel/practice/:practiceSubject", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
-  // SET LIMIT FOR QUESTIONS
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
+  
   await Question.findRandom({ $and: [{ languageLevel: req.params.languageLevel, subject: req.params.practiceSubject }] }, {}, { limit: 10 }, (e, questions) => {
     if (e) console.log(e);
     res.render("learn/subjects/subject-practice", { practiceSubject: req.params.practiceSubject, practiceQuestions: questions, languageLevel: req.params.languageLevel, loggedUser: req.user });
@@ -219,11 +251,21 @@ router.get("/learn/:languageLevel/practice/:practiceSubject", async (req, res) =
 router.get("/learn/:languageLevel/test", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
+
   res.render("learn/actions/test-start", { languageLevel: req.params.languageLevel, loggedUser: req.user });
 });
 
 router.get("/learn/:languageLevel/test/start", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
+
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
 
   await Question.findRandom({ languageLevel: req.params.languageLevel }, {}, { limit: 10 }, (e, questions) => {
     if (e) console.log(e);
@@ -265,6 +307,11 @@ router.post("/learn/:languageLevel/test/end", (req, res) => {
 router.get("/learn/:languageLevel/flashcards", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
+
   await Flashcard.findRandom({ languageLevel: req.params.languageLevel }, {}, { limit: 15 }, (e, flashcards) => {
     if (e) console.log(e);
     if (flashcards === undefined) flashcards = [];
@@ -272,8 +319,8 @@ router.get("/learn/:languageLevel/flashcards", async (req, res) => {
   });
 
   req.io.on("connection", (socket) => {
+    req.io.removeAllListeners();
     socket.on("getFlashcards", async () => {
-      req.io.removeAllListeners();
       await Flashcard.findRandom({ languageLevel: req.params.languageLevel }, {}, { limit: 15 }, (e, flashcards) => {
         if (e) console.log(e);
         socket.emit("flashcards", flashcards);
@@ -282,22 +329,5 @@ router.get("/learn/:languageLevel/flashcards", async (req, res) => {
   });
 });
 
-router.get("/darkmode", async (req, res) => {
-  if (redirectIfNotAuthenticated(req, res)) return;
-
-  if (req.user.options.darkmode) {
-    await User.updateOne({ _id: req.user._id }, { options: { darkmode: false } }, (e) => {
-      if (e) console.log(e);
-    });
-  }
-
-  if (!req.user.options.darkmode) {
-    await User.updateOne({ _id: req.user._id }, { options: { darkmode: true } }, (e) => {
-      if (e) console.log(e);
-    });
-  }
-
-  res.redirect("back");
-});
 
 module.exports = router;

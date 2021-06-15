@@ -1,12 +1,44 @@
 @import "variables";
 
-$darker-light-color: #d4d4d4;
+// $xarker-light-color: #FFFFFF;
+// $xighter-light-color: #F6F7FB;
+
+// $xarker-dark-color: #303545;
+// $xighter-dark-color: #938da6;
+
+// $base-color: #4257B2
 
 .lightmode {
-  .lang-choices {
+  .lang-choices,
+  .recommendations,
+  .latest-activity {
     .lang-choice {
-      color: $darker-dark-color;
-      background: $darker-light-color;
+      color: #303545;
+      background: #ffffff;
+      box-shadow: #505357 0px 3px 1px;
+
+      &:hover {
+        box-shadow: #505357 0px 5px 3px;
+      }
+
+        h5 {
+          color: #303545;
+      }
+
+      &.learn-choice {
+        svg {
+          color: #E8E8EE;
+        }
+      }
+    }
+  }
+
+  .recommendations,
+  .latest-activity {
+    .recommendation,
+    .latest-activity-record {
+      color: #303545;
+      background: #ffffff;
       box-shadow: #505357 0px 3px 1px;
 
       &:hover {
@@ -15,7 +47,7 @@ $darker-light-color: #d4d4d4;
 
       div {
         h5 {
-          color: $darker-dark-color;
+          color: #303545;
         }
       }
     }
@@ -23,65 +55,72 @@ $darker-light-color: #d4d4d4;
 
   .questions {
     h4 {
-      color: $darker-dark-color;
+      color: #303545;
     }
+  }
+
+  button.flashcard-button {
+    color: #fff;
   }
 
   .flashcards {
+  
     .flashcard {
-      background: $darker-light-color;
+      background: #ffffff;
 
       input {
-        color: $darker-dark-color;
+        color: #303545;
+        border-color: #303545;
 
         &:focus {
-          border-color: $lighter-dark-color;
+          border-color: #938da6;
         }
       }
+
     }
   }
 
-  background-color: $lighter-light-color;
+  background-color: #f6f7fb;
 
   button:not(.delete, .lesson-button) {
-    color: $darker-light-color;
+    color: #ffffff;
   }
 
   .logo {
     &__icon {
-      color: $darker-dark-color;
+      color: #303545;
     }
 
     &__brand {
-      color: $darker-dark-color;
+      color: #303545;
     }
   }
 
   h1 {
-    color: $darker-dark-color;
+    color: #303545;
   }
 
   h2 {
-    color: $darker-dark-color;
+    color: #303545;
   }
 
   h3 {
-    color: $darker-dark-color;
+    color: #303545;
   }
 
   h4,
   h5,
   h6 {
-    color: $lighter-dark-color;
+    color: #938da6;
   }
 
   label {
-    color: $darker-dark-color;
+    color: #303545;
   }
 
   input,
   textarea {
-    color: $darker-light-color;
+    color: #ffffff;
   }
 
   p {
@@ -91,30 +130,16 @@ $darker-light-color: #d4d4d4;
   header {
     .lang-menu {
       background: #e0e0e0;
+    }
 
-      &__option {
-        h6 {
-          color: $darker-dark-color;
-
-          &:hover {
-            color: $lighter-dark-color;
-          }
-        }
-
-        &__dropdown-icon {
-          color: $darker-dark-color;
-
-          &:hover {
-            color: $lighter-dark-color;
-          }
-        }
-      }
+    a[href="/donate"] {
+      color: #fff;
     }
 
     nav > {
       a {
         svg {
-          color: $darker-dark-color;
+          color: #303545;
         }
 
         &:hover {
@@ -126,15 +151,17 @@ $darker-light-color: #d4d4d4;
     }
 
     .user-menu {
-      background: #e0e0e0;
+      background: #fff;
+      box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.3);
+      border-color: #f6f7fb;
 
       a {
-        color: $darker-dark-color;
+        color: #303545;
       }
 
       svg {
         &:hover {
-          color: $lighter-dark-color;
+          color: #938da6;
         }
       }
     }
@@ -142,8 +169,8 @@ $darker-light-color: #d4d4d4;
 
   .lang-choices {
     .lang-choice {
-      color: $darker-dark-color;
-      background: $darker-light-color;
+      color: #303545;
+      background: #ffffff;
       box-shadow: #505357 0px 3px 1px;
 
       &:hover {
@@ -152,33 +179,33 @@ $darker-light-color: #d4d4d4;
 
       div {
         h5 {
-          color: $darker-dark-color;
+          color: #303545;
         }
       }
     }
   }
 
   .notifications {
-    background: #e0e0e0;
+    background: #ffffff;
 
     .notification {
-        background: $darker-light-color;
-        box-shadow: #505357 0px 3px 1px;
+      background: #ffffff;
+      box-shadow: #505357 0px 3px 1px;
 
-        button.delete {
-            svg {
-                background: $darker-dark-color;
-                fill: #D71C38;
-            }
+      button.delete {
+        svg {
+          background: #303545;
+          fill: #d71c38;
         }
+      }
     }
-}
+  }
 
   .user-badges {
     .user-badge {
       svg {
         & + p {
-          background: $darker-light-color;
+          background: #ffffff;
         }
       }
     }
@@ -191,24 +218,118 @@ $darker-light-color: #d4d4d4;
 
     .search-form {
       select {
-        background: $darker-dark-color;
-        color: $lighter-light-color;
+        background: #303545;
+        color: #f6f7fb;
       }
     }
   }
   .user-darker-dark-color {
-    background: $darker-light-color;
+    background: #ffffff;
     box-shadow: #505357 0px 3px 1px;
-    color: $darker-dark-color;
+    color: #303545;
   }
 
   .user-test {
-    background: $darker-light-color;
+    background: #ffffff;
     box-shadow: #505357 0px 3px 1px;
-    color: $darker-dark-color;
+    color: #303545;
 
     h5 {
       color: $base-color;
     }
   }
+
+  .example-flashcards,
+  .example-test,
+  .donating-box {
+    background: #e8e8ee;
+
+    span {
+      color: $base-color;
+    }
+
+    svg {
+      color: #F6F7FB;
+    }
+
+    button {
+      color: #ffffff;
+    }
+  }
+
+  .contact-icon {
+    border: 2px solid rgba(18, 20, 27, 0.6);
+    background: #fff;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.3);
+    border-color: #f6f7fb;
+  
+    &:hover {
+      background: rgb(240, 241, 245);
+      border-color: rgb(240, 241, 245);
+    }
+  }
+
+  .contact-info {
+    border: 2px solid rgba(18, 20, 27, 0.6);
+    background: #fff;
+    box-shadow: 0 3px 15px 0 rgba(0, 0, 0, 0.3);
+    border-color: #f6f7fb;
+
+    h5 {
+      color: $base-color;
+    }
+  
+    h6 {
+      color: #303545;
+  
+      a {
+        color: $base-color;
+      }
+    }
+  }
+
+  .test-info {
+    color: #303545;
+  }
+
+  .test-end {
+    h4 {
+      span:first-of-type {
+        color: #505357;
+      }
+    }
+  }
+
+  main.user-settings {
+    form {
+      background: #FFFFFF;
+
+      input {
+        background: #EDEDF3;
+        border-color: #F6F7FB;
+        box-shadow: #FFFFFF 0px 5px 3px;
+        color: #938da6;
+  
+        &:focus {
+          box-shadow: #FFFFFF 0px 10px 3px;
+          color:#938da6;
+        }
+      }
+  
+      .confirmation {
+        background: #FFFFFF;
+  
+        h3 {
+          color: #303545;
+        }
+      }
+    }
+  }
+ 
+  .practice-questions {
+    button {
+      color: #fff;
+    }
+  }
+
 }

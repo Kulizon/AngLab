@@ -69,6 +69,10 @@ button {
   }
 }
 
+footer {
+  margin-top: $big-margin;
+}
+
 input {
   font-weight: bold;
 }
@@ -127,13 +131,16 @@ button.invert-colors {
   height: 3rem;
   right: 2.5rem;
   bottom: 2.5rem;
-  background: $lighter-dark-color;
+  background: $semi-dark-color;
   color: $secondary-color;
   border-radius: 360px;
-  padding: 10px;
+  padding: 8px;
+  border: 2px solid rgba(18, 20, 27, 0.6);
+  box-shadow: 0 2px 15px 0 rgba(147, 155, 180, 0.08);
+  z-index: 1000;
 
   &:hover {
-    background: #363d53;
+    background: #212335;
     cursor: pointer;
   }
 }
@@ -142,7 +149,6 @@ button.invert-colors {
   position: fixed;
   right: 9rem;
   bottom: 2.5rem;
-  background: $lighter-dark-color;
   border-radius: $default-border-radius;
   padding: $medium-padding;
   width: 0rem;
@@ -150,6 +156,11 @@ button.invert-colors {
   overflow: hidden;
   display: none;
   transition: 0.15s;
+  opacity: 0;
+  background: $semi-dark-color;
+  border: 2px solid rgba(18, 20, 27, 0.6);
+  box-shadow: 0 5px 15px 0 rgba(147, 155, 180, 0.08);
+  z-index: 100;
 
   h5 {
     font-size: 1rem;
@@ -171,33 +182,6 @@ button.invert-colors {
     a {
       color: $base-color;
     }
-  }
-}
-
-.donate {
-  align-items: center;
-
-  h1 {
-    color: $base-color;
-    font-size: 1.8rem;
-  }
-
-  h3 {
-    margin: $tiny-margin 0 $medium-margin;
-    font-size: 1.1rem;
-  }
-
-  h4 {
-    color: $secondary-color;
-    font-size: 1.3rem;
-
-    span {
-      color: $base-color;
-    }
-  }
-
-  a {
-    margin-top: $small-margin;
   }
 }
 

@@ -2,6 +2,11 @@ const express = require("express");
 const mongoose = require("mongoose");
 const router = express.Router();
 
+const marked = require("marked")
+const createDomPurifier = require("dompurify")
+const { JSDOM } = require ("jsdom")
+const dompurify = createDomPurifier(new JSDOM().window)
+
 // mongoose.connect("mongodb://localhost:27017/myAngLab", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
 
 mongoose.connect("mongodb+srv://admin-kacper:" + process.env.DB_PASSWORD + "@cluster0.netpw.mongodb.net/AngLab?retryWrites=true&w=majority", { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true });
@@ -143,7 +148,6 @@ router.get("/admin/questions/add-question", async (req, res) => {
 
   req.io.on("connection", (socket) => {
     req.io.removeAllListeners();
-    console.log(123);
     socket.on("chosenLevel", (chosenLevel) => {
       Subject.find({ languageLevel: chosenLevel.chosenLevel }, (e, subjects) => {
         if (e) console.log(e);
@@ -291,7 +295,9 @@ router.post("/admin/lessons/delete-lesson", async (req, res) => {
 router.post("/admin/lessons/add-lesson", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  const newLesson = new Lesson({ languageLevel: req.body.level, subject: req.body.subject.trim(), title: req.body.title.trim(), content: req.body.content });
+  const sanitizedHTML = await dompurify.sanitize(marked(req.body.content))
+
+  const newLesson = new Lesson({ languageLevel: req.body.level, sanitizedHTML: sanitizedHTML, subject: req.body.subject.trim(), title: req.body.title.trim(), content: req.body.content });
   newLesson.save();
 
   res.redirect("/admin/lessons");
@@ -304,6 +310,7 @@ router.get("/admin/lessons/edit-lesson/:lessonID", async (req, res) => {
     if (e) console.log(e);
     return lesson;
   });
+  
   res.render("admin/actions/create/edit-lesson", { editedLesson: lesson });
 
   req.io.on("connection", (socket) => {
@@ -324,7 +331,9 @@ router.get("/admin/lessons/edit-lesson/:lessonID", async (req, res) => {
 router.post("/admin/lessons/edit-lesson/:lessonID", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
-  Lesson.updateOne({ _id: req.bpdy.lessonID }, { languageLevel: req.body.level, subject: req.body.subject, title: req.body.title, content: req.body.content }, (e) => {
+  const sanitizedHTML = await dompurify.sanitize(marked(req.body.content))
+
+  Lesson.updateOne({ _id: req.body.lessonID }, { languageLevel: req.body.level, sanitizedHTML: sanitizedHTML, subject: req.body.subject, title: req.body.title, content: req.body.content }, (e) => {
     if (e) console.log(e);
   });
 
@@ -370,9 +379,19 @@ router.post("/admin/subjects/action", async (req, res) => {
   if (await redirectIfNotAdmin(req, res)) return;
 
   if (req.body.action === "delete") {
-    Subject.deleteMany({ _id: { $in: req.body.chosenSubjectsID } }, (e) => {
-      if (e) console.log(e);
-    });
+    req.body.chosenSubjectsID.forEach((subjectId) => {
+      Subject.findOneAndDelete({ _id: subjectId }, (e, subject) => {
+        if (e) console.log(e);
+    
+        Lesson.deleteMany({subject: subject.subject, languageLevel: subject.languageLevel}, (e) => {
+          if (e) console.log(e);
+        })
+    
+        Question.deleteMany({subject: subject.subject, languageLevel: subject.languageLevel}, (e) => {
+          if (e) console.log(e);
+        })
+      });
+    })
   }
 
   res.redirect("/admin/subjects/");
@@ -387,10 +406,22 @@ router.post("/admin/subjects/add-subject", async (req, res) => {
   res.redirect("/admin/subjects");
 });
 
-router.post("/admin/subjects/delete-subject/:subjectID", (req, res) => {
-  Subject.deleteOne({ _id: req.body.subjectID }, (e) => {
+router.post("/admin/subjects/delete-subject/:subjectID", async (req, res) => {
+  if (await redirectIfNotAdmin(req, res)) return;
+  
+  await Subject.findOneAndDelete({ _id: req.body.subjectID }, async (e, subject) => {
     if (e) console.log(e);
+
+    await Lesson.deleteMany({subject: subject.subject, languageLevel: subject.languageLevel}, (e) => {
+      if (e) console.log(e);
+    })
+
+    await Question.deleteMany({subject: subject.subject, languageLevel: subject.languageLevel}, (e) => {
+      if (e) console.log(e);
+    })
   });
+
+  
 
   res.redirect("/admin/subjects/");
 });

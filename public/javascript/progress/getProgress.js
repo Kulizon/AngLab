@@ -34,7 +34,6 @@ socket.on("progress", (progress, lessons) => {
     numberProgress[i].innerText = `${doneLessons}/${levelLessons}`;
     percentProgress[i].innerText = Math.floor(doneLessons/levelLessons * 100) + '%'
 
-    if (doneLessons > levelLessons) socket.emit("lessonsError")
 
     if (levelLessons === 0) percentProgress[i].innerText = '0%'
   }

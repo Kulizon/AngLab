@@ -11,6 +11,8 @@ const User = require("./../models/user");
 
 const { redirectIfNotAuthenticated, getCurrentUser } = require("./../utilities/utilities");
 
+const languageLevels = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2']
+
 router.get("/user", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
 
@@ -58,6 +60,11 @@ router.get("/user", async (req, res) => {
 
 router.get("/user/test-history/:languageLevel", async (req, res) => {
   if (redirectIfNotAuthenticated(req, res)) return;
+
+  if (!languageLevels.includes(req.params.languageLevel)) {
+    res.redirect("/learn")
+    return
+  }
 
   const loggedUser = await getCurrentUser(req);
 
@@ -120,24 +127,6 @@ router.post("/user/test-history/:loggedUserUsername/test-records/search", async 
   const loggedUser = await getCurrentUser(req);
   res.render("user/user-test-history", { loggedUser: loggedUser, searchQuery: req.body.searchQueryLevel, testHistory: loggedUser.testHistory.reverse(), languageLevel: req.params.languageLevel });
 
-});
-
-router.get("/darkmode", async (req, res) => {
-  if (redirectIfNotAuthenticated(req, res)) return;
-
-  if (req.user.options.darkmode) {
-    await User.updateOne({ _id: req.user._id }, { options: { darkmode: false } }, (e) => {
-      if (e) console.log(e);
-    });
-  }
-
-  if (!req.user.options.darkmode) {
-    await User.updateOne({ _id: req.user._id }, { options: { darkmode: true } }, (e) => {
-      if (e) console.log(e);
-    });
-  }
-
-  res.redirect("back");
 });
 
 router.get("/user/settings", async (req, res) => {
