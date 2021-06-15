@@ -119,6 +119,10 @@ header {
     a {
       margin: 0 $small-margin;
 
+      &:last-of-type {
+        margin-right: 0;
+      }
+
       svg {
         width: 1.5rem;
         height: 1.5rem;

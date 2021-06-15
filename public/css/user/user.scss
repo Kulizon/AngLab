@@ -440,9 +440,7 @@ main.user-settings {
       align-self: center;
     }
   }
-}
 
-@media (max-width: 900px) {
   .user-tests {
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -462,7 +460,7 @@ main.user-settings {
 
           h4,
           h5 {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
           }
 
           h4 {
@@ -498,5 +496,17 @@ main.user-settings {
   .user-tests {
     grid-template-columns: 1fr 1fr;
   }
+}
 
+@media (max-width: 500px) {
+  .lang-choices {
+    grid-template-columns: 1fr 1fr;
+    h4, h5 {
+      font-size: 1.15rem;
+    }
+  }
+
+  .user-tests {
+    grid-template-columns: 1fr;
+  }
 }

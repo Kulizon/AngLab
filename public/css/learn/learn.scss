@@ -172,9 +172,10 @@ main {
 .recommendations {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   column-gap: 30px;
   width: 100%;
-  height: 100%;
+
   margin: 0 0 $big-margin * 2;
 
   h4 {
@@ -183,7 +184,6 @@ main {
 
   .latest-activity-record,
   .recommendation {
-    min-height: 120px;
     border-radius: $default-border-radius;
     background: $lighter-dark-color;
     margin: $small-margin 0;
@@ -191,7 +191,6 @@ main {
     font-weight: bold;
     display: flex;
     flex-direction: column;
-    height: 50%;
 
     &:hover {
       box-shadow: $secondary-color 0px 5px 0px;

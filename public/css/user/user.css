@@ -622,6 +622,10 @@ header nav a {
   margin: 0 1rem;
 }
 
+header nav a:last-of-type {
+  margin-right: 0;
+}
+
 header nav a svg {
   width: 1.5rem;
   height: 1.5rem;
@@ -1623,9 +1627,6 @@ main.user-settings form h5.wrong-password-error {
         -ms-grid-row-align: center;
         align-self: center;
   }
-}
-
-@media (max-width: 900px) {
   .user-tests {
     -ms-grid-columns: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
@@ -1654,7 +1655,7 @@ main.user-settings form h5.wrong-password-error {
   }
   .lang-choices .lang-choice div div h4,
   .lang-choices .lang-choice div div h5 {
-    font-size: 1.3rem;
+    font-size: 1.15rem;
   }
   .lang-choices .lang-choice div div h4 {
     margin-left: 0;
@@ -1688,6 +1689,20 @@ main.user-settings form h5.wrong-password-error {
   .user-tests {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 500px) {
+  .lang-choices {
+    -ms-grid-columns: 1fr 1fr;
+        grid-template-columns: 1fr 1fr;
+  }
+  .lang-choices h4, .lang-choices h5 {
+    font-size: 1.15rem;
+  }
+  .user-tests {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
   }
 }
 /*# sourceMappingURL=user.css.map */
