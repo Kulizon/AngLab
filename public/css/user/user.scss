@@ -392,7 +392,7 @@ main.user-settings {
   }
 
   h2,
-  button {
+  a {
     z-index: 2;
   }
 
@@ -443,6 +443,25 @@ main.user-settings {
 
   .user-tests {
     grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  main.user-settings {
+    display: flex;
+    flex-direction: column;
+    form {
+      align-self: center;
+
+      &:first-of-type {
+        align-self: center;
+        width: 100%;
+      }
+
+      &:nth-of-type(3) {
+        width: 100%;
+      }
+    }
   }
 }
 
@@ -501,7 +520,8 @@ main.user-settings {
 @media (max-width: 500px) {
   .lang-choices {
     grid-template-columns: 1fr 1fr;
-    h4, h5 {
+    h4,
+    h5 {
       font-size: 1.15rem;
     }
   }

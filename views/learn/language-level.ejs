@@ -28,7 +28,7 @@
 
     <a href="/learn/<%=languageLevel%>/flashcards" >
       <div class="lang-choice learn-choice">
-        <h2>Flashcards</h2>
+        <h2>Cards</h2>
         <svg aria-hidden="true" focusable="false" data-prefix="fas" data-icon="clipboard" class="svg-inline--fa fa-clipboard fa-w-12" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><path fill="currentColor" d="M384 112v352c0 26.51-21.49 48-48 48H48c-26.51 0-48-21.49-48-48V112c0-26.51 21.49-48 48-48h80c0-35.29 28.71-64 64-64s64 28.71 64 64h80c26.51 0 48 21.49 48 48zM192 40c-13.255 0-24 10.745-24 24s10.745 24 24 24 24-10.745 24-24-10.745-24-24-24m96 114v-20a6 6 0 0 0-6-6H102a6 6 0 0 0-6 6v20a6 6 0 0 0 6 6h180a6 6 0 0 0 6-6z"></path></svg>
       </div>
     </a>
@@ -46,8 +46,8 @@
   <div class="latest-activity">
 <% if (latestActivity.length > 0 ) { %>
     <% latestActivity.reverse().forEach((entry) => { %>
-      <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.lessonID%>">
-      <div class="latest-activity-record">
+      <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.lessonID%>" class="latest-activity-record">
+      <div >
         <h2><%=entry.languageLevel%></h2>
         <h5><%=entry.languageLevelSubject%></h5>
         <h4><%=entry.title%></h4>
@@ -69,8 +69,8 @@
 <div class="recommendations">
 <% if (recommendations.length > 0 ) { %>
   <% recommendations.forEach((entry) => { %>
-    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
-      <div class="recommendation">
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry._id%>" class="recommendation">
+      <div >
         <h2><%=entry.languageLevel%></h2>
         <h5><%=entry.subject%></h5>
         <h4><%=entry.title%></h4>

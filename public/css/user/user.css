@@ -1566,7 +1566,7 @@ main.user-settings form h5.wrong-password-error {
 }
 
 .donating-box h2,
-.donating-box button {
+.donating-box a {
   z-index: 2;
 }
 
@@ -1630,6 +1630,32 @@ main.user-settings form h5.wrong-password-error {
   .user-tests {
     -ms-grid-columns: 1fr 1fr 1fr;
         grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+@media (max-width: 800px) {
+  main.user-settings {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+  }
+  main.user-settings form {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+  }
+  main.user-settings form:first-of-type {
+    -ms-flex-item-align: center;
+        -ms-grid-row-align: center;
+        align-self: center;
+    width: 100%;
+  }
+  main.user-settings form:nth-of-type(3) {
+    width: 100%;
   }
 }
 
@@ -1697,7 +1723,8 @@ main.user-settings form h5.wrong-password-error {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
   }
-  .lang-choices h4, .lang-choices h5 {
+  .lang-choices h4,
+  .lang-choices h5 {
     font-size: 1.15rem;
   }
   .user-tests {

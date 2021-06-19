@@ -3,7 +3,7 @@
 <%- include('../../partials/boilerplate-end') %> <%- include('../../partials/header') %>
 
 <main>
-  <h2 class="learning-subject"><%=languageLevel%> <span>•</span> Study <span>•</span> <%= lesson.subject %> <span>•</span> <%=lesson.title%></h2>
+  <h2 class="learning-subject"><%=languageLevel%> <span>•</span> Study <span>•</span> <%= lesson.subject %> <span>•</span> <span class="lesson-span"><%=lesson.title%> </span></h2>
   <div class="lesson-study">
     <%- lesson.sanitizedHTML%>
   </div>

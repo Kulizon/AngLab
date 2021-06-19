@@ -74,8 +74,8 @@
   <h2 class="section-heading">Latest Activity</h2>
   <div class="latest-activity">
     <% if (loggedUser.languageLevelProgress.length > 0 ) { %> <% loggedUser.languageLevelProgress.reverse().slice(0, 5).forEach((entry) => { %>
-    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.lessonID%>">
-      <div class="latest-activity-record">
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.languageLevelSubject%>/<%=entry.lessonID%>" class="latest-activity-record">
+      <div >
         <h2><%=entry.languageLevel%></h2>
         <h5><%=entry.languageLevelSubject%></h5>
         <h4><%=entry.title%></h4>
@@ -95,8 +95,8 @@
   <h2 class="section-heading">Recomendations</h2>
   <div class="recommendations">
     <% if (recommendations.length > 0 ) { %> <% recommendations.forEach((entry) => { %>
-    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry.title%>">
-      <div class="recommendation">
+    <a href="/learn/<%=entry.languageLevel%>/study/<%=entry.subject%>/<%=entry._id%>" class="recommendation">
+      <div >
         <h2><%=entry.languageLevel%></h2>
         <h5><%=entry.subject%></h5>
         <h4><%=entry.title%></h4>

@@ -38,3 +38,5 @@ socket.on("progress", (progress, lessons) => {
     if (levelLessons === 0) percentProgress[i].innerText = '0%'
   }
 });
+
+socket.emit("checkForProgressError");

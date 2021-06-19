@@ -7,7 +7,7 @@
 
 <main>
     <h2 class="learning-subject"> <%=languageLevel%> <span>•</span> Study <span>•</span> <%= learningSubject %> </h2>
-    <div class="lang-choices">
+    <div class="lang-choices lesson-choices">
       <% if (subjectLessons.length > 0) { %>
         <% subjectLessons.forEach((lesson) => { %>
             <a href="/learn/<%=lesson.languageLevel%>/study/<%=lesson.subject%>/<%=lesson._id%>" class="lang-choice lesson-choice">

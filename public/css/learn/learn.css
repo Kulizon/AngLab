@@ -1191,6 +1191,7 @@ main {
           align-items: center;
   position: relative;
   overflow: hidden;
+  padding: 0;
 }
 
 .lang-choices .lang-choice.learn-choice h2 {
@@ -1327,8 +1328,6 @@ main {
   display: grid;
   -ms-grid-columns: 1fr 1fr 1fr;
       grid-template-columns: 1fr 1fr 1fr;
-  -ms-grid-rows: 1fr;
-      grid-template-rows: 1fr;
   -webkit-column-gap: 30px;
           column-gap: 30px;
   width: 100%;
@@ -1356,6 +1355,21 @@ main {
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  min-height: 120px;
+}
+
+.latest-activity .latest-activity-record div,
+.latest-activity .recommendation div,
+.recommendations .latest-activity-record div,
+.recommendations .recommendation div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 100%;
 }
 
 .latest-activity .latest-activity-record:hover,
@@ -1378,14 +1392,14 @@ main {
 .recommendations .latest-activity-record h4,
 .recommendations .recommendation h4 {
   height: 100%;
+  color: #ffdb5b;
+  font-size: 1.3rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: end;
       -ms-flex-align: end;
           align-items: flex-end;
-  color: #ffdb5b;
-  font-size: 1.3rem;
 }
 
 .recommendations {
@@ -1399,6 +1413,10 @@ main {
 
 .learning-subject span {
   color: #3ccfcf;
+}
+
+.learning-subject span.lesson-span {
+  color: #f1f1f1;
 }
 
 .lesson-study {
@@ -1493,7 +1511,8 @@ main {
 }
 
 .example-flashcards h2,
-.example-flashcards button, .example-flashcards a,
+.example-flashcards button,
+.example-flashcards a,
 .example-test h2,
 .example-test button,
 .example-test a {
@@ -1843,7 +1862,8 @@ main.test-end h4 span:last-of-type {
     -ms-grid-column-span: 1;
     grid-column: 2/3;
   }
-  .recommendations, .latest-activity {
+  .recommendations,
+  .latest-activity {
     -ms-grid-columns: 1fr 1fr;
         grid-template-columns: 1fr 1fr;
   }
@@ -1864,19 +1884,59 @@ main.test-end h4 span:last-of-type {
   header nav a[href="/donate"] {
     display: none;
   }
+  .lang-choice.lesson-choice div {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+  }
+  .lang-choice.lesson-choice div h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+  .lang-choices.lesson-choices {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
   header .user-menu {
     -webkit-transform: translate(-85px, 100px);
             transform: translate(-85px, 100px);
   }
-  .example-test, .example-flashcards {
+  .example-test,
+  .example-flashcards {
     padding: 2rem 1.5rem;
   }
-  .example-test svg, .example-flashcards svg {
+  .example-test svg,
+  .example-flashcards svg {
     position: absolute;
   }
-  .example-test svg.fa-graduation-cap, .example-flashcards svg.fa-graduation-cap {
+  .example-test svg.fa-graduation-cap,
+  .example-flashcards svg.fa-graduation-cap {
     width: 14rem;
     right: -20px;
+  }
+  .recommendations,
+  .latest-activity {
+    -ms-grid-columns: 1fr;
+        grid-template-columns: 1fr;
+  }
+  .recommendations .recommendation h4,
+  .recommendations .latest-activity-record h4,
+  .latest-activity .recommendation h4,
+  .latest-activity .latest-activity-record h4 {
+    font-size: 1.4rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .lang-choice.learn-choice h2 {
+    font-size: 1.45rem;
   }
 }
 /*# sourceMappingURL=learn.css.map */
